@@ -19,8 +19,13 @@ const Navbar = () => {
                                     </NavLink>
                                 </li>
                                 <li className={"opacity-50 transition-all ease-in has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
-                                    <NavLink to={"movies-and-shows"} className={"block py-3 px-4 rounded-xl"}>
-                                        Movies & Shows
+                                    <NavLink to={"movies"} className={"block py-3 px-4 rounded-xl"}>
+                                        Movies
+                                    </NavLink>
+                                </li>
+                                <li className={"opacity-50 transition-all ease-in has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
+                                    <NavLink to={"shows"} className={"block py-3 px-4 rounded-xl"}>
+                                        Shows
                                     </NavLink>
                                 </li>
                                 <li className={"opacity-50 transition-all ease-in has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>

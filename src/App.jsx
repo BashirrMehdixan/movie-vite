@@ -6,6 +6,7 @@ import RootLayout from "/src/layouts/RootLayout";
 // Pages
 import HomeIndex from "/src/pages/home/HomeIndex";
 import MoviesIndex from "/src/pages/movies/MoviesIndex";
+import ShowsIndex from "/src/pages/shows/ShowsIndex";
 import MovieDetail from "/src/pages/movies/MovieDetail";
 import SupportIndex from "/src/pages/support/SupportIndex";
 import SubscriptionsIndex from "/src/pages/subscriptions/SubscriptionsIndex";
@@ -21,11 +22,15 @@ function App() {
                     element: <HomeIndex/>
                 },
                 {
-                    path: "movies-and-shows",
+                    path: "movies",
                     element: <MoviesIndex/>
                 },
                 {
-                    path: "movies-and-shows/:slug",
+                    path: "shows",
+                    element: <ShowsIndex/>
+                },
+                {
+                    path: "movies/:slug",
                     element: <MovieDetail/>
                 },
                 {

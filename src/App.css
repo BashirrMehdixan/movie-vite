@@ -1,7 +1,7 @@
 @import '/src/index.css';
 
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 13px;
 }
 
 ::-webkit-scrollbar-track {

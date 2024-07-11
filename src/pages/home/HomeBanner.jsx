@@ -19,12 +19,11 @@ const HomeBanner = () => {
             <section className={'home-banner'}>
                 <div className="h-screen">
                     <Swiper
-                        navigation={
-                            {
-                                prevEl: '.swiper-banner-prev',
-                                nextEl: '.swiper-banner-next',
-                            }}
-                        modules={[Navigation, Autoplay]}
+                        navigation={{
+                            prevEl: '.swiper-button-prev',
+                            nextEl: '.swiper-button-next',
+                        }}
+                        modules={[Navigation]}
                         autoplay={{
                             delay: 4000,
                             disableOnInteraction: false
@@ -41,12 +40,10 @@ const HomeBanner = () => {
                     </Swiper>
                 </div>
                 <button
-                    className="swiper-button-prev swiper-banner-prev absolute top-1/2 left-4 transform -translate-y-1/2 z-30 text-6xl text-white disabled:opacity-0">
-                    <IoIosArrowBack/>
+                    className="swiper-button-prev absolute top-1/2 left-4 transform -translate-y-1/2 z-30 text-6xl text-white disabled:opacity-0">
                 </button>
                 <button
-                    className="swiper-button-next swiper-banner-next absolute top-1/2 right-4 transform -translate-y-1/2 z-30 text-6xl text-white disabled:opacity-0">
-                    <IoIosArrowForward/>
+                    className="swiper-button-next absolute top-1/2 right-4 transform -translate-y-1/2 z-30 text-6xl text-white disabled:opacity-0">
                 </button>
             </section>
         </>

@@ -1,13 +1,16 @@
+import {useContext} from "react";
 // Swiper
 import {Swiper, SwiperSlide} from 'swiper/react';
-import {Autoplay, Navigation} from 'swiper/modules';
+import {Navigation} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 import SectionTitle from "/src/components/SectionTitle";
 import {CategoryComponent} from "/src/components/Components";
+import {MovieContext} from "/src/context/movies/MovieContext.jsx";
 
 const HomeCategory = () => {
+    const {movieGenres} = useContext(MovieContext);
     return (
         <>
             <section className={'relative py-32'}>
@@ -24,22 +27,35 @@ const HomeCategory = () => {
                         </div>
                     </div>
 
-                    <div className="home-categories">
+                    <div className="home-categories py-5">
                         <Swiper
                             navigation={
                                 {
                                     prevEl: '.swiper-banner-prev',
                                     nextEl: '.swiper-banner-next',
                                 }}
-                            modules={[Navigation, Autoplay]}
-                            autoplay={{
-                                delay: 4000,
-                                disableOnInteraction: false
-                            }}
+                            modules={[Navigation]}
+                            slidesPerView={1}
+                            spaceBetween={30}
+                            breakpoints={
+                                {
+                                    768: {
+                                        slidesPerView: 2
+                                    },
+                                    1024: {
+                                        slidesPerView: 4
+                                    }
+                                }
+                            }
+
                             className="w-full h-full mySwiper">
-                            <SwiperSlide className={'flex items-center justify-center'}>
-                                <CategoryComponent/>
-                            </SwiperSlide>
+                            {movieGenres.map((genre, index) => {
+                                return (
+                                    <SwiperSlide className={'flex items-center justify-center'} key={index}>
+                                        <CategoryComponent {...genre} />
+                                    </SwiperSlide>
+                                )
+                            })}
                         </Swiper>
                     </div>
                 </div>
