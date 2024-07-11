@@ -1,0 +1,18 @@
+@import '/src/index.css';
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background: #101010;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+    /*border-radius: 6px;*/
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #EE0000;
+}
