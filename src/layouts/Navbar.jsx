@@ -1,9 +1,21 @@
 import {NavLink} from "react-router-dom";
+import {useEffect} from "react";
 
 const Navbar = () => {
+    useEffect(() => {
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 30) {
+                header.classList.add('bg-[#0F0F0F]');
+            } else {
+                header.classList.remove('bg-[#0F0F0F]');
+            }
+        })
+    })
     return (
         <>
-            <header className={`fixed w-full z-10 bg-gradient-to-b from-current to-transparent`}>
+            <header
+                className={`fixed w-full z-20 bg-gradient-to-b from-current to-transparent transition-all duration-300`}>
                 <div className="container">
                     <div className={"flex items-center justify-between py-5"}>
                         <div className={"w-1/6"}>
@@ -12,7 +24,7 @@ const Navbar = () => {
                             </NavLink>
                         </div>
                         <div className="w-4/6">
-                            <ul className="w-[500px] flex items-center justify-between text-white bg-[#0F0F0F] p-3 mx-auto rounded-2xl">
+                            <ul className="w-[500px] flex items-center justify-between text-white bg-[#0F0F0F] border-[2px] border-[#1F1F1F] p-3 mx-auto rounded-2xl">
                                 <li className={"opacity-50 transition-all ease-in has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
                                     <NavLink to={"/"} className={"block py-3 px-3 rounded-xl"}>
                                         Home

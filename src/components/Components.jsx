@@ -6,7 +6,7 @@ export const CategoryComponent = ({name}) => {
         <>
             <Link to={`/movies#${name.toLocaleLowerCase()}`}
                   className={'block w-full transition-all duration-300 hover:scale-[.95]'}>
-                <div className={"bg-[#262626] w-full p-2 rounded-xl"}>
+                <div className={"bg-[#1A1A1A] w-full p-2 border border-[#333333] rounded-xl"}>
                     <div className="p-3 overflow-hidden">
                         <img
                             src={"./images/category-img/action.png"}

@@ -16,3 +16,12 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #EE0000;
 }
+
+.home-category .swiper-button-prev::after, .home-category .swiper-button-next::after {
+    font-size: 25px;
+}
+
+.device-item {
+    background: rgba(15, 15, 15, 1) linear-gradient(221.52deg, rgba(229, 0, 0, 1) -208.03%, rgba(229, 0, 0, 0) 41.32%);
+    cursor: pointer;
+}
