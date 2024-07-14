@@ -1,0 +1,36 @@
+import {useState} from 'react';
+import {FaPlus, FaMinus} from "react-icons/fa";
+
+const AccordionItem = ({count,title, content}) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleAccordion = () => {
+        setIsOpen(!isOpen);
+    };
+
+    return (
+        <div className="relative py-3 rounded-lg mb-2 text-white accordion-item">
+            <button
+                className="flex items-center justify-between w-full text-[20px] font-normal bg-transparent border-0 border-transparent focus:outline-none p-5"
+                onClick={toggleAccordion}
+            >
+                <div className="flex items-center">
+                    <div className="bg-[#1F1F1F] mr-10 py-3 px-6 rounded-xl">
+                        {count}
+                    </div>
+                    <span>{title}</span>
+                </div>
+                <span>
+                    {isOpen ? <FaMinus/> : <FaPlus/>}
+                </span>
+            </button>
+            {isOpen && (
+                <div className="p-5 bg-transparent">
+                    <p className="opacity-45">{content}</p>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default AccordionItem;

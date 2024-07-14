@@ -15,7 +15,7 @@ const Navbar = () => {
     return (
         <>
             <header
-                className={`fixed w-full z-20 bg-gradient-to-b from-current to-transparent transition-all duration-300`}>
+                className={`fixed w-full z-20 bg-gradient-to-b from-current to-transparent transition-all duration-500`}>
                 <div className="container">
                     <div className={"flex items-center justify-between py-5"}>
                         <div className={"w-1/6"}>
@@ -25,27 +25,27 @@ const Navbar = () => {
                         </div>
                         <div className="w-4/6">
                             <ul className="w-[500px] flex items-center justify-between text-white bg-[#0F0F0F] border-[2px] border-[#1F1F1F] p-3 mx-auto rounded-2xl">
-                                <li className={"opacity-50 transition-all ease-in has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
+                                <li className={"opacity-50 transition-all duration-500 has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
                                     <NavLink to={"/"} className={"block py-3 px-3 rounded-xl"}>
                                         Home
                                     </NavLink>
                                 </li>
-                                <li className={"opacity-50 transition-all ease-in has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
+                                <li className={"opacity-50 transition-all duration-500 has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
                                     <NavLink to={"movies"} className={"block py-3 px-4 rounded-xl"}>
                                         Movies
                                     </NavLink>
                                 </li>
-                                <li className={"opacity-50 transition-all ease-in has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
+                                <li className={"opacity-50 transition-all duration-500 has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
                                     <NavLink to={"shows"} className={"block py-3 px-4 rounded-xl"}>
                                         Shows
                                     </NavLink>
                                 </li>
-                                <li className={"opacity-50 transition-all ease-in has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
+                                <li className={"opacity-50 transition-all duration-500 has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
                                     <NavLink to={"/support"} className={"block p-3 rounded-xl"}>
                                         Support
                                     </NavLink>
                                 </li>
-                                <li className={"opacity-50 transition-all ease-in has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
+                                <li className={"opacity-50 transition-all duration-500 has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
                                     <NavLink to={"/subscriptions"} className={"block p-3 rounded-xl"}>
                                         Subscriptions
                                     </NavLink>

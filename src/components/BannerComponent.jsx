@@ -24,7 +24,7 @@ const BannerComponent = ({id, backdrop_path, original_title, overview, title}) =
                             {overview}
                         </p>
                         <Link to={`movies/${id.toString()}`}
-                            className={'inline-flex items-center justify-center bg-[#FF0000] px-8 py-5 space-x-2 rounded-lg capitalize transition-all ease-linear hover:bg-[#E50000]'}
+                            className={'inline-flex items-center justify-center bg-[#E50000] px-8 py-5 space-x-2 rounded-lg capitalize transition-all duration-500 hover:bg-opacity-60'}
                         >
                             <span>
                                 <FaPlay/>

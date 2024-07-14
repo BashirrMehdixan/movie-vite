@@ -4,6 +4,7 @@
 
 @layer base {
     html {
-        font-family: "Manrope",  sans-serif;
+        font-family: "Manrope", sans-serif;
+        background-color: #0F0F0F;
     }
 }
