@@ -10,12 +10,10 @@ import SectionTitle from "/src/components/SectionTitle";
 import {CategoryComponent} from "/src/components/Components";
 import {MovieContext} from "/src/context/movies/MovieContext.jsx";
 
-// Icons
-import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io";
-
 const HomeCategory = () => {
     const {movieGenres} = useContext(MovieContext);
     return (
+        movieGenres &&
         <>
             <section className={'home-category pt-32 pb-10'}>
                 <div className={'relative container'}>

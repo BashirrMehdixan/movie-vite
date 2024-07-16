@@ -1,8 +1,9 @@
+import {useState} from "react";
 import SectionTitle from "/src/components/SectionTitle";
 import TabComponent from "/src/components/TabComponent";
 
 const HomeSubscription = () => {
-    const plan = "monthly";
+    const [plan, setPlan] = useState("monthly");
     console.log(plan)
     return (
         <>
@@ -16,7 +17,7 @@ const HomeSubscription = () => {
                             />
                         </div>
                         <div className="w-full lg:w-[calc(20%-1rem)]">
-                            <TabComponent plan={plan}/>
+                            <TabComponent plan={plan} setPlan={setPlan}/>
                         </div>
                     </div>
                     <div className="py-10">

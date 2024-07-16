@@ -17,7 +17,7 @@ const Navbar = () => {
             <header
                 className={`fixed w-full z-20 bg-gradient-to-b from-current to-transparent transition-all duration-500`}>
                 <div className="container">
-                    <div className={"flex items-center justify-between py-5"}>
+                    <div className={"flex items-center justify-between py-3"}>
                         <div className={"w-1/6"}>
                             <NavLink to={"/"} className={"block w-48"}>
                                 <img src={"./images/logo.png"} className={"w-full"} alt=""/>
