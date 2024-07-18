@@ -1,10 +1,11 @@
 import {useState} from "react";
 import SectionTitle from "/src/components/SectionTitle";
 import TabComponent from "/src/components/TabComponent";
+import PriceComponents from "/src/components/PriceComponents.jsx";
 
 const HomeSubscription = () => {
     const [plan, setPlan] = useState("monthly");
-    console.log(plan)
+
     return (
         <>
             <section className={"pt-16"}>
@@ -21,9 +22,30 @@ const HomeSubscription = () => {
                         </div>
                     </div>
                     <div className="py-10">
-                        <div className="flex items-center">
-                            <div className="w-[calc(33%-1rem)]">
-
+                        <div className={"flex flex-wrap items-center gap-4"}>
+                            <div className={"w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3333%-1rem)]"}>
+                                <PriceComponents
+                                    plan={plan}
+                                    title={"Basic"}
+                                    description={"Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles."}
+                                    price={plan === "monthly" ? "9.99" : "99.99"}
+                                />
+                            </div>
+                            <div className={"w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3333%-1rem)]"}>
+                                <PriceComponents
+                                    plan={plan}
+                                    title={"Standard"}
+                                    description={"Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles."}
+                                    price={plan === "monthly" ? "12.99" : "120.99"}
+                                />
+                            </div>
+                            <div className={"w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3333%-1rem)]"}>
+                                <PriceComponents
+                                    plan={plan}
+                                    title={"Premium"}
+                                    description={"Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles."}
+                                    price={plan === "monthly" ? "14.99" : "120.99"}
+                                />
                             </div>
                         </div>
                     </div>
