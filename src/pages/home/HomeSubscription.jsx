@@ -8,7 +8,7 @@ const HomeSubscription = () => {
 
     return (
         <>
-            <section className={"pt-16"}>
+            <section className={"my-16"}>
                 <div className={"container"}>
                     <div className="flex items-center justify-between">
                         <div className="w-full lg:w-[calc(80%-1rem)]">

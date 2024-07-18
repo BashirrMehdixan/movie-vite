@@ -5,7 +5,7 @@ import SectionTitle from "/src/components/SectionTitle";
 const HomeFAQ = () => {
     return (
         <>
-            <section className={"pt-10"}>
+            <section className={"my-10"}>
                 <div className="container">
                     <div className="flex items-center justify-between">
                         <SectionTitle

@@ -1,5 +1,9 @@
 @import '/src/index.css';
 
+* {
+    scroll-behavior: smooth;
+}
+
 ::-webkit-scrollbar {
     width: 13px;
 }

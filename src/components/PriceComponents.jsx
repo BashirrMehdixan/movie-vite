@@ -14,10 +14,12 @@ const PriceComponents = ({plan, title, description, price}) => {
                 </p>
 
                 <div className="flex flex-wrap items-center justify-between pt-8">
-                    <button className={"w-full lg:w-auto bg-[#141414] capitalize py-5 px-9 rounded-xl border-2 border-[#262626] mb-2 lg:mb-0"}>
+                    <button
+                        className={"w-full lg:w-auto bg-[#141414] capitalize py-5 px-9 rounded-xl border-2 border-[#262626] mb-2 lg:mb-0"}>
                         Start free trial
                     </button>
-                    <button className={"w-full lg:w-auto bg-[#E50000] capitalize py-5 px-9 rounded-xl border-2 border-[#262626]"}>
+                    <button
+                        className={"w-full lg:w-auto bg-[#E50000] capitalize py-5 px-9 rounded-xl border-2 border-[#262626]"}>
                         choose plan
                     </button>
                 </div>
