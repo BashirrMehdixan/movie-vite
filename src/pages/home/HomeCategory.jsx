@@ -15,7 +15,7 @@ const HomeCategory = () => {
     return (
         movieGenres &&
         <>
-            <section className={'home-category pt-32 pb-10'}>
+            <section className={'home-category pt-32 pb-10'} id={"categories"}>
                 <div className={'relative container'}>
                     <div className="flex items-center justify-between">
                         <div className="w-full lg:w-3/4">
@@ -66,10 +66,10 @@ const HomeCategory = () => {
                     <div className="hidden lg:block absolute w-[200px] top-[5%] right-[1%]">
                         <div className="w-full flex justify-between items-center bg-[#1A1A1A] py-3 px-4 rounded-2xl">
                             <button
-                                className="swiper-button-prev swiper-cat-prev w-auto relative text-white bg-[#262626] py-5 px-4 top-0 left-0 mt-0 rounded-xl">
+                                className="swiper-button-prev swiper-cat-prev swiper-cat-prev w-auto relative text-white bg-[#262626] py-5 px-4 top-0 left-0 mt-0 rounded-xl">
                             </button>
                             <button
-                                className="swiper-button-next swiper-cat-next w-auto relative text-white bg-[#262626] py-5 px-4 top-0 left-0 mt-0 rounded-xl">
+                                className="swiper-button-next swiper-cat-next swiper-cat-next w-auto relative text-white bg-[#262626] py-5 px-4 top-0 left-0 mt-0 rounded-xl">
                             </button>
                         </div>
                     </div>

@@ -23,7 +23,7 @@ const Navbar = () => {
                                 <img src={"./images/logo.png"} className={"w-full"} alt=""/>
                             </NavLink>
                         </div>
-                        <div className="w-4/6">
+                        <div className="hidden lg:block w-4/6">
                             <ul className="w-[500px] flex items-center justify-between text-white bg-[#0F0F0F] border-[2px] border-[#1F1F1F] p-3 mx-auto rounded-2xl">
                                 <li className={"opacity-50 transition-all duration-500 has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
                                     <NavLink to={"/"} className={"block py-3 px-3 rounded-xl"}>
@@ -52,7 +52,7 @@ const Navbar = () => {
                                 </li>
                             </ul>
                         </div>
-                        <div className="w-1/6">
+                        <div className="hidden lg:block w-1/6">
                             <ul className="flex items-center justify-end gap-8">
                                 <li>
                                     <button>
