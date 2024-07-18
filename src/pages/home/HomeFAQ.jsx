@@ -7,7 +7,7 @@ const HomeFAQ = () => {
         <>
             <section className={"my-10"}>
                 <div className="container">
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-wrap items-center justify-between">
                         <SectionTitle
                             heading={'Frequently Asked Questions'}
                             inner={'Got questions? We\'ve got answers! Check out our FAQ section to find answers to the most common questions about StreamVibe.'}
@@ -17,7 +17,7 @@ const HomeFAQ = () => {
                             Ask a Question
                         </Link>
                     </div>
-                    <div className={"max-h-[700px] flex flex-wrap gap-9 pt-10"}>
+                    <div className={"md:max-h-[700px] flex flex-wrap gap-9 pt-10"}>
                         <div className="w-full md:w-[calc(50%-2.25rem)]">
                             <AccordionItem
                                 title={'What is StreamVibe?'}

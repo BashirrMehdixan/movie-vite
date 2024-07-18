@@ -11,7 +11,7 @@ const AccordionItem = ({count,title, content}) => {
     return (
         <div className="relative py-3 rounded-lg mb-2 text-white accordion-item">
             <button
-                className="flex items-center justify-between w-full text-base md:text-lg lg:text-[20px] font-normal bg-transparent border-0 border-transparent focus:outline-none py-5 lg:p-5"
+                className="flex items-center justify-between text-left w-full text-base lg:text-[20px] font-normal bg-transparent border-0 border-transparent focus:outline-none py-5 lg:p-5"
                 onClick={toggleAccordion}
             >
                 <div className="flex items-center">

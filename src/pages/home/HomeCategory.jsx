@@ -18,14 +18,11 @@ const HomeCategory = () => {
             <section className={'home-category pt-32 pb-10'}>
                 <div className={'relative container'}>
                     <div className="flex items-center justify-between">
-                        <div className="w-3/4">
+                        <div className="w-full lg:w-3/4">
                             <SectionTitle
                                 heading={'Explore our wide variety of categories'}
                                 inner={'Whether you\'re looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new'}
                             />
-                        </div>
-                        <div className="w-1/4">
-
                         </div>
                     </div>
 
@@ -33,8 +30,8 @@ const HomeCategory = () => {
                         <Swiper
                             navigation={
                                 {
-                                    prevEl: '.swiper-button-prev',
-                                    nextEl: '.swiper-button-next',
+                                    prevEl: '.swiper-cat-prev',
+                                    nextEl: '.swiper-cat-next',
                                 }}
                             modules={[Navigation, Pagination]}
                             slidesPerView={1}
@@ -66,13 +63,13 @@ const HomeCategory = () => {
                             })}
                         </Swiper>
                     </div>
-                    <div className="absolute w-[200px] top-[5%] right-[1%]">
+                    <div className="hidden lg:block absolute w-[200px] top-[5%] right-[1%]">
                         <div className="w-full flex justify-between items-center bg-[#1A1A1A] py-3 px-4 rounded-2xl">
                             <button
-                                className="swiper-button-prev w-auto relative text-white bg-[#262626] py-5 px-4 top-0 left-0 mt-0 rounded-xl">
+                                className="swiper-button-prev swiper-cat-prev w-auto relative text-white bg-[#262626] py-5 px-4 top-0 left-0 mt-0 rounded-xl">
                             </button>
                             <button
-                                className="swiper-button-next w-auto relative text-white bg-[#262626] py-5 px-4 top-0 left-0 mt-0 rounded-xl">
+                                className="swiper-button-next swiper-cat-next w-auto relative text-white bg-[#262626] py-5 px-4 top-0 left-0 mt-0 rounded-xl">
                             </button>
                         </div>
                     </div>
