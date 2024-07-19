@@ -1,7 +1,11 @@
+import MovieBanner from "/src/pages/movies/MovieBanner";
+import MovieGenres from "/src/pages/movies/MovieGenres";
+
 const MoviesIndex = () => {
     return (
         <>
-            <h1>Movies Index</h1>
+            <MovieBanner/>
+            <MovieGenres/>
         </>
     )
 }

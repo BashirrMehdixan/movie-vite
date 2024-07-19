@@ -1,12 +1,10 @@
 import {useContext} from "react";
 // Swiper
 import {Swiper, SwiperSlide} from 'swiper/react';
-import {Navigation} from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
+import {Autoplay, Navigation} from 'swiper/modules';
 
 import {MovieContext} from "/src/context/movies/MovieContext";
-import BannerComponent from "/src/components/BannerComponent.jsx";
+import {BannerComponent} from "/src/components/BannerComponent.jsx";
 
 
 const HomeBanner = () => {
@@ -18,14 +16,15 @@ const HomeBanner = () => {
                 <div className="h-screen">
                     <Swiper
                         navigation={{
-                            prevEl: '.swiper-button-prev',
-                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-banner-prev',
+                            nextEl: '.swiper-banner-next',
                         }}
-                        modules={[Navigation]}
+                        modules={[Navigation, Autoplay]}
                         autoplay={{
                             delay: 4000,
                             disableOnInteraction: false
                         }}
+                        loop={true}
                         className="w-full h-full homeBannerSwiper">
                         {newMovies.map((newMovie, index) => {
                             return (
@@ -38,10 +37,10 @@ const HomeBanner = () => {
                     </Swiper>
                 </div>
                 <button
-                    className="swiper-button-prev text-white disabled:opacity-50">
+                    className="swiper-button-prev swiper-banner-prev text-white disabled:opacity-50">
                 </button>
                 <button
-                    className="swiper-button-next text-white disabled:opacity-50">
+                    className="swiper-button-next swiper-banner-next text-white disabled:opacity-50">
                 </button>
             </section>
         </>

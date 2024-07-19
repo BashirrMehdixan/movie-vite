@@ -26,7 +26,7 @@ const HomeCategory = () => {
                         </div>
                     </div>
 
-                    <div className="home-categories py-5">
+                    <div className="home-categories cat-swiper py-5">
                         <Swiper
                             navigation={
                                 {
@@ -36,6 +36,7 @@ const HomeCategory = () => {
                             modules={[Navigation, Pagination]}
                             slidesPerView={1}
                             spaceBetween={30}
+                            loop={true}
                             pagination={
                                 {
                                     el: '.swiper-pagination',
@@ -56,21 +57,26 @@ const HomeCategory = () => {
                             className="w-full h-full homeCategorySwiper">
                             {movieGenres.map((genre, index) => {
                                 return (
-                                    <SwiperSlide className={'flex items-center justify-center'} key={index}>
+                                    <SwiperSlide
+                                        className={'flex items-center justify-center'} key={index}
+                                        data-aos={"fade-up"}
+                                        data-aos-duration={"3000"}
+                                    >
                                         <CategoryComponent {...genre} />
                                     </SwiperSlide>
                                 )
                             })}
                         </Swiper>
-                    </div>
-                    <div className="hidden lg:block absolute w-[200px] top-[5%] right-[1%]">
-                        <div className="w-full flex justify-between items-center bg-[#1A1A1A] py-3 px-4 rounded-2xl">
-                            <button
-                                className="swiper-button-prev swiper-cat-prev swiper-cat-prev w-auto relative text-white bg-[#262626] py-5 px-4 top-0 left-0 mt-0 rounded-xl">
-                            </button>
-                            <button
-                                className="swiper-button-next swiper-cat-next swiper-cat-next w-auto relative text-white bg-[#262626] py-5 px-4 top-0 left-0 mt-0 rounded-xl">
-                            </button>
+                        <div className="hidden lg:block absolute w-[200px] top-[5%] right-[1%]">
+                            <div
+                                className="w-full flex justify-between items-center bg-[#0F0F0F] py-3 px-4 rounded-2xl">
+                                <button
+                                    className="swiper-button-prev swiper-cat-prev swiper-cat-prev w-auto relative text-white bg-[#262626] py-5 px-4 top-0 left-0 mt-0 rounded-xl">
+                                </button>
+                                <button
+                                    className="swiper-button-next swiper-cat-next swiper-cat-next w-auto relative text-white bg-[#262626] py-5 px-4 top-0 left-0 mt-0 rounded-xl">
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

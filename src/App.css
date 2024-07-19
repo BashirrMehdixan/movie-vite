@@ -21,7 +21,7 @@
     background: #EE0000;
 }
 
-.home-category .swiper-button-prev::after, .home-category .swiper-button-next::after {
+.cat-swiper .swiper-button-prev::after, .cat-swiper .swiper-button-next::after {
     font-size: 25px;
 }
 

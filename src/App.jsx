@@ -1,5 +1,7 @@
+import {useEffect} from "react";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-
+import AOS from "aos";
+// import 'aos/dist/aos.css';
 // Layouts
 import RootLayout from "/src/layouts/RootLayout";
 

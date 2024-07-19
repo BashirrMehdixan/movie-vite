@@ -15,7 +15,7 @@ const Footer = () => {
                                 <ul>
                                     <li className={"mb-3"}>
                                         <Link
-                                            to={"#categories"}
+                                            to={"/#categories"}
                                             className={"transition-all duration-300 text-lg font-normal opacity-45 hover:opacity-100"}>
                                             Categories
                                         </Link>

@@ -11,7 +11,7 @@ const HomeDevices = () => {
                     />
 
                     <div className="flex flex-wrap gap-4 py-5">
-                        <div className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3333%-1rem)]">
+                        <div className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3333%-1rem)]" data-aos={"fade-up"} data-aos-duration={"3000"}>
                             <div className="w-full text-white rounded-xl py-11 px-7 border-[2px] border-[#262626] shadow-xl device-item">
                                 <div className="flex flex-wrap items-center">
                                     <div className="bg-[#141414] p-2 rounded-lg mr-4">
@@ -53,7 +53,7 @@ const HomeDevices = () => {
                                 </p>
                             </div>
                         </div>
-                        <div className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3333%-1rem)]">
+                        <div className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3333%-1rem)]" data-aos={"fade-up"} data-aos-duration={"3000"}>
                             <div className="w-full text-white rounded-xl py-11 px-7 border-[2px] border-[#262626] shadow-xl device-item">
                                 <div className="flex flex-wrap items-center">
                                     <div className="bg-[#141414] p-2 rounded-lg mr-4">
@@ -99,7 +99,7 @@ const HomeDevices = () => {
                                 </p>
                             </div>
                         </div>
-                        <div className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3333%-1rem)]">
+                        <div className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3333%-1rem)]" data-aos={"fade-up"} data-aos-duration={"3000"}>
                             <div className="w-full text-white rounded-xl py-11 px-7 border-[2px] border-[#262626] shadow-xl device-item">
                                 <div className="flex flex-wrap items-center">
                                     <div className="bg-[#141414] p-2 rounded-lg mr-4">
@@ -145,7 +145,7 @@ const HomeDevices = () => {
                                 </p>
                             </div>
                         </div>
-                        <div className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3333%-1rem)]">
+                        <div className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3333%-1rem)]" data-aos={"fade-up"} data-aos-duration={"3000"}>
                             <div className="w-full text-white rounded-xl py-11 px-7 border-[2px] border-[#262626] shadow-xl device-item">
                                 <div className="flex flex-wrap items-center">
                                     <div className="bg-[#141414] p-2 rounded-lg mr-4">
@@ -191,7 +191,7 @@ const HomeDevices = () => {
                                 </p>
                             </div>
                         </div>
-                        <div className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3333%-1rem)]">
+                        <div className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3333%-1rem)]" data-aos={"fade-up"} data-aos-duration={"3000"}>
                             <div className="w-full text-white rounded-xl py-11 px-7 border-[2px] border-[#262626] shadow-xl device-item">
                                 <div className="flex flex-wrap items-center">
                                     <div className="bg-[#141414] p-2 rounded-lg mr-4">
@@ -237,7 +237,7 @@ const HomeDevices = () => {
                                 </p>
                             </div>
                         </div>
-                        <div className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3333%-1rem)]">
+                        <div className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3333%-1rem)]" data-aos={"fade-up"} data-aos-duration={"3000"}>
                             <div className="w-full text-white rounded-xl py-11 px-7 border-[2px] border-[#262626] shadow-xl device-item">
                                 <div className="flex flex-wrap items-center">
                                     <div className="bg-[#141414] p-2 rounded-lg mr-4">
