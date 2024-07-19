@@ -33,7 +33,7 @@ const MovieProvider = ({children}) => {
                     ...newData.results
                 ]);
 
-                // Popüler türleri belirle
+
                 const genreCounts = {};
                 popularData.results.forEach(movie => {
                     movie.genre_ids.forEach(genreId => {
@@ -53,7 +53,7 @@ const MovieProvider = ({children}) => {
                         count: genreCounts[id]
                     }));
 
-                setPopularGenres(sortedGenres.slice(0, 5)); // İlk 5 popüler tür
+                setPopularGenres(sortedGenres.slice(0, 10));
             } catch (error) {
                 console.error("Error fetching movie data: ", error);
             }
@@ -61,7 +61,6 @@ const MovieProvider = ({children}) => {
 
         fetchMovies();
     }, []);
-console.log(popularGenres)
     return (
         <MovieContext.Provider value={{movies, newMovies, popularMovies, movieGenres, popularGenres}}>
             {children}

@@ -48,18 +48,16 @@ const MovieGenres = () => {
                                     }
                                 }
 
-                                className="w-full h-full homeCategorySwiper">
+                                className="w-full h-full categorySwiper">
                                 {movieGenres.map((genre, index) => {
                                     return (
-                                        <>
-                                            <SwiperSlide
-                                                className={'flex items-center justify-center'} key={index}
-                                                data-aos={"fade-up"}
-                                                data-aos-duration={"3000"}
-                                            >
-                                                <CategoryComponent {...genre} />
-                                            </SwiperSlide>
-                                        </>
+                                        <SwiperSlide
+                                            className={'flex items-center justify-center'} key={index}
+                                            data-aos={"fade-up"}
+                                            data-aos-duration={"3000"}
+                                        >
+                                            <CategoryComponent {...genre} />
+                                        </SwiperSlide>
                                     )
                                 })}
                             </Swiper>

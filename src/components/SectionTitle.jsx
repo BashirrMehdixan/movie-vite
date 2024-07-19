@@ -3,7 +3,7 @@ const SectionTitle = ({heading, inner}) => {
         <>
             <div className="text-white">
                 <h2
-                    className={'text-xl md:text-2xl lg:text-4xl'}
+                    className={'text-xl md:text-2xl lg:text-4xl font-medium'}
                     data-aos={"fade-up"}
                     data-aos-duration={"3000"}
                 >
