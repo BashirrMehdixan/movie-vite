@@ -8,28 +8,33 @@ const MovieProvider = ({children}) => {
     const [movies, setMovies] = useState([]);
     const [newMovies, setNewMovies] = useState([]);
     const [popularMovies, setPopularMovies] = useState([]);
+    const [upComing, setUpcoming] = useState([]);
     const [movieGenres, setMovieGenres] = useState([]);
     const [popularGenres, setPopularGenres] = useState([]);
 
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const [popularRes, newRes, genresRes] = await Promise.all([
+                const [popularRes, newRes, upComingRes, genresRes] = await Promise.all([
                     fetch(`${base_url}movie/popular?api_key=${api_key}&page=1`),
                     fetch(`${base_url}movie/now_playing?api_key=${api_key}&page=1`),
+                    fetch(`${base_url}movie/now_playing?api_key=${api_key}&page=2`),
                     fetch(`${base_url}genre/movie/list?api_key=${api_key}`)
                 ]);
 
                 const popularData = await popularRes.json();
                 const newData = await newRes.json();
+                const upComingData = await upComingRes.json();
                 const genresData = await genresRes.json();
 
                 setPopularMovies(popularData.results);
                 setNewMovies(newData.results);
+                setUpcoming(upComingData.results)
                 setMovieGenres(genresData.genres);
 
                 setMovies([
                     ...popularData.results,
+                    ...upComingData.results,
                     ...newData.results
                 ]);
 
@@ -62,7 +67,7 @@ const MovieProvider = ({children}) => {
         fetchMovies();
     }, []);
     return (
-        <MovieContext.Provider value={{movies, newMovies, popularMovies, movieGenres, popularGenres}}>
+        <MovieContext.Provider value={{movies, newMovies, popularMovies, upComing, movieGenres, popularGenres}}>
             {children}
         </MovieContext.Provider>
     );

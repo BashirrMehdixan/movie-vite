@@ -1,4 +1,3 @@
-import {useEffect} from "react";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import AOS from "aos";
 // import 'aos/dist/aos.css';
@@ -28,12 +27,12 @@ function App() {
                     element: <MoviesIndex/>
                 },
                 {
-                    path: "shows",
-                    element: <ShowsIndex/>
+                    path: "movies/:id",
+                    element: <MovieDetail/>
                 },
                 {
-                    path: "movies/:slug",
-                    element: <MovieDetail/>
+                    path: "shows",
+                    element: <ShowsIndex/>
                 },
                 {
                     path: "support",

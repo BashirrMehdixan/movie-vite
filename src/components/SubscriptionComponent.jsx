@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-const SubscriptionLayout = () => {
+const SubscriptionComponent = () => {
     return (
         <>
             <section className="h-[350px] my-14">
@@ -34,4 +34,4 @@ const SubscriptionLayout = () => {
     )
 }
 
-export default SubscriptionLayout;
+export default SubscriptionComponent;

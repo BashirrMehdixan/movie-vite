@@ -3,11 +3,10 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
 import {MovieContext} from "/src/context/movies/MovieContext";
 import SectionTitle from "/src/components/SectionTitle";
-import {MovieComponent} from "/src/components/Components";
+import {MovieComponent} from "/src/components/MovieCards";
 
 const TrendMovie = () => {
     const {popularMovies} = useContext(MovieContext);
-    console.log(popularMovies)
     return (
         popularMovies &&
         <>

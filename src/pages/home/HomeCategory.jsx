@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import SectionTitle from "/src/components/SectionTitle";
-import {CategoryComponent} from "/src/components/Components";
+import {CategoryComponent} from "/src/components/MovieCards";
 import {MovieContext} from "/src/context/movies/MovieContext.jsx";
 
 const HomeCategory = () => {

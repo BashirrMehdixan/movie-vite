@@ -31,7 +31,7 @@ export const BannerComponent = ({id, backdrop_path, original_title, overview, ti
                            data-aos-duration={"3000"}>
                             {overview}
                         </p>
-                        <div className="flex items-center justify-center gap-4">
+                        <div className="flex flex-wrap items-center justify-center gap-4">
                             <Link to={`movies/${id.toString()}`}
                                   className={'inline-flex items-center justify-center bg-[#E50000] px-7 py-4 space-x-2 rounded-lg capitalize transition-all duration-500 hover:bg-opacity-60'}
                                   data-aos={"fade-up"}
@@ -46,12 +46,11 @@ export const BannerComponent = ({id, backdrop_path, original_title, overview, ti
                             </Link>
                             {
                                 location.pathname !== "/" &&
-                                <>
+                                <div className={"flex items-center justify-center w-full lg:w-auto gap-4"}>
                                     <button
                                         className="text-xl bg-[#0F0F0F] border-2 border-[#262626] p-5 rounded-xl text-white">
                                         <FaPlus/>
                                     </button>
-
                                     <button
                                         className="text-xl bg-[#0F0F0F] border-2 border-[#262626] p-5 rounded-xl text-white">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -73,7 +72,7 @@ export const BannerComponent = ({id, backdrop_path, original_title, overview, ti
                                         </svg>
 
                                     </button>
-                                </>
+                                </div>
                             }
                         </div>
                     </div>

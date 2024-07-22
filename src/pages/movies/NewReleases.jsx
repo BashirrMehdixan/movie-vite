@@ -4,29 +4,29 @@ import {useContext} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
 
-// Components
+// Custom Components
 import {MovieContext} from "/src/context/movies/MovieContext";
-import {CategoryComponent} from "/src/components/MovieCards";
+import {NewReleasesCard} from "/src/components/MovieCards";
 import SectionTitle from "/src/components/SectionTitle";
 
-const PopularGenres = () => {
-    const {popularGenres} = useContext(MovieContext);
+const NewReleases = () => {
+    const {upComing} = useContext(MovieContext);
     return (
-        popularGenres &&
+        upComing &&
         <>
             <section className="py-5">
                 <div className="container relative">
                     <div className="flex flex-wrap items-center py-7">
                         <SectionTitle
-                            heading={"Popular Top 10 In Genres"}
+                            heading={"New Releases"}
                         />
                     </div>
                     <div className="cat-swiper">
                         <Swiper
                             navigation={
                                 {
-                                    prevEl: '.swiper-popular-prev',
-                                    nextEl: '.swiper-popular-next',
+                                    prevEl: '.swiper-releases-prev',
+                                    nextEl: '.swiper-releases-next',
                                 }}
                             modules={[Navigation, Pagination]}
                             slidesPerView={1}
@@ -50,14 +50,14 @@ const PopularGenres = () => {
                             }
 
                             className="w-full h-full categorySwiper">
-                            {popularGenres.map((genre, index) => {
+                            {upComing.map((genre, index) => {
                                 return (
                                     <SwiperSlide
                                         className={'flex items-center justify-center'} key={index}
                                         data-aos={"fade-up"}
                                         data-aos-duration={"3000"}
                                     >
-                                        <CategoryComponent {...genre} />
+                                        <NewReleasesCard {...genre} />
                                     </SwiperSlide>
                                 )
                             })}
@@ -66,10 +66,10 @@ const PopularGenres = () => {
                             <div
                                 className="w-full flex justify-between items-center bg-[#0F0F0F] py-3 px-4 rounded-2xl">
                                 <button
-                                    className="swiper-button-prev swiper-popular-prev w-auto relative text-white bg-[#262626] py-5 px-4 top-0 left-0 mt-0 rounded-xl">
+                                    className="swiper-button-prev swiper-releases-prev w-auto relative text-white bg-[#262626] py-5 px-4 top-0 left-0 mt-0 rounded-xl">
                                 </button>
                                 <button
-                                    className="swiper-button-next swiper-popular-next w-auto relative text-white bg-[#262626] py-5 px-4 top-0 left-0 mt-0 rounded-xl">
+                                    className="swiper-button-next swiper-releases-next w-auto relative text-white bg-[#262626] py-5 px-4 top-0 left-0 mt-0 rounded-xl">
                                 </button>
                             </div>
                         </div>
@@ -79,4 +79,5 @@ const PopularGenres = () => {
         </>
     )
 }
-export default PopularGenres;
+
+export default NewReleases;

@@ -5,6 +5,6 @@ import "/src/App.css";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <MovieProvider>
-        <App className=""/>
+        <App/>
     </MovieProvider>
 )

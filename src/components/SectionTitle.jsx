@@ -10,7 +10,7 @@ const SectionTitle = ({heading, inner}) => {
                     {heading}
                 </h2>
                 <p
-                    className={'text-sm md:text-base opacity-45 py-4'}
+                    className={`${!inner && 'hidden'} text-sm md:text-base opacity-45 pt-4`}
                     data-aos={"fade-up"}
                     data-aos-duration={"3000"}
                 >

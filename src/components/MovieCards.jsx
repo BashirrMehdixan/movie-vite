@@ -27,11 +27,11 @@ export const CategoryComponent = ({name}) => {
     )
 }
 
-export const MovieComponent = ({title, poster_path, release_date, vote_average}) => {
+export const MovieComponent = ({id, poster_path, release_date, vote_average}) => {
     const imgSize = 'original'
     return (
         <>
-            <Link to={`/movies#${name.toLocaleLowerCase()}`}
+            <Link to={`/movies/${id.toString()}`}
                   className={'block w-full transition-all duration-300 hover:scale-[.95]'}>
                 <div className={"bg-[#1A1A1A] w-full p-2 border border-[#333333] rounded-xl"}>
                     <div className="p-1 h-[350px] overflow-hidden">
@@ -54,6 +54,29 @@ export const MovieComponent = ({title, poster_path, release_date, vote_average})
                             {vote_average}
                         </div>
                     </div>
+                </div>
+            </Link>
+        </>
+    )
+}
+
+export const NewReleasesCard = ({id, poster_path, release_date}) => {
+    const imgSize = 'original'
+    return (
+        <>
+            <Link to={`/movies/${id.toString()}`}
+                  className={'block w-full transition-all duration-300 hover:scale-[.95]'}>
+                <div className={"bg-[#1A1A1A] w-full p-2 border border-[#333333] rounded-xl"}>
+                    <div className="p-1 h-[350px] overflow-hidden">
+                        <img
+                            src={`https://image.tmdb.org/t/p/${imgSize}${poster_path}`}
+                            className={'w-full h-full rounded-xl'} alt=""/>
+                    </div>
+                    {/*<div className="px-3 py-2 ">*/}
+                    <h3 className={"bg-[#141414] text-center text-[#999999] border-2 border-[#262626] px-3 py-2 rounded-2xl mt-4"}>
+                        Released at <span className={"ml-1 text-white"}>{release_date}</span>
+                    </h3>
+                    {/*</div>*/}
                 </div>
             </Link>
         </>
