@@ -20,7 +20,7 @@ const Navbar = () => {
                     <div className={"flex items-center justify-between py-3"}>
                         <div className={"w-1/6"}>
                             <NavLink to={"/"} className={"block w-48"}>
-                                <img src={"./images/logo.png"} className={"w-full"} alt=""/>
+                                <img src={"/public/images/logo.png"} className={"w-full"} alt=""/>
                             </NavLink>
                         </div>
                         <div className="hidden lg:block w-4/6">

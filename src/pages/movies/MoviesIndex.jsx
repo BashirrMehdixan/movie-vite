@@ -3,6 +3,7 @@ import MovieGenres from "/src/pages/movies/MovieGenres";
 import PopularGenres from "/src/pages/movies/PopularGenres";
 import TrendMovie from "/src/pages/movies/TrendMovie";
 import NewReleases from "/src/pages/movies/NewReleases";
+import MustWatch from "/src/pages/movies/MustWatch";
 
 const MoviesIndex = () => {
     return (
@@ -12,6 +13,7 @@ const MoviesIndex = () => {
             <PopularGenres/>
             <TrendMovie/>
             <NewReleases/>
+            <MustWatch/>
         </>
     )
 }

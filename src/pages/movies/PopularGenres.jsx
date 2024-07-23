@@ -62,7 +62,7 @@ const PopularGenres = () => {
                                 )
                             })}
                         </Swiper>
-                        <div className="hidden lg:block absolute w-[200px] top-[5%] right-[1%]">
+                        <div className="hidden lg:block absolute w-[200px] top-[3%] right-[1%]">
                             <div
                                 className="w-full flex justify-between items-center bg-[#0F0F0F] py-3 px-4 rounded-2xl">
                                 <button
