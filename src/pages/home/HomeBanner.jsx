@@ -8,9 +8,9 @@ import {BannerComponent} from "/src/components/BannerComponent.jsx";
 
 
 const HomeBanner = () => {
-    const {newMovies} = useContext(MovieContext);
+    const {movies} = useContext(MovieContext);
     return (
-        newMovies &&
+        movies &&
         <>
             <section className={'home-banner'}>
                 <div className="h-screen">
@@ -26,9 +26,9 @@ const HomeBanner = () => {
                         }}
                         loop={true}
                         className="w-full h-full homeBannerSwiper">
-                        {newMovies.map((newMovie, index) => {
+                        {movies.map((newMovie, index) => {
                             return (
-                                index < 5 &&
+                                index < 8 &&
                                 <SwiperSlide className={'flex items-center justify-center'} key={index}>
                                     <BannerComponent {...newMovie} />
                                 </SwiperSlide>

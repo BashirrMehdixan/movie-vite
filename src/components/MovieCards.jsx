@@ -15,7 +15,7 @@ export const CategoryComponent = ({name}) => {
                     <div className="p-3 overflow-hidden">
                         <img
                             src={"./images/category-img/action.png"}
-                            className={'w-full'} alt=""/>
+                            className={'w-full'} alt={name}/>
                     </div>
                     <div className="text-white flex items-center justify-between px-3 py-2">
                         <h3 className={"text-xl"}>{name}</h3>
@@ -29,7 +29,7 @@ export const CategoryComponent = ({name}) => {
     )
 }
 
-export const MovieComponent = ({id, poster_path, release_date, vote_average}) => {
+export const MovieComponent = ({id, title, poster_path, release_date, vote_average}) => {
     const imgSize = 'original'
     return (
         <>
@@ -39,7 +39,7 @@ export const MovieComponent = ({id, poster_path, release_date, vote_average}) =>
                     <div className="p-1 h-[350px] overflow-hidden">
                         <img
                             src={`https://image.tmdb.org/t/p/${imgSize}${poster_path}`}
-                            className={'w-full h-full rounded-xl'} alt=""/>
+                            className={'w-full h-full rounded-xl'} alt={title}/>
                     </div>
                     <div className="flex items-center justify-between px-3 py-2 text-[#999999]">
                         <h3 className={"flex items-center bg-[#141414] border-2 border-[#262626] px-3 py-2 rounded-lg"}>
@@ -62,7 +62,7 @@ export const MovieComponent = ({id, poster_path, release_date, vote_average}) =>
     )
 }
 
-export const NewReleasesCard = ({id, poster_path, release_date}) => {
+export const NewReleasesCard = ({id, title, poster_path, release_date}) => {
     const imgSize = 'original'
     return (
         <>
@@ -72,7 +72,7 @@ export const NewReleasesCard = ({id, poster_path, release_date}) => {
                     <div className="p-1 h-[350px] overflow-hidden">
                         <img
                             src={`https://image.tmdb.org/t/p/${imgSize}${poster_path}`}
-                            className={'w-full h-full rounded-xl'} alt=""/>
+                            className={'w-full h-full rounded-xl'} alt={title}/>
                     </div>
                     {/*<div className="px-3 py-2 ">*/}
                     <h3 className={"bg-[#141414] text-center text-[#999999] border-2 border-[#262626] px-3 py-2 rounded-2xl mt-4"}>
@@ -85,7 +85,7 @@ export const NewReleasesCard = ({id, poster_path, release_date}) => {
     )
 }
 
-export const MustWatchCard = ({id, poster_path, release_date, vote_average}) => {
+export const MustWatchCard = ({id, title, poster_path, release_date, vote_average}) => {
     const imgSize = 'original'
     return (
         <>
@@ -95,7 +95,7 @@ export const MustWatchCard = ({id, poster_path, release_date, vote_average}) => 
                     <div className="p-1 h-[350px] overflow-hidden">
                         <img
                             src={`https://image.tmdb.org/t/p/${imgSize}${poster_path}`}
-                            className={'w-full h-full rounded-xl'} alt=""/>
+                            className={'w-full h-full rounded-xl'} alt={title}/>
                     </div>
                     <div className="flex items-center justify-between px-3 py-2 text-[#999999]">
                         <h3 className={"flex items-center bg-[#141414] border-2 border-[#262626] px-3 py-2 rounded-lg"}>

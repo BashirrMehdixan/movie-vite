@@ -30,15 +30,15 @@ const MovieProvider = ({children}) => {
                 const ratedData = await ratedRes.json();
                 const genresData = await genresRes.json();
 // console.log(ratedData)
+                setUpcoming(upComingData.results);
                 setPopularMovies(popularData.results);
                 setNewMovies(newData.results);
-                setUpcoming(upComingData.results)
                 setMovieGenres(genresData.genres);
                 setTopRated(ratedData.results);
 
                 setMovies([
-                    ...popularData.results,
                     ...upComingData.results,
+                    ...popularData.results,
                     ...topRated,
                     ...newData.results
                 ]);
@@ -72,7 +72,8 @@ const MovieProvider = ({children}) => {
         fetchMovies();
     }, []);
     return (
-        <MovieContext.Provider value={{movies, newMovies, popularMovies, upComing, movieGenres, popularGenres, topRated}}>
+        <MovieContext.Provider
+            value={{movies, newMovies, popularMovies, upComing, movieGenres, popularGenres, topRated}}>
             {children}
         </MovieContext.Provider>
     );
