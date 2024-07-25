@@ -32,7 +32,7 @@ export const BannerComponent = ({id, backdrop_path, original_title, overview, ti
                             {overview}
                         </p>
                         <div className="flex flex-wrap items-center justify-center gap-4">
-                            <Link to={`movies/${id.toString()}`}
+                            <Link to={`/movies/${id.toString()}`}
                                   className={'inline-flex items-center justify-center bg-[#E50000] px-7 py-4 space-x-2 rounded-lg capitalize transition-all duration-500 hover:bg-opacity-60'}
                                   data-aos={"fade-up"}
                                   data-aos-duration={"3000"}

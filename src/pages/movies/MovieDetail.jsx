@@ -4,13 +4,16 @@ import {useParams} from "react-router-dom";
 // Swiper modules
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
+// Icons
+import {FaPlus} from "react-icons/fa";
 
+// Context
 import {MovieContext} from "/src/context/movies/MovieContext";
 import {CastContext} from "/src/context/cast/CastContext";
+import {ReviewContext} from "/src/context/reviews/ReviewContext";
 import {BannerComponent} from "/src/components/BannerComponent";
 import CastCards from "/src/components/CastCards";
-import {FaPlus} from "react-icons/fa";
-import {ReviewContext} from "../../context/reviews/ReviewContext.jsx";
+import ReviewCard from "/src/components/ReviewCard";
 
 const MovieDetail = () => {
     const {id} = useParams();
@@ -36,9 +39,9 @@ const MovieDetail = () => {
             <div className="my-5">
                 <div className="container">
                     <div className="flex flex-wrap gap-2">
-                        <div className="w-[79%]">
+                        <div className="w-full lg:w-[79%]">
                             <div
-                                className="bg-[#0F0F0F] border-2 border-[#262626] text-white px-5 py-10 rounded-lg mb-5">
+                                className="bg-[#1A1A1A] border-2 border-[#262626] text-white px-5 py-10 rounded-lg mb-5">
                                 <h4
                                     className="text-2xl font-medium opacity-45">
                                     Description
@@ -50,13 +53,24 @@ const MovieDetail = () => {
                                 </p>
                             </div>
                             <div
-                                className="relative bg-[#0F0F0F] border-2 border-[#262626] text-white px-5 py-10 rounded-lg mb-5">
+                                className="relative bg-[#1A1A1A] border-2 border-[#262626] text-white px-5 py-10 rounded-lg mb-5">
                                 <h4 className="text-2xl font-medium opacity-45">
                                     Description
                                 </h4>
                                 <div className="cat-swiper pt-8">
                                     <Swiper
-                                        slidesPerView={9}
+                                        slidesPerView={4}
+                                        breakpoints={
+                                            {
+                                                768: {
+                                                    slidesPerView: 6
+                                                },
+                                                1024: {
+                                                    slidesPerView: 9
+                                                }
+                                            }
+                                        }
+                                        modules={[Navigation, Pagination]}
                                         navigation={{
                                             prevEl: '.swiper-cast-prev',
                                             nextEl: '.swiper-cast-next',
@@ -65,7 +79,7 @@ const MovieDetail = () => {
                                             el: '.swiper-pagination',
                                             clickable: true
                                         }}
-                                        modules={[Navigation, Pagination]}>
+                                    >
                                         {movieCasts.map((cast, index) => {
                                             return (
                                                 <SwiperSlide key={index}>
@@ -77,7 +91,7 @@ const MovieDetail = () => {
                                 </div>
                             </div>
                             <div
-                                className="bg-[#0F0F0F] border-2 border-[#262626] text-white px-5 py-10 rounded-lg mb-5">
+                                className="bg-[#1A1A1A] border-2 border-[#262626] text-white px-5 py-10 rounded-lg mb-5">
                                 <div className="flex items-center justify-between">
                                     <h4 className="text-2xl font-medium opacity-45">
                                         Reviews
@@ -88,10 +102,39 @@ const MovieDetail = () => {
                                         <span>Add your review</span>
                                     </button>
                                 </div>
+                                <Swiper
+                                    slidesPerView={1}
+                                    modules={[Navigation, Pagination]}
+                                    navigation={{
+                                        prevEl: '.swiper-review-prev',
+                                        nextEl: '.swiper-review-next',
+                                    }}
+                                    pagination={{
+                                        el: '.swiper-pagination',
+                                        clickable: true
+                                    }}
+                                    breakpoints={
+                                        {
+                                            768: {
+                                                slidesPerView: 2,
+                                                spaceBetween: 20
+                                            },
+                                        }
+                                    }
+                                    className={"mt-5"}
+                                >
+                                    {moviesReview.map((review, index) => {
+                                        return (
+                                            <SwiperSlide key={index}>
+                                                <ReviewCard {...review} />
+                                            </SwiperSlide>
+                                        )
+                                    })}
+                                </Swiper>
                             </div>
                         </div>
-                        <div className="w-[20%]">
-                            <div className="bg-[#0F0F0F] text-white px-5 py-10 rounded-lg">
+                        <div className="w-full lg:w-[20%]">
+                            <div className="bg-[#1A1A1A] text-white px-5 py-10 rounded-lg">
 
                             </div>
                         </div>

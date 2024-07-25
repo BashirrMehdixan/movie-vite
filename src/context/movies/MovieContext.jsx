@@ -39,7 +39,7 @@ const MovieProvider = ({children}) => {
                 setMovies([
                     ...upComingData.results,
                     ...popularData.results,
-                    ...topRated,
+                    ...ratedData.results,
                     ...newData.results
                 ]);
 

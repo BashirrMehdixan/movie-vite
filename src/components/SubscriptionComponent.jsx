@@ -6,7 +6,7 @@ const SubscriptionComponent = () => {
             <section className="h-[350px] my-14">
                 <div className="h-full container">
                     <div
-                        className="h-full bg-[url(/public/images/banner/subscription.png)] bg-no-repeat bg-cover bg-center border-2 border-[#262626] rounded-xl">
+                        className="h-full bg-[url(/images/banner/subscription.png)] bg-no-repeat bg-cover bg-center border-2 border-[#262626] rounded-xl">
                         <div className="h-full flex flex-wrap items-center justify-center md:justify-around px-14">
                             <div className="w-full lg:w-1/2 text-center lg:text-left">
                                 <div className="text-white">
