@@ -106,7 +106,7 @@ const Footer = () => {
                                     </li>
                                     <li className={"mb-3"}>
                                         <Link
-                                            to={"/popular#popular"}
+                                            to={"/shows#popular"}
                                             className={"transition-all duration-300 text-lg font-normal opacity-45 hover:opacity-100"}>
                                             Popular
                                         </Link>

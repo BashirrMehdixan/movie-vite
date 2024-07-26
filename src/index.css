@@ -8,3 +8,9 @@
         background-color: #0f0f0f;
     }
 }
+
+@layer components {
+    .active-search {
+        transform: scaleY(1);
+    }
+}
