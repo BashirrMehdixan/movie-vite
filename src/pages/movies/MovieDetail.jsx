@@ -5,10 +5,8 @@ import {Link, useParams} from "react-router-dom";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
 // Icons
-import {FaPlus} from "react-icons/fa";
 import {HiOutlineLanguage} from "react-icons/hi2";
-import {Calendar} from "react-huge-icons/bulk";
-import {AiOutlineAppstore, AiOutlineStar} from "react-icons/ai";
+import {Calendar, Apps, Star, PlusThin} from "react-huge-icons/outline";
 
 // Context
 import {MovieContext} from "/src/context/movies/MovieContext";
@@ -27,7 +25,7 @@ const MovieDetail = () => {
     const movie = movies.find(movieItem => movieItem.id.toString() === id.toString());
     const {moviesReview, fetchMovieReview} = useContext(ReviewContext);
     const genres = movie && movie.genre_ids.map(genreId => movieGenres.find(genre => genre.id === genreId));
-    console.log(movie)
+
     useEffect(() => {
         if (id) {
             fetchMovieCast(id);
@@ -96,7 +94,7 @@ const MovieDetail = () => {
                                 </h4>
                                 <button
                                     className="flex items-center gap-1 bg-[#1A1A1A] text-sm capitalize px-2 py-4 border-2 border-[#262626] rounded-xl">
-                                    <FaPlus/>
+                                    <PlusThin className={"text-2xl"}/>
                                     <span>Add your review</span>
                                 </button>
                             </div>
@@ -150,7 +148,7 @@ const MovieDetail = () => {
                             </div>
                             <div className="mb-5">
                                 <div className="flex items-center text-xl opacity-45 mb-1">
-                                    <AiOutlineStar className={"mr-2"}/>
+                                    <Star className={"mr-2"}/>
                                     Rating
                                 </div>
                                 <div className={"text-lg opacity-100 pt-2"}>
@@ -162,7 +160,7 @@ const MovieDetail = () => {
                             </div>
                             <div className="mb-5">
                                 <div className="flex items-center text-xl opacity-45 mb-1">
-                                    <AiOutlineAppstore className={"mr-2"}/>
+                                    <Apps className={"mr-2"}/>
                                     Genres
                                 </div>
                                 <div className={"text-lg opacity-100"}>

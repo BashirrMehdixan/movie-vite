@@ -97,8 +97,8 @@ export const MustWatchCard = ({id, title, poster_path, release_date, vote_averag
                             src={`https://image.tmdb.org/t/p/${imgSize}${poster_path}`}
                             className={'w-full h-full rounded-xl'} alt={title}/>
                     </div>
-                    <div className="flex items-center justify-between px-3 py-2 text-[#999999]">
-                        <h3 className={"flex items-center bg-[#141414] border-2 border-[#262626] px-3 py-2 rounded-lg"}>
+                    <div className="flex flex-wrap items-center justify-between px-3 py-2 text-[#999999]">
+                        <h3 className={"flex items-center bg-[#141414] border-2 border-[#262626] px-3 py-2 rounded-lg mb-2"}>
                             <span className={"mr-2 text-xl"}>
                                 <CiClock1/>
                             </span>
