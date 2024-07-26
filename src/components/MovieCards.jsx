@@ -14,7 +14,7 @@ export const CategoryComponent = ({name}) => {
                 <div className={"bg-[#1A1A1A] w-full p-2 border border-[#333333] rounded-xl"}>
                     <div className="p-3 overflow-hidden">
                         <img
-                            src={"./images/category-img/action.png"}
+                            src={"/images/category-img/action.png"}
                             className={'w-full'} alt={name}/>
                     </div>
                     <div className="text-white flex items-center justify-between px-3 py-2">
