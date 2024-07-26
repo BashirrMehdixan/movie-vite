@@ -11,12 +11,14 @@ import ShowsIndex from "/src/pages/shows/ShowsIndex";
 import MovieDetail from "/src/pages/movies/MovieDetail";
 import SupportIndex from "/src/pages/support/SupportIndex";
 import SubscriptionsIndex from "/src/pages/subscriptions/SubscriptionsIndex";
+import NotFound from "/src/pages/NotFound";
 
 function App() {
     const router = createBrowserRouter([
         {
             path: "/",
             element: <RootLayout/>,
+            errorElement: <NotFound/>,
             children: [
                 {
                     index: true,

@@ -16,11 +16,11 @@ const MovieProvider = ({children}) => {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const [popularRes, newRes, upComingRes, ratedRes, genresRes] = await Promise.all([
+                const [popularRes, ratedRes, upComingRes, newRes, genresRes] = await Promise.all([
                     fetch(`${base_url}movie/popular?api_key=${api_key}&page=1`),
                     fetch(`${base_url}movie/top_rated?api_key=${api_key}&page=1`),
+                    fetch(`${base_url}movie/upcoming?api_key=${api_key}&page=1`),
                     fetch(`${base_url}movie/now_playing?api_key=${api_key}&page=1`),
-                    fetch(`${base_url}movie/now_playing?api_key=${api_key}&page=2`),
                     fetch(`${base_url}genre/movie/list?api_key=${api_key}`)
                 ]);
 
@@ -29,20 +29,18 @@ const MovieProvider = ({children}) => {
                 const upComingData = await upComingRes.json();
                 const ratedData = await ratedRes.json();
                 const genresData = await genresRes.json();
-// console.log(ratedData)
+
                 setUpcoming(upComingData.results);
                 setPopularMovies(popularData.results);
                 setNewMovies(newData.results);
-                setMovieGenres(genresData.genres);
                 setTopRated(ratedData.results);
 
                 setMovies([
-                    ...upComingData.results,
+                    ...newData.results,
                     ...popularData.results,
                     ...ratedData.results,
-                    ...newData.results
+                    ...upComingData.results,
                 ]);
-
 
                 const genreCounts = {};
                 popularData.results.forEach(movie => {
@@ -62,7 +60,9 @@ const MovieProvider = ({children}) => {
                         name: genresData.genres.find(genre => genre.id === parseInt(id)).name,
                         count: genreCounts[id]
                     }));
-
+                setMovieGenres([
+                    ...genresData.genres
+                ]);
                 setPopularGenres(sortedGenres.slice(0, 10));
             } catch (error) {
                 console.error("Error fetching movie data: ", error);

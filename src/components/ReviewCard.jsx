@@ -14,7 +14,7 @@ const ReviewCard = ({author, content, author_details}) => {
                     {author_details.rating ? <StarRating rating={author_details.rating}/> : <StarRating rating={7.5}/>}
                 </div>
                 <div className="h-[280px] overflow-y-auto opacity-45 py-3">
-                    {content}
+                    <div dangerouslySetInnerHTML={{__html: content}}/>
                 </div>
             </div>
         </>
