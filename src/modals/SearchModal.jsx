@@ -17,8 +17,6 @@ const SearchModal = ({activeModal, closeAction}) => {
             setSearchMovies([]);
         }
     }
-    useEffect(() => {
-    }, [search, movies]);
 
     return (
         activeModal &&
