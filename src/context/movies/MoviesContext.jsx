@@ -1,8 +1,8 @@
 import {createContext, useState, useEffect} from "react";
 
-export const MovieContext = createContext([]);
+export const MoviesContext = createContext([]);
 
-const MovieProvider = ({children}) => {
+const MoviesProvider = ({children}) => {
     const api_key = '286a82355468525bb9e08f91eac5c6dc';
     const base_url = 'https://api.themoviedb.org/3/';
     const [movies, setMovies] = useState([]);
@@ -24,32 +24,34 @@ const MovieProvider = ({children}) => {
                     fetch(`${base_url}genre/movie/list?api_key=${api_key}`)
                 ]);
 
-                const popularData = await popularRes.json();
-                const newData = await newRes.json();
-                const upComingData = await upComingRes.json();
-                const ratedData = await ratedRes.json();
-                const genresData = await genresRes.json();
+                const [popularData, newData, upComingData, ratedData, genresData] = await Promise.all([
+                    popularRes.json(),
+                    newRes.json(),
+                    upComingRes.json(),
+                    ratedRes.json(),
+                    genresRes.json()
+                ]);
 
-                setUpcoming(upComingData.results);
                 setPopularMovies(popularData.results);
                 setNewMovies(newData.results);
+                setUpcoming(upComingData.results);
                 setTopRated(ratedData.results);
 
-                setMovies([
+                const allMovies = [
                     ...newData.results,
                     ...popularData.results,
-                    ...ratedData.results,
                     ...upComingData.results,
-                ]);
+                    ...ratedData.results
+                ];
+
+                const uniqueMovies = Array.from(new Set(allMovies.map(movie => movie.id)))
+                    .map(id => allMovies.find(movie => movie.id === id));
+                setMovies(uniqueMovies);
 
                 const genreCounts = {};
                 popularData.results.forEach(movie => {
                     movie.genre_ids.forEach(genreId => {
-                        if (genreCounts[genreId]) {
-                            genreCounts[genreId]++;
-                        } else {
-                            genreCounts[genreId] = 1;
-                        }
+                        genreCounts[genreId] = (genreCounts[genreId] || 0) + 1;
                     });
                 });
 
@@ -60,9 +62,7 @@ const MovieProvider = ({children}) => {
                         name: genresData.genres.find(genre => genre.id === parseInt(id)).name,
                         count: genreCounts[id]
                     }));
-                setMovieGenres([
-                    ...genresData.genres
-                ]);
+                setMovieGenres(genresData.genres);
                 setPopularGenres(sortedGenres.slice(0, 10));
             } catch (error) {
                 console.error("Error fetching movie data: ", error);
@@ -71,12 +71,13 @@ const MovieProvider = ({children}) => {
 
         fetchMovies();
     }, []);
+
     return (
-        <MovieContext.Provider
+        <MoviesContext.Provider
             value={{movies, newMovies, popularMovies, upComing, movieGenres, popularGenres, topRated}}>
             {children}
-        </MovieContext.Provider>
+        </MoviesContext.Provider>
     );
 };
 
-export default MovieProvider;
+export default MoviesProvider;

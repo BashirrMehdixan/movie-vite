@@ -7,7 +7,7 @@ const HomeDevices = () => {
                 <div className="container">
                     <SectionTitle
                         heading={'We Provide you streaming experience across various devices.'}
-                        inner={'With StreamVibe, you can enjoy your favorite movies and TV shows anytime, anywhere. Our platform is designed to be compatible with a wide range of devices, ensuring that you never miss a moment of entertainment.'}
+                        inner={'With StreamVibe, you can enjoy your favorite movies and TV series anytime, anywhere. Our platform is designed to be compatible with a wide range of devices, ensuring that you never miss a moment of entertainment.'}
                     />
 
                     <div className="flex flex-wrap gap-4 py-5">

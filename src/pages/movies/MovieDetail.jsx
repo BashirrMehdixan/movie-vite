@@ -9,7 +9,7 @@ import {HiOutlineLanguage} from "react-icons/hi2";
 import {Calendar, Apps, Star, PlusThin} from "react-huge-icons/outline";
 
 // Context
-import {MovieContext} from "/src/context/movies/MovieContext";
+import {MoviesContext} from "/src/context/movies/MoviesContext";
 import {CastContext} from "/src/context/cast/CastContext";
 // Components
 import {ReviewContext} from "/src/context/reviews/ReviewContext";
@@ -20,12 +20,12 @@ import StarRating from "/src/components/StarRating";
 
 const MovieDetail = () => {
     const {id} = useParams();
-    const {movies, movieGenres} = useContext(MovieContext);
+    const {movies, movieGenres} = useContext(MoviesContext);
     const {movieCasts, fetchMovieCast} = useContext(CastContext);
     const movie = movies.find(movieItem => movieItem.id.toString() === id.toString());
     const {moviesReview, fetchMovieReview} = useContext(ReviewContext);
     const genres = movie && movie.genre_ids.map(genreId => movieGenres.find(genre => genre.id === genreId));
-
+    console.log(movie)
     useEffect(() => {
         if (id) {
             fetchMovieCast(id);
@@ -50,14 +50,13 @@ const MovieDetail = () => {
                             </h4>
                             <p
                                 className="text-lg pt-3">
-                                A fiery young man clashes with an unflinching forest officer in a south Indian
-                                village where spirituality, fate and folklore rule the lands.
+                                {movie.overview}
                             </p>
                         </div>
                         <div
                             className="relative bg-[#1A1A1A] border-2 border-[#262626] text-white px-5 py-10 rounded-lg mb-5">
                             <h4 className="text-2xl font-medium opacity-45">
-                                Description
+                                Cast
                             </h4>
                             <div className="cat-swiper pt-8">
                                 <Swiper

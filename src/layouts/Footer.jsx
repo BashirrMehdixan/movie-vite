@@ -80,33 +80,33 @@ const Footer = () => {
                             </div>
                             <div className="w-full md:w-1/2 lg:w-1/6 mb-6 lg:mb-0">
                                 <h3 className="text-xl font-medium mb-8">
-                                    Shows
+                                    Series
                                 </h3>
                                 <ul>
                                     <li className={"mb-3"}>
                                         <Link
-                                            to={"/shows#genres"}
+                                            to={"/series#genres"}
                                             className={"transition-all duration-300 text-lg font-normal opacity-45 hover:opacity-100"}>
                                             Genres
                                         </Link>
                                     </li>
                                     <li className={"mb-3"}>
                                         <Link
-                                            to={"/shows#trending"}
+                                            to={"/series#trending"}
                                             className={"transition-all duration-300 text-lg font-normal opacity-45 hover:opacity-100"}>
                                             Trending
                                         </Link>
                                     </li>
                                     <li className={"mb-3"}>
                                         <Link
-                                            to={"/shows#newReleases"}
+                                            to={"/series#newReleases"}
                                             className={"transition-all duration-300 text-lg font-normal opacity-45 hover:opacity-100"}>
                                             New releases
                                         </Link>
                                     </li>
                                     <li className={"mb-3"}>
                                         <Link
-                                            to={"/shows#popular"}
+                                            to={"/series#popular"}
                                             className={"transition-all duration-300 text-lg font-normal opacity-45 hover:opacity-100"}>
                                             Popular
                                         </Link>

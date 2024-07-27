@@ -9,7 +9,7 @@ export const CastContext = createContext({
     }
 });
 
-const CastContextProvider = ({children}) => {
+const CastsProvider = ({children}) => {
     const [movieCasts, setMovieCasts] = useState([]);
     const [showCasts, setShowCasts] = useState([]);
 
@@ -47,4 +47,4 @@ const CastContextProvider = ({children}) => {
     );
 };
 
-export default CastContextProvider;
+export default CastsProvider;

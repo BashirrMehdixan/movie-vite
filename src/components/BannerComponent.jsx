@@ -5,7 +5,7 @@ import {Like, Speaker, SpeakerMute} from "react-huge-icons/outline";
 import {Plus, TrackPlay} from "react-huge-icons/solid";
 import {FavouriteContext} from "/src/context/favourite/FavouriteContext";
 
-export const BannerComponent = ({id, backdrop_path, original_title, overview, title}) => {
+export const BannerComponent = ({id, backdrop_path, original_title, original_name, overview, title}) => {
     const imgSize = 'original';
     const {likedMovie, likeMovieAction} = useContext(FavouriteContext);
     const [mute, setMute] = useState(false);
@@ -19,7 +19,7 @@ export const BannerComponent = ({id, backdrop_path, original_title, overview, ti
                      data-aos-duration={"3000"}>
                     <img
                         src={`https://image.tmdb.org/t/p/${imgSize}${backdrop_path}`}
-                        className={'w-full h-full object-cover lg:object-fill'} alt={original_title}
+                        className={'w-full h-full object-cover lg:object-fill'} alt={original_title || original_name}
                     />
                 </div>
                 <div className="relative z-10 w-full bg-gradient-to-t from-current to-transparent">
@@ -29,7 +29,7 @@ export const BannerComponent = ({id, backdrop_path, original_title, overview, ti
                             className="text-4xl lg:text-7xl font-medium tracking-[5px]"
                             data-aos={"fade-up"}
                             data-aos-duration={"3000"}>
-                            {title}
+                            {title || original_name}
                         </h2>
                         <p className="text-sm md:text-base opacity-45 py-5"
                            data-aos={"fade-up"}
@@ -37,7 +37,7 @@ export const BannerComponent = ({id, backdrop_path, original_title, overview, ti
                             {overview}
                         </p>
                         <div className="flex flex-wrap items-center justify-center gap-4">
-                            <Link to={`/movies/${id.toString()}`}
+                            <Link to={`/${location.pathname === "/movies" ? "movies" : 'series'}/${id.toString()}`}
                                   className={'inline-flex items-center justify-center bg-[#E50000] px-7 py-4 space-x-2 rounded-lg capitalize transition-all duration-500 hover:bg-opacity-60'}
                                   data-aos={"fade-up"}
                                   data-aos-duration={"3000"}

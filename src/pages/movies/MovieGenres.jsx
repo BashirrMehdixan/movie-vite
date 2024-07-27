@@ -2,11 +2,11 @@ import {useContext} from "react";
 import SectionTitle from "/src/components/SectionTitle";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
-import {MovieContext} from "/src/context/movies/MovieContext";
+import {MoviesContext} from "/src/context/movies/MoviesContext";
 import {CategoryComponent} from "/src/components/MovieCards";
 
 const MovieGenres = () => {
-    const {movieGenres} = useContext(MovieContext);
+    const {movieGenres} = useContext(MoviesContext);
     return (
         movieGenres &&
         <>

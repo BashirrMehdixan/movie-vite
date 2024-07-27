@@ -21,56 +21,56 @@ const HomeFAQ = () => {
                         <div className="w-full md:w-[calc(50%-2.25rem)]">
                             <AccordionItem
                                 title={'What is StreamVibe?'}
-                                content={'StreamVibe is a streaming service that allows you to watch movies and shows on demand.'}
+                                content={'StreamVibe is a streaming service that allows you to watch movies and series on demand.'}
                                 count={1}
                             />
                         </div>
                         <div className="w-full md:w-[calc(50%-2.25rem)]">
                             <AccordionItem
                                 title={'How much does StreamVibe cost?'}
-                                content={'StreamVibe is a streaming service that allows you to watch movies and shows on demand.'}
+                                content={'StreamVibe is a streaming service that allows you to watch movies and series on demand.'}
                                 count={2}
                             />
                         </div>
                         <div className="w-full md:w-[calc(50%-2.25rem)]">
                             <AccordionItem
                                 title={'How can I watch StreamVibe?'}
-                                content={'StreamVibe is a streaming service that allows you to watch movies and shows on demand.'}
+                                content={'StreamVibe is a streaming service that allows you to watch movies and series on demand.'}
                                 count={3}
                             />
                         </div>
                         <div className="w-full md:w-[calc(50%-2.25rem)]">
                             <AccordionItem
                                 title={'How can I watch StreamVibe?'}
-                                content={'StreamVibe is a streaming service that allows you to watch movies and shows on demand.'}
+                                content={'StreamVibe is a streaming service that allows you to watch movies and series on demand.'}
                                 count={4}
                             />
                         </div>
                         <div className="w-full md:w-[calc(50%-2.25rem)]">
                             <AccordionItem
                                 title={'How do I sign up for StreamVibe?'}
-                                content={'StreamVibe is a streaming service that allows you to watch movies and shows on demand.'}
+                                content={'StreamVibe is a streaming service that allows you to watch movies and series on demand.'}
                                 count={5}
                             />
                         </div>
                         <div className="w-full md:w-[calc(50%-2.25rem)]">
                             <AccordionItem
                                 title={'What is the StreamVibe free trial?'}
-                                content={'StreamVibe is a streaming service that allows you to watch movies and shows on demand.'}
+                                content={'StreamVibe is a streaming service that allows you to watch movies and series on demand.'}
                                 count={6}
                             />
                         </div>
                         <div className="w-full md:w-[calc(50%-2.25rem)]">
                             <AccordionItem
                                 title={'How do I contact StreamVibe customer support?'}
-                                content={'StreamVibe is a streaming service that allows you to watch movies and shows on demand.'}
+                                content={'StreamVibe is a streaming service that allows you to watch movies and series on demand.'}
                                 count={7}
                             />
                         </div>
                         <div className="w-full md:w-[calc(50%-2.25rem)]">
                             <AccordionItem
                                 title={'What are the StreamVibe payment methods?'}
-                                content={'StreamVibe is a streaming service that allows you to watch movies and shows on demand.'}
+                                content={'StreamVibe is a streaming service that allows you to watch movies and series on demand.'}
                                 count={8}
                             />
                         </div>

@@ -5,12 +5,12 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
 
 // Custom Components
-import {MovieContext} from "/src/context/movies/MovieContext";
+import {MoviesContext} from "/src/context/movies/MoviesContext";
 import {NewReleasesCard} from "/src/components/MovieCards";
 import SectionTitle from "/src/components/SectionTitle";
 
 const NewReleases = () => {
-    const {upComing} = useContext(MovieContext);
+    const {upComing} = useContext(MoviesContext);
     return (
         upComing &&
         <>

@@ -45,8 +45,8 @@ const Navbar = () => {
                                     </NavLink>
                                 </li>
                                 <li className={"opacity-50 transition-all duration-500 has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
-                                    <NavLink to={"shows"} className={"block py-3 px-4 rounded-xl"}>
-                                        Shows
+                                    <NavLink to={"series"} className={"block py-3 px-4 rounded-xl"}>
+                                        Series
                                     </NavLink>
                                 </li>
                                 <li className={"opacity-50 transition-all duration-500 has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>

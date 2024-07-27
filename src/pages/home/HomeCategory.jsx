@@ -8,10 +8,10 @@ import 'swiper/css/pagination';
 
 import SectionTitle from "/src/components/SectionTitle";
 import {CategoryComponent} from "/src/components/MovieCards";
-import {MovieContext} from "/src/context/movies/MovieContext.jsx";
+import {MoviesContext} from "/src/context/movies/MoviesContext.jsx";
 
 const HomeCategory = () => {
-    const {movieGenres} = useContext(MovieContext);
+    const {movieGenres} = useContext(MoviesContext);
     return (
         movieGenres &&
         <>

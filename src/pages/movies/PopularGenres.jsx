@@ -5,12 +5,12 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
 
 // Components
-import {MovieContext} from "/src/context/movies/MovieContext";
+import {MoviesContext} from "/src/context/movies/MoviesContext";
 import {CategoryComponent} from "/src/components/MovieCards";
 import SectionTitle from "/src/components/SectionTitle";
 
 const PopularGenres = () => {
-    const {popularGenres} = useContext(MovieContext);
+    const {popularGenres} = useContext(MoviesContext);
     return (
         popularGenres &&
         <>

@@ -3,12 +3,12 @@ import {useContext} from "react";
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Autoplay, Navigation} from 'swiper/modules';
 
-import {MovieContext} from "/src/context/movies/MovieContext";
+import {MoviesContext} from "/src/context/movies/MoviesContext";
 import {BannerComponent} from "/src/components/BannerComponent.jsx";
 
 
 const HomeBanner = () => {
-    const {movies} = useContext(MovieContext);
+    const {movies} = useContext(MoviesContext);
     return (
         movies &&
         <>

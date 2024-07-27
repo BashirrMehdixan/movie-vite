@@ -27,7 +27,7 @@ const HomeSubscription = () => {
                                 <PriceComponents
                                     plan={plan}
                                     title={"Basic"}
-                                    description={"Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles."}
+                                    description={"Enjoy an extensive library of movies and series, featuring a range of content, including recently released titles."}
                                     price={plan === "monthly" ? "9.99" : "99.99"}
                                 />
                             </div>
@@ -35,7 +35,7 @@ const HomeSubscription = () => {
                                 <PriceComponents
                                     plan={plan}
                                     title={"Standard"}
-                                    description={"Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles."}
+                                    description={"Enjoy an extensive library of movies and series, featuring a range of content, including recently released titles."}
                                     price={plan === "monthly" ? "12.99" : "120.99"}
                                 />
                             </div>
@@ -43,7 +43,7 @@ const HomeSubscription = () => {
                                 <PriceComponents
                                     plan={plan}
                                     title={"Premium"}
-                                    description={"Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles."}
+                                    description={"Enjoy an extensive library of movies and series, featuring a range of content, including recently released titles."}
                                     price={plan === "monthly" ? "14.99" : "120.99"}
                                 />
                             </div>

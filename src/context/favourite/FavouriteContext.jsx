@@ -1,10 +1,10 @@
 import {useState, createContext, useContext, useEffect} from "react";
-import {MovieContext} from "/src/context/movies/MovieContext";
+import {MoviesContext} from "/src/context/movies/MoviesContext";
 
 export const FavouriteContext = createContext([]);
 
-const FavouriteContextProvider = ({children}) => {
-    const {movies} = useContext(MovieContext);
+const FavouriteProvider = ({children}) => {
+    const {movies} = useContext(MoviesContext);
     const [likedMovie, setLikedMovie] = useState(() => {
         const storedLikedMovies = localStorage.getItem("likedMovies");
         return storedLikedMovies ? JSON.parse(storedLikedMovies) : [];
@@ -27,4 +27,4 @@ const FavouriteContextProvider = ({children}) => {
     )
 }
 
-export default FavouriteContextProvider;
+export default FavouriteProvider;

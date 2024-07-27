@@ -4,11 +4,11 @@ import {Navigation, Pagination} from "swiper/modules";
 
 import SectionTitle from "/src/components/SectionTitle";
 import {MustWatchCard} from "/src/components/MovieCards";
-import {MovieContext} from "/src/context/movies/MovieContext";
+import {MoviesContext} from "/src/context/movies/MoviesContext";
 
 // import
 const MustWatch = () => {
-    const {topRated} = useContext(MovieContext);
+    const {topRated} = useContext(MoviesContext);
     return (
         <>
             <section className="pt-5">

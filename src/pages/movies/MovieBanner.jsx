@@ -1,13 +1,13 @@
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Navigation, Pagination} from "swiper/modules";
 
-import {MovieContext} from "/src/context/movies/MovieContext";
+import {MoviesContext} from "/src/context/movies/MoviesContext";
 import {useContext} from "react";
 
 import {BannerComponent} from "/src/components/BannerComponent";
 
 const MovieBanner = () => {
-    const {movies} = useContext(MovieContext);
+    const {movies} = useContext(MoviesContext);
     return (
         movies &&
         <>
