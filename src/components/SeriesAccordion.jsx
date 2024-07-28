@@ -1,7 +1,7 @@
-import {useContext, useEffect, useState} from "react";
-import {SeasonsContext} from "../context/series/SeasonsContext.jsx";
-import SingleEpisode from "./SingleEpisode.jsx";
+import {useContext, useEffect, useRef, useState} from "react";
 import {ArrowUp} from "react-huge-icons/solid";
+import {SeasonsContext} from "/src/context/series/SeasonsContext";
+import SingleEpisode from "/src/components/SingleEpisode";
 
 const SeriesAccordion = ({serieId, season_number, name, episode_count}) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +13,7 @@ const SeriesAccordion = ({serieId, season_number, name, episode_count}) => {
     }, [seasons]);
 
     const filteredEpisodes = episodes.filter(episode => episode.season_number === season_number);
-    console.log(filteredEpisodes)
+    const contentRef = useRef(null);
 
     const toggleAccordion = () => {
         setIsOpen(!isOpen);
@@ -22,7 +22,7 @@ const SeriesAccordion = ({serieId, season_number, name, episode_count}) => {
         <>
             <div className="relative py-3 rounded-lg mb-2 text-white accordion-item">
                 <div
-                    className="flex items-center justify-between text-left w-full text-base lg:text-[20px] font-normal bg-transparent border-0 border-transparent focus:outline-none py-5 lg:p-5"
+                    className="flex items-center justify-between text-left w-full text-base lg:text-[20px] cursor-pointer font-normal bg-transparent border-0 border-transparent focus:outline-none py-5 lg:p-5"
                     onClick={toggleAccordion}
                 >
                     <div className="flex items-center">
@@ -34,7 +34,12 @@ const SeriesAccordion = ({serieId, season_number, name, episode_count}) => {
                         <ArrowUp/>
                     </button>
                 </div>
-                <div className={`p-5 bg-transparent transition duration-500 origin-top ${!isOpen ? "scale-y-0" : "scale-y-100"}`}>
+                {/*{isOpen &&*/}
+                <div
+                    ref={contentRef}
+                    className={`px-5 bg-transparent transition-height duration-500 origin-top overflow-hidden`}
+                    style={{height: isOpen ? `${contentRef.current.scrollHeight}px` : "0px"}}
+                >
                     {filteredEpisodes.map((episode, index) => {
                         episode.number <= episode_count
                         return (
@@ -42,6 +47,7 @@ const SeriesAccordion = ({serieId, season_number, name, episode_count}) => {
                         )
                     })}
                 </div>
+                {/*}*/}
             </div>
         </>
     )

@@ -29,11 +29,11 @@ export const CategoryComponent = ({name}) => {
     )
 }
 
-export const MovieComponent = ({id, title, poster_path, release_date, vote_average}) => {
+export const MovieComponent = ({src, id, title, poster_path, release_date, vote_average}) => {
     const imgSize = 'original'
     return (
         <>
-            <Link to={`/movies/${id.toString()}`}
+            <Link to={`/${src}/${id.toString()}`}
                   className={'block w-full transition-all duration-300 hover:scale-[.95]'}>
                 <div className={"bg-[#1A1A1A] w-full p-2 border border-[#333333] rounded-xl"}>
                     <div className="p-1 h-[350px] overflow-hidden">

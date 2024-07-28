@@ -50,7 +50,7 @@ const MustWatch = () => {
                             {topRated.map((movie, index) => {
                                 return (
                                     <SwiperSlide key={index}>
-                                        <MustWatchCard {...movie} />
+                                        <MustWatchCard {...movie} src={"movies"} />
                                     </SwiperSlide>
                                 )
                             })}

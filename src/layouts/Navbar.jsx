@@ -62,25 +62,28 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <div className="lg:block w-5/6 lg:w-1/6">
-                            <ul className="hidden lg:flex items-center justify-end text-white text-3xl gap-8">
+                            <ul className="flex items-center justify-end text-white gap-8">
                                 <li>
-                                    <button onClick={() => setActiveSearch(!activeSearch)}>
+                                    <button
+                                        onClick={() => setActiveSearch(!activeSearch)}
+                                        className={"block text-2xl lg:text-3xl"}
+                                    >
                                         <Search/>
                                     </button>
                                 </li>
                                 <li>
-                                    <button className={"text-4xl"}>
+                                    <button className={"block text-3xl lg:text-4xl"}>
                                         <Notification/>
                                     </button>
                                 </li>
+                                <li className={"block lg:hidden"}>
+                                    <button
+                                        className="text-white text-4xl"
+                                        onClick={() => setOpenNav(!openNav)}>
+                                        <MenuLineHorizontal/>
+                                    </button>
+                                </li>
                             </ul>
-                            <div className="flex justify-end">
-                                <button
-                                    className="block lg:hidden text-white text-4xl"
-                                    onClick={() => setOpenNav(!openNav)}>
-                                    <MenuLineHorizontal/>
-                                </button>
-                            </div>
                         </div>
                     </div>
                 </div>

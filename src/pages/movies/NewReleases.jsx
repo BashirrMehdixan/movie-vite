@@ -57,7 +57,7 @@ const NewReleases = () => {
                                         data-aos={"fade-up"}
                                         data-aos-duration={"3000"}
                                     >
-                                        <NewReleasesCard {...genre} />
+                                        <NewReleasesCard {...genre} src={"movies"} />
                                     </SwiperSlide>
                                 )
                             })}

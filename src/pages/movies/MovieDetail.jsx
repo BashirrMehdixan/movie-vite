@@ -1,29 +1,21 @@
-import {useEffect, useContext} from "react";
-import {Link, useParams} from "react-router-dom";
+import {useContext} from "react";
+import {useParams} from "react-router-dom";
 
-// Swiper modules
-import {Swiper, SwiperSlide} from "swiper/react";
-import {Navigation, Pagination} from "swiper/modules";
 // Icons
-import {HiOutlineLanguage} from "react-icons/hi2";
-import {Calendar, Apps, Star, PlusThin} from "react-huge-icons/outline";
+import {PlusThin} from "react-huge-icons/outline";
 
 // Context
 import {MoviesContext} from "/src/context/movies/MoviesContext";
 // Components
-import {ReviewContext} from "/src/context/reviews/ReviewContext";
 import {BannerComponent} from "/src/components/BannerComponent";
-import CastCards from "/src/components/CastCards";
-import ReviewCard from "/src/components/ReviewCard";
-import StarRating from "/src/components/StarRating";
-import CastComponent from "../../components/CastComponent.jsx";
-import ReviewComponent from "../../components/ReviewComponent.jsx";
+import CastComponent from "/src/components/CastComponent";
+import ReviewComponent from "/src/components/ReviewComponent";
+import DetailComponent from "/src/components/DetailComponent";
 
 const MovieDetail = () => {
     const {id} = useParams();
     const {movies, movieGenres} = useContext(MoviesContext);
     const movie = movies.find(movieItem => movieItem.id.toString() === id.toString());
-    const genres = movie && movie.genre_ids.map(genreId => movieGenres.find(genre => genre.id === genreId));
     return (movie && <>
         <section>
             <div className="h-screen">
@@ -70,63 +62,7 @@ const MovieDetail = () => {
                         </div>
                     </div>
                     <div className="w-full lg:w-[calc(30%-8px)]">
-                        <div className="bg-[#1A1A1A] text-white px-5 py-10 rounded-lg">
-                            <div className="mb-5">
-                                <div className="flex items-center text-xl opacity-45 mb-1">
-                                    <Calendar className={"mr-2"}/>
-                                    Released Year
-                                </div>
-                                <div className={"text-lg opacity-100 pt-2"}>
-                                    {movie.release_date.substring(0, 4)}
-                                </div>
-                            </div>
-                            <div className="mb-5">
-                                <div className="flex items-center text-xl opacity-45 mb-1">
-                                    <HiOutlineLanguage className={"mr-2"}/>
-                                    Available Language
-                                </div>
-                                <div className={"text-lg opacity-100 pt-2"}>
-                                    <div className="flex flex-wrap items-center">
-                                        <div className="max-w-[max-content] bg-[#0F0F0F] px-5 py-2 rounded-lg">
-                                            {movie.original_language.toUpperCase()}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="mb-5">
-                                <div className="flex items-center text-xl opacity-45 mb-1">
-                                    <Star className={"mr-2"}/>
-                                    Rating
-                                </div>
-                                <div className={"text-lg opacity-100 pt-2"}>
-                                    <div className="bg-[#0F0F0F] max-w-[max-content] rounded-lg px-6 py-4">
-                                        <p className={"font-medium mb-1"}>IMDb</p>
-                                        <StarRating rating={movie.vote_average}/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="mb-5">
-                                <div className="flex items-center text-xl opacity-45 mb-1">
-                                    <Apps className={"mr-2"}/>
-                                    Genres
-                                </div>
-                                <div className={"text-lg opacity-100"}>
-                                    <div className="flex flex-wrap items-center gap-3 pt-2">
-                                        {genres.map((genre, index) => {
-                                            return (
-                                                <div className={"max-w-[max-content] text-base bg-[#0F0F0F] rounded-lg"}
-                                                     key={index}>
-                                                    <Link to={`/genre/${genre.id}`}
-                                                          className={"block h-full w-full p-3"}>
-                                                        {genre.name}
-                                                    </Link>
-                                                </div>
-                                            )
-                                        })}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <DetailComponent item={movie} itemGenres={movieGenres} />
                     </div>
                 </div>
             </div>

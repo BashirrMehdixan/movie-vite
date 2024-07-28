@@ -53,7 +53,7 @@ const TrendMovie = () => {
                                         data-aos={"fade-up"}
                                         data-aos-duration={"3000"}
                                     >
-                                        <MovieComponent {...genre} />
+                                        <MovieComponent {...genre} src={"movies"} />
                                     </SwiperSlide>
                                 )
                             })}
