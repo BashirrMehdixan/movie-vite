@@ -1,4 +1,5 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {Toaster} from "react-hot-toast";
 import AOS from "aos";
 // import 'aos/dist/aos.css';
 // Layouts
@@ -56,6 +57,10 @@ function App() {
     return (
         <>
             <RouterProvider router={router}/>
+            <Toaster
+                position="top-right"
+                reverseOrder={false}
+            />
         </>
     )
 }

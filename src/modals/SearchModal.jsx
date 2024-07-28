@@ -1,18 +1,25 @@
 import {useEffect, useContext, useState} from "react";
 import {MoviesContext} from "/src/context/movies/MoviesContext";
 import {MovieComponent} from "/src/components/MovieCards";
-import {BoxCancel} from "react-huge-icons/solid";
-import {Cancel} from "axios";
+import {SeriesContext} from "/src/context/series/SeriesContext";
 
 const SearchModal = ({activeModal, closeAction}) => {
     const [search, setSearch] = useState("");
     const [searchMovies, setSearchMovies] = useState([]);
     const {movies} = useContext(MoviesContext);
+    const {series} = useContext(SeriesContext);
+    const all = [
+        ...movies,
+        ...series,
+    ];
     const searchAction = () => {
         if (search) {
-            const results = movies.filter(movie =>
-                movie.original_title.toLowerCase().includes(search.toLowerCase())
-            );
+            const results = all.filter(item => {
+                return (
+                    item.name ? item.name.toLowerCase().includes(search.toLowerCase()) :
+                        item.title.toLowerCase().includes(search.toLowerCase())
+                )
+            });
             setSearchMovies(results);
         } else {
             setSearchMovies([]);
@@ -25,7 +32,7 @@ const SearchModal = ({activeModal, closeAction}) => {
         }
     }
     useEffect(() => {
-        if(activeModal) {
+        if (activeModal) {
             document.body.style.overflow = "hidden";
         } else {
             document.body.style.overflow = "auto";

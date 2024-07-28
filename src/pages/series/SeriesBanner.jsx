@@ -7,7 +7,6 @@ import {BannerComponent} from "/src/components/BannerComponent";
 
 const SeriesBanner = () => {
     const {series} = useContext(SeriesContext);
-    console.log(series)
     return (
         series &&
         <>
@@ -24,7 +23,6 @@ const SeriesBanner = () => {
                         return (
                             index < 6 &&
                             <SwiperSlide key={index}>
-                                {console.log(index)}
                                 <BannerComponent {...serie}/>
                             </SwiperSlide>
                         )
