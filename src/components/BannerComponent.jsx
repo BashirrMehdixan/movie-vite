@@ -5,7 +5,7 @@ import {Like, Speaker, SpeakerMute} from "react-huge-icons/outline";
 import {Plus, TrackPlay} from "react-huge-icons/solid";
 import {FavouriteContext} from "/src/context/favourite/FavouriteContext";
 
-export const BannerComponent = ({id, backdrop_path, original_title, original_name, overview, title}) => {
+export const BannerComponent = ({id, backdrop_path, original_title, name, overview, title}) => {
     const imgSize = 'original';
     const {likedMovie, likeMovieAction} = useContext(FavouriteContext);
     const [mute, setMute] = useState(false);
@@ -19,7 +19,7 @@ export const BannerComponent = ({id, backdrop_path, original_title, original_nam
                      data-aos-duration={"3000"}>
                     <img
                         src={`https://image.tmdb.org/t/p/${imgSize}${backdrop_path}`}
-                        className={'w-full h-full object-cover lg:object-fill'} alt={original_title || original_name}
+                        className={'w-full h-full object-cover lg:object-fill'} alt={original_title || name}
                     />
                 </div>
                 <div className="relative z-10 w-full bg-gradient-to-t from-current to-transparent">
@@ -29,7 +29,7 @@ export const BannerComponent = ({id, backdrop_path, original_title, original_nam
                             className="text-4xl lg:text-7xl font-medium tracking-[5px]"
                             data-aos={"fade-up"}
                             data-aos-duration={"3000"}>
-                            {title || original_name}
+                            {title || name}
                         </h2>
                         <p className="text-sm md:text-base opacity-45 py-5"
                            data-aos={"fade-up"}

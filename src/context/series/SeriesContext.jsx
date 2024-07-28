@@ -28,7 +28,6 @@ const SeriesProvider = ({children}) => {
                     ratedRes.json(),
                     genresRes.json()
                 ]);
-
                 setNewSeries(newData.results);
                 setPopularSeries(popularData.results);
                 setTopRatedSeries(ratedData.results);
@@ -65,7 +64,7 @@ const SeriesProvider = ({children}) => {
         };
 
         fetchSeries();
-    }, [])
+    }, []);
     return (
         <SeriesContext.Provider value={{
             series,

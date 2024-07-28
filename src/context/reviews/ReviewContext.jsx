@@ -15,10 +15,10 @@ const ReviewProvider = ({children}) => {
     const [moviesReview, setMoviesReview] = useState([]);
     const [seriesReview, setSeriesReview] = useState([]);
     const apiKey = '286a82355468525bb9e08f91eac5c6dc';
-    const movieUrl = 'https://api.themoviedb.org/3/';
+    const apiUrl = 'https://api.themoviedb.org/3/';
     const fetchMovieReview = (movieId) => {
         try {
-            fetch(`${movieUrl}movie/${movieId}/reviews?api_key=${apiKey}&language=en-US`)
+            fetch(`${apiUrl}movie/${movieId}/reviews?api_key=${apiKey}&language=en-US`)
                 .then(res => res.json())
                 .then(data => setMoviesReview(data.results))
         } catch (e) {

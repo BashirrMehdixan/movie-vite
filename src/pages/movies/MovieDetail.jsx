@@ -10,28 +10,20 @@ import {Calendar, Apps, Star, PlusThin} from "react-huge-icons/outline";
 
 // Context
 import {MoviesContext} from "/src/context/movies/MoviesContext";
-import {CastContext} from "/src/context/cast/CastContext";
 // Components
 import {ReviewContext} from "/src/context/reviews/ReviewContext";
 import {BannerComponent} from "/src/components/BannerComponent";
 import CastCards from "/src/components/CastCards";
 import ReviewCard from "/src/components/ReviewCard";
 import StarRating from "/src/components/StarRating";
+import CastComponent from "../../components/CastComponent.jsx";
+import ReviewComponent from "../../components/ReviewComponent.jsx";
 
 const MovieDetail = () => {
     const {id} = useParams();
     const {movies, movieGenres} = useContext(MoviesContext);
-    const {movieCasts, fetchMovieCast} = useContext(CastContext);
     const movie = movies.find(movieItem => movieItem.id.toString() === id.toString());
-    const {moviesReview, fetchMovieReview} = useContext(ReviewContext);
     const genres = movie && movie.genre_ids.map(genreId => movieGenres.find(genre => genre.id === genreId));
-    console.log(movie)
-    useEffect(() => {
-        if (id) {
-            fetchMovieCast(id);
-            fetchMovieReview(id)
-        }
-    }, []);
     return (movie && <>
         <section>
             <div className="h-screen">
@@ -59,30 +51,7 @@ const MovieDetail = () => {
                                 Cast
                             </h4>
                             <div className="cat-swiper pt-8">
-                                <Swiper
-                                    slidesPerView={2}
-                                    spaceBetween={80}
-                                    breakpoints={{
-                                        768: {
-                                            slidesPerView: 6
-                                        }, 1024: {
-                                            slidesPerView: 8
-                                        }
-                                    }}
-                                    modules={[Navigation, Pagination]}
-                                    navigation={{
-                                        prevEl: '.swiper-cast-prev', nextEl: '.swiper-cast-next',
-                                    }}
-                                    pagination={{
-                                        el: '.swiper-pagination', clickable: true
-                                    }}
-                                >
-                                    {movieCasts.map((cast, index) => {
-                                        return (<SwiperSlide key={index}>
-                                            <CastCards {...cast}/>
-                                        </SwiperSlide>)
-                                    })}
-                                </Swiper>
+                                <CastComponent id={movie.id}/>
                             </div>
                         </div>
                         <div
@@ -97,28 +66,7 @@ const MovieDetail = () => {
                                     <span>Add your review</span>
                                 </button>
                             </div>
-                            <Swiper
-                                slidesPerView={1}
-                                modules={[Navigation, Pagination]}
-                                navigation={{
-                                    prevEl: '.swiper-review-prev', nextEl: '.swiper-review-next',
-                                }}
-                                pagination={{
-                                    el: '.swiper-pagination', clickable: true
-                                }}
-                                breakpoints={{
-                                    768: {
-                                        slidesPerView: 2, spaceBetween: 20
-                                    },
-                                }}
-                                className={"mt-5"}
-                            >
-                                {moviesReview.map((review, index) => {
-                                    return (<SwiperSlide key={index}>
-                                        <ReviewCard {...review} />
-                                    </SwiperSlide>)
-                                })}
-                            </Swiper>
+                            <ReviewComponent id={movie.id}/>
                         </div>
                     </div>
                     <div className="w-full lg:w-[calc(30%-8px)]">
