@@ -2,9 +2,7 @@ import {Outlet} from "react-router-dom";
 import Navbar from "/src/layouts/Navbar";
 import Footer from "/src/layouts/Footer";
 import SubscriptionComponent from "/src/components/SubscriptionComponent";
-import 'swiper/css';
-import 'swiper/css/navigation';
-import "swiper/css/pagination";
+import ScrollToTop from "/src/components/ScrollToTop.jsx";
 
 const RootLayout = () => {
     return (
@@ -14,6 +12,7 @@ const RootLayout = () => {
                 <Outlet/>
             </main>
             <SubscriptionComponent/>
+            <ScrollToTop/>
             <Footer/>
         </>
     )

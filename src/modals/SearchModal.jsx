@@ -9,12 +9,10 @@ const SearchModal = ({activeModal, closeAction}) => {
     const {movies} = useContext(MoviesContext);
     const {series} = useContext(SeriesContext);
 
-    // Combine movies and series into one array with a type field
-    const all = [
-        ...movies.map(movie => ({...movie, type: 'movies'})),
+    const all = series && movies && [
         ...series.map(serie => ({...serie, type: 'series'})),
+        ...movies.map(movie => ({...movie, type: 'movies'})),
     ];
-
     const searchAction = () => {
         if (search) {
             const results = all.filter(item => {
@@ -23,7 +21,6 @@ const SearchModal = ({activeModal, closeAction}) => {
                 );
             });
             setSearchMovies(results);
-            console.log(results);
         } else {
             setSearchMovies([]);
         }
@@ -73,16 +70,23 @@ const SearchModal = ({activeModal, closeAction}) => {
                         </button>
                     </div>
                     <div className="w-full flex flex-wrap items-center">
-                        {searchMovies.map((searchMovie, index) => (
-                            <div className="w-full md:w-[calc(25%-1rem)] m-2" key={index}>
-                                <MovieComponent {...searchMovie} src={searchMovie.type}/>
-                            </div>
-                        ))}
+                        {
+                            searchMovies.length > 0 ?
+                                searchMovies.map((searchMovie, index) => (
+                                    <div className="w-full md:w-[calc(25%-1rem)] m-2" key={index}>
+                                        <MovieComponent {...searchMovie} src={searchMovie.type}/>
+                                    </div>
+                                )) : <div
+                                    className="w-full h-[calc(100vh-130px)] flex items-center justify-center text-4xl text-white m-2">
+                                    The movie or series you are looking for is not in our database
+                                </div>
+                        }
                     </div>
                 </div>
             </div>
         </div>
-    );
+    )
+        ;
 };
 
 export default SearchModal;

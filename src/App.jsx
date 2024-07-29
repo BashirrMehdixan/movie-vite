@@ -2,6 +2,10 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {Toaster} from "react-hot-toast";
 import AOS from "aos";
 // import 'aos/dist/aos.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import "swiper/css/pagination";
+
 // Layouts
 import RootLayout from "/src/layouts/RootLayout";
 

@@ -6,7 +6,7 @@ export const ReviewContext = createContext({
     fetchMovieReview: (movieId) => {
 
     },
-    fetchShowReview: (showId) => {
+    fetchSeriesReview: (showId) => {
 
     }
 });
@@ -25,8 +25,18 @@ const ReviewProvider = ({children}) => {
             console.log(e);
         }
     }
+
+    const fetchSeriesReview = (showId) => {
+        try {
+            fetch(`${apiUrl}tv/${showId}/reviews?api_key=${apiKey}&language=en-US`)
+                .then(res => res.json())
+                .then(data => setSeriesReview(data.results))
+        } catch (e) {
+            console.log(e);
+        }
+    }
     return (
-        <ReviewContext.Provider value={{moviesReview, fetchMovieReview}}>
+        <ReviewContext.Provider value={{moviesReview, fetchMovieReview, seriesReview, fetchSeriesReview}}>
             {children}
         </ReviewContext.Provider>
     )

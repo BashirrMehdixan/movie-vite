@@ -1,10 +1,12 @@
 import {useEffect, useState, createContext} from "react";
+import axios from "axios";
 
 export const SeriesContext = createContext([]);
 
 const SeriesProvider = ({children}) => {
     const api_key = '286a82355468525bb9e08f91eac5c6dc';
     const base_url = 'https://api.themoviedb.org/3/';
+    const [tvShows, setTVShows] = useState([]);
     const [series, setSeries] = useState([]);
     const [newSeries, setNewSeries] = useState([]);
     const [popularSeries, setPopularSeries] = useState([]);
@@ -13,6 +15,26 @@ const SeriesProvider = ({children}) => {
     const [popularSeriesGenres, setPopularSeriesGenres] = useState([]);
 
     useEffect(() => {
+        const fetchAllTVShows = async () => {
+            let allShows = [];
+            let page = 1;
+            const totalPages = 500;
+
+            try {
+                for (page = 1; page <= totalPages; page++) {
+                    const response = await axios.get(`${base_url}discover/tv`, {
+                        params: {
+                            api_key,
+                            page
+                        }
+                    });
+                    allShows = [...allShows, ...response.data.results, ...series];
+                }
+            } catch (error) {
+                console.error("Error fetching TV shows:", error);
+            }
+        };
+        fetchAllTVShows();
         const fetchSeries = async () => {
             try {
                 const [newRes, popularRes, ratedRes, genresRes] = await Promise.all([
@@ -59,12 +81,12 @@ const SeriesProvider = ({children}) => {
                 setSeriesGenres(genresData.genres);
                 setPopularSeriesGenres(sortedGenres.slice(0, 10));
             } catch (error) {
-                console.error("Error fetching movie data: ", error);
+                console.error("Error fetching series data: ", error);
             }
         };
-
         fetchSeries();
     }, []);
+
     return (
         <SeriesContext.Provider value={{
             series,
@@ -72,11 +94,12 @@ const SeriesProvider = ({children}) => {
             popularSeries,
             seriesGenres,
             popularSeriesGenres,
-            topRatedSeries
+            topRatedSeries,
+            tvShows,
         }}>
             {children}
         </SeriesContext.Provider>
-    )
-}
+    );
+};
 
 export default SeriesProvider;

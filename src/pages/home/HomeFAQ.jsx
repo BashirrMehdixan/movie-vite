@@ -17,7 +17,7 @@ const HomeFAQ = () => {
                             Ask a Question
                         </Link>
                     </div>
-                    <div className={"md:max-h-[700px] flex flex-wrap gap-9 pt-10"}>
+                    <div className={"md:max-h-[900px] flex flex-wrap gap-y-2 gap-x-9 pt-10"}>
                         <div className="w-full md:w-[calc(50%-2.25rem)]">
                             <AccordionItem
                                 title={'What is StreamVibe?'}

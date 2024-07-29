@@ -30,7 +30,7 @@ const HomeBanner = () => {
                             return (
                                 index < 8 &&
                                 <SwiperSlide className={'flex items-center justify-center'} key={index}>
-                                    <BannerComponent {...newMovie} />
+                                    <BannerComponent {...newMovie} type={"movies"} />
                                 </SwiperSlide>
                             )
                         })}

@@ -28,7 +28,7 @@ const MovieBanner = () => {
                         return (
                             index < 5 &&
                             <SwiperSlide className={'flex items-center justify-center'} key={index}>
-                                <BannerComponent {...movie}/>
+                                <BannerComponent {...movie} type={'movies'}/>
                             </SwiperSlide>
                         )
                     })}

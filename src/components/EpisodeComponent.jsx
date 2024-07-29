@@ -8,7 +8,6 @@ const EpisodeComponent = ({id, seasons}) => {
                 {seasons.filter(season => season.name !== "Specials").map((season, index) => {
                     return (
                         <SeriesAccordion serieId={id} key={index} {...season} />
-
                     )
                 })}
             </div>

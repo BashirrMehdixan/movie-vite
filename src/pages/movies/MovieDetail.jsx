@@ -19,7 +19,7 @@ const MovieDetail = () => {
     return (movie && <>
         <section>
             <div className="h-screen">
-                <BannerComponent {...movie}/>
+                <BannerComponent {...movie} type={"movies"}/>
             </div>
         </section>
         <div className="my-5">
@@ -43,7 +43,7 @@ const MovieDetail = () => {
                                 Cast
                             </h4>
                             <div className="cat-swiper pt-8">
-                                <CastComponent id={movie.id}/>
+                                <CastComponent id={movie.id} type={"movie"}/>
                             </div>
                         </div>
                         <div
@@ -58,7 +58,7 @@ const MovieDetail = () => {
                                     <span>Add your review</span>
                                 </button>
                             </div>
-                            <ReviewComponent id={movie.id}/>
+                            <ReviewComponent id={movie.id} type={"movie"}/>
                         </div>
                     </div>
                     <div className="w-full lg:w-[calc(30%-8px)]">

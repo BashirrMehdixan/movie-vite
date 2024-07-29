@@ -1,14 +1,18 @@
 import {useContext} from "react";
+
+// Swiper
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
-import {MoviesContext} from "/src/context/movies/MoviesContext";
+
+// Context
+import {SeriesContext} from "/src/context/series/SeriesContext";
+// Components
 import SectionTitle from "/src/components/SectionTitle";
 import {MovieComponent} from "/src/components/MovieCards";
 
-const TrendMovie = () => {
-    const {popularMovies} = useContext(MoviesContext);
+const PopularSeries = () => {
+    const {popularSeries} = useContext(SeriesContext);
     return (
-        popularMovies &&
         <>
             <section className="py-5">
                 <div className="container relative">
@@ -46,14 +50,14 @@ const TrendMovie = () => {
                             }
 
                             className="w-full h-full categorySwiper">
-                            {popularMovies.map((movie, index) => {
+                            {popularSeries.map((serie, index) => {
                                 return (
                                     <SwiperSlide
                                         className={'flex items-center justify-center'} key={index}
                                         data-aos={"fade-up"}
                                         data-aos-duration={"3000"}
                                     >
-                                        <MovieComponent {...movie} src={"movies"} />
+                                        <MovieComponent {...serie} src={"series"}/>
                                     </SwiperSlide>
                                 )
                             })}
@@ -76,4 +80,4 @@ const TrendMovie = () => {
     )
 }
 
-export default TrendMovie;
+export default PopularSeries

@@ -23,7 +23,7 @@ const SeriesBanner = () => {
                         return (
                             index < 6 &&
                             <SwiperSlide key={index}>
-                                <BannerComponent {...serie}/>
+                                <BannerComponent {...serie} type={series}/>
                             </SwiperSlide>
                         )
                     })}

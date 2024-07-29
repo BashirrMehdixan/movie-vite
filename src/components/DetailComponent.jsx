@@ -67,7 +67,6 @@ const DetailComponent = ({item, itemGenres}) => {
                     </div>
                 </div>
             </div>
-
         </>
     )
 }

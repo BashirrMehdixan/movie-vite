@@ -5,11 +5,12 @@ import {Like, Speaker, SpeakerMute} from "react-huge-icons/outline";
 import {Plus, TrackPlay} from "react-huge-icons/solid";
 import {FavouriteContext} from "/src/context/favourite/FavouriteContext";
 
-export const BannerComponent = ({id, backdrop_path, original_title, name, overview, title}) => {
+export const BannerComponent = ({id, backdrop_path, original_title, name, overview, title, type}) => {
     const imgSize = 'original';
     const {likedMovie, likeMovieAction} = useContext(FavouriteContext);
     const [mute, setMute] = useState(false);
     const location = useLocation();
+    console.log(type)
     return (
         <>
             <div className={`relative h-full w-full flex justify-center items-end`}>
@@ -37,7 +38,7 @@ export const BannerComponent = ({id, backdrop_path, original_title, name, overvi
                             {overview}
                         </p>
                         <div className="flex flex-wrap items-center justify-center gap-4">
-                            <Link to={`/${location.pathname === "/movies" ? "movies" : 'series'}/${id.toString()}`}
+                            <Link to={`/${type === "movies" ? "movies" : 'series'}/${id.toString()}`}
                                   className={'inline-flex items-center justify-center bg-[#E50000] px-7 py-4 space-x-2 rounded-lg capitalize transition-all duration-500 hover:bg-opacity-60'}
                                   data-aos={"fade-up"}
                                   data-aos-duration={"3000"}

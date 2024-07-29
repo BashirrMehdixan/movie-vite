@@ -27,7 +27,7 @@ const SeasonsProvider = ({children}) => {
     const fetchEpisodes = async (id, seasonCount) => {
         try {
             const allEpisodes = [];
-            for (let i = 1; i < seasonCount; i++) {
+            for (let i = 1; i <= seasonCount - 1; i++) {
                 const {data} = await axios.get(
                     `${apiUrl}tv/${id}/season/${i}?api_key=${apiKey}&language=en-US`
                 );

@@ -7,7 +7,7 @@ const Footer = () => {
             <footer>
                 <div className="bg-[#0F0F0F]">
                     <div className="container">
-                        <div className="flex flex-wrap justify-between text-white py-16 border-b border-[#262626]">
+                        <div className="flex flex-wrap justify-between text-white py-16 border-b border-t border-[#262626]">
                             <div className="w-full md:w-1/2 lg:w-1/6 mb-6 lg:mb-0">
                                 <h3 className="text-xl font-medium mb-8">
                                     Home

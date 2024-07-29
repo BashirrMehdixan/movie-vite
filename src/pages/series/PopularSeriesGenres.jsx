@@ -1,20 +1,25 @@
 import {useContext} from "react";
+
+// Swiper
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
-import {MoviesContext} from "/src/context/movies/MoviesContext";
-import SectionTitle from "/src/components/SectionTitle";
-import {MovieComponent} from "/src/components/MovieCards";
 
-const TrendMovie = () => {
-    const {popularMovies} = useContext(MoviesContext);
+// Context
+import {SeriesContext} from "/src/context/series/SeriesContext";
+// Components
+import SectionTitle from "/src/components/SectionTitle";
+import {CategoryComponent} from "/src/components/MovieCards";
+
+const PopularSeriesGenres = () => {
+    const {popularSeriesGenres} = useContext(SeriesContext);
     return (
-        popularMovies &&
+        popularSeriesGenres &&
         <>
             <section className="py-5">
                 <div className="container relative">
                     <div className="flex flex-wrap items-center py-7">
                         <SectionTitle
-                            heading={"Trending Movie"}
+                            heading={"Popular Top 10 In Genres"}
                         />
                     </div>
                     <div className="cat-swiper">
@@ -46,14 +51,14 @@ const TrendMovie = () => {
                             }
 
                             className="w-full h-full categorySwiper">
-                            {popularMovies.map((movie, index) => {
+                            {popularSeriesGenres.map((genre, index) => {
                                 return (
                                     <SwiperSlide
                                         className={'flex items-center justify-center'} key={index}
                                         data-aos={"fade-up"}
                                         data-aos-duration={"3000"}
                                     >
-                                        <MovieComponent {...movie} src={"movies"} />
+                                        <CategoryComponent {...genre} />
                                     </SwiperSlide>
                                 )
                             })}
@@ -76,4 +81,4 @@ const TrendMovie = () => {
     )
 }
 
-export default TrendMovie;
+export default PopularSeriesGenres;

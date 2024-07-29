@@ -1,12 +1,12 @@
 import {useEffect, useState} from "react";
-import {NavLink} from "react-router-dom";
-import {MenuLineHorizontal} from "react-huge-icons/solid";
-import {Notification, Search} from "react-huge-icons/outline";
+import {NavLink, useLocation} from "react-router-dom";
+import {Notification, Search, MenuLineHorizontalHalf} from "react-huge-icons/outline";
 
 import SearchModal from "/src/modals/SearchModal";
 
 const Navbar = () => {
     const [openNav, setOpenNav] = useState(false);
+    const location = useLocation();
     const [activeSearch, setActiveSearch] = useState(false);
     useEffect(() => {
         const header = document.querySelector('header');
@@ -17,7 +17,11 @@ const Navbar = () => {
                 header.classList.remove('bg-[#0F0F0F]');
             }
         })
-    })
+    }, []);
+    useEffect(() => {
+        setOpenNav(false);
+        setActiveSearch(false);
+    }, [location.pathname])
     return (
         <>
             <SearchModal activeModal={activeSearch} closeAction={setActiveSearch}/>
@@ -62,7 +66,7 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <div className="lg:block w-5/6 lg:w-1/6">
-                            <ul className="flex items-center justify-end text-white gap-8">
+                            <ul className="flex items-center justify-end text-white gap-2 lg:gap-8">
                                 <li>
                                     <button
                                         onClick={() => setActiveSearch(!activeSearch)}
@@ -80,7 +84,7 @@ const Navbar = () => {
                                     <button
                                         className="text-white text-4xl"
                                         onClick={() => setOpenNav(!openNav)}>
-                                        <MenuLineHorizontal/>
+                                        <MenuLineHorizontalHalf/>
                                     </button>
                                 </li>
                             </ul>
