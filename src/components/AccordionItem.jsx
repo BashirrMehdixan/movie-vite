@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {FaPlus, FaMinus} from "react-icons/fa";
+import {Minus, Plus} from "react-huge-icons/solid";
 
 const AccordionItem = ({count,title, content}) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +21,7 @@ const AccordionItem = ({count,title, content}) => {
                     <span>{title}</span>
                 </div>
                 <span>
-                    {isOpen ? <FaMinus/> : <FaPlus/>}
+                    {isOpen ? <Minus className={"text-3xl"}/> : <Plus className={"text-3xl"}/>}
                 </span>
             </button>
             {isOpen && (

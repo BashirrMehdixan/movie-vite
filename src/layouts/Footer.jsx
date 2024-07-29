@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import {FaFacebook, FaTwitter, FaLinkedin} from "react-icons/fa";
+import {Facebook, Twitter, Linkedln} from "react-huge-icons/solid";
 
 const Footer = () => {
     return (
@@ -156,22 +156,22 @@ const Footer = () => {
                                     <li className={"bg-[#1A1A1A] border border-[#262626] rounded-xl"}>
                                         <Link
                                             to={"https://facebook.com"}
-                                            className={"block h-full w-full p-4 transition-all duration-300 text-xl font-normal opacity-45 hover:opacity-100"}>
-                                            <FaFacebook/>
+                                            className={"block h-full w-full p-4 transition-all duration-300 font-normal opacity-45 hover:opacity-100"}>
+                                            <Facebook className={"text-2xl"} />
+                                        </Link>
+                                    </li>
+                                    <li className={"bg-[#1A1A1A] border border-[#262626] rounded-xl"}>
+                                        <Link
+                                            to={"https://facebook.com"}
+                                            className={"block h-full w-full p-4 transition-all duration-300 font-normal opacity-45 hover:opacity-100"}>
+                                            <Twitter className={"text-2xl"}/>
                                         </Link>
                                     </li>
                                     <li className={"bg-[#1A1A1A] border border-[#262626] rounded-xl"}>
                                         <Link
                                             to={"https://facebook.com"}
                                             className={"block h-full w-full p-4 transition-all duration-300 text-xl font-normal opacity-45 hover:opacity-100"}>
-                                            <FaTwitter/>
-                                        </Link>
-                                    </li>
-                                    <li className={"bg-[#1A1A1A] border border-[#262626] rounded-xl"}>
-                                        <Link
-                                            to={"https://facebook.com"}
-                                            className={"block h-full w-full p-4 transition-all duration-300 text-xl font-normal opacity-45 hover:opacity-100"}>
-                                            <FaLinkedin/>
+                                            <Linkedln className={"2xl"}/>
                                         </Link>
                                     </li>
                                 </ul>

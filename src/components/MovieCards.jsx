@@ -1,10 +1,9 @@
 import {Link} from "react-router-dom";
 
 // Icon
-import {FaArrowRight, FaEye} from "react-icons/fa";
-import {CiClock1} from "react-icons/ci";
-
 import StarRating from "/src/components/StarRating";
+import {ClockCircle, Eye} from "react-huge-icons/outline";
+import {ArrowRight} from "react-huge-icons/solid";
 
 export const CategoryComponent = ({name}) => {
     return (
@@ -20,7 +19,7 @@ export const CategoryComponent = ({name}) => {
                     <div className="text-white flex items-center justify-between px-3 py-2">
                         <h3 className={"text-xl"}>{name}</h3>
                         <span>
-                            <FaArrowRight/>
+                            <ArrowRight className={"text-3xl"}/>
                         </span>
                     </div>
                 </div>
@@ -29,7 +28,7 @@ export const CategoryComponent = ({name}) => {
     )
 }
 
-export const MovieComponent = ({src, id, title, poster_path, release_date, vote_average}) => {
+export const MovieComponent = ({src, id, title, poster_path, release_date, vote_average, first_air_date}) => {
     const imgSize = 'original'
     return (
         <>
@@ -44,14 +43,14 @@ export const MovieComponent = ({src, id, title, poster_path, release_date, vote_
                     <div className="flex items-center justify-between px-3 py-2 text-[#999999]">
                         <h3 className={"flex items-center bg-[#141414] border-2 border-[#262626] px-3 py-2 rounded-lg"}>
                             <span className={"mr-2 text-xl"}>
-                                <CiClock1/>
+                                <ClockCircle/>
                             </span>
-                            {release_date}
+                            {release_date || first_air_date}
                         </h3>
                         <div
                             className={"flex items-center bg-[#141414] border-2 border-[#262626] px-3 py-2 rounded-lg"}>
                             <span className={"mr-2"}>
-                                <FaEye/>
+                                <Eye/>
                             </span>
                             {vote_average}
                         </div>
@@ -100,7 +99,7 @@ export const MustWatchCard = ({id, title, poster_path, release_date, vote_averag
                     <div className="flex flex-wrap items-center justify-between px-3 py-2 text-[#999999]">
                         <h3 className={"flex items-center bg-[#141414] border-2 border-[#262626] px-3 py-2 rounded-lg mb-2"}>
                             <span className={"mr-2 text-xl"}>
-                                <CiClock1/>
+                                <ClockCircle/>
                             </span>
                             {release_date}
                         </h3>

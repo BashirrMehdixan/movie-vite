@@ -1,7 +1,5 @@
-import {useContext} from "react";
 import {Link} from "react-router-dom";
-import {HiOutlineLanguage} from "react-icons/hi2";
-import {Apps, Calendar, Star} from "react-huge-icons/outline";
+import {Apps, Calendar, Star, GlobeEarth} from "react-huge-icons/outline";
 
 // Components
 import StarRating from "/src/components/StarRating";
@@ -24,7 +22,7 @@ const DetailComponent = ({item, itemGenres}) => {
                 </div>
                 <div className="mb-5">
                     <div className="flex items-center text-xl opacity-45 mb-1">
-                        <HiOutlineLanguage className={"mr-2"}/>
+                        <GlobeEarth className={"mr-2"}/>
                         Available Language
                     </div>
                     <div className={"text-lg opacity-100 pt-2"}>

@@ -11,6 +11,7 @@ const SeriesDetail = () => {
     const {series, seriesGenres} = useContext(SeriesContext);
     const {seasons, fetchSeasons} = useContext(SeasonsContext);
     const serie = series.find(item => item.id.toString() === id.toString());
+    console.log(serie)
 
     useEffect(() => {
         if (serie) {

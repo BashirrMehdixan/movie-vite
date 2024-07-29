@@ -15,11 +15,14 @@ const CastComponent = ({id}) => {
         <>
             <Swiper
                 slidesPerView={2}
-                spaceBetween={80}
                 breakpoints={{
+                    640: {
+                        slidesPerView: 4
+                    },
                     768: {
                         slidesPerView: 6
-                    }, 1024: {
+                    },
+                    1024: {
                         slidesPerView: 8
                     }
                 }}
