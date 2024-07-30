@@ -1,8 +1,10 @@
-import {useState} from "react";
+import {useContext, useState} from "react";
 import toast from "react-hot-toast";
 import {signUp} from "/src/store/firebase";
+import {AuthContext} from "/src/context/auth/AuthContext";
 
 const Register = () => {
+    const {dispatch} = useContext(AuthContext);
     const [data, setData] = useState({});
     const [gender, setGender] = useState("Gender");
     const [openSelect, setOpenSelect] = useState(false);
@@ -16,8 +18,12 @@ const Register = () => {
         e.preventDefault();
         if (data.password === data.confirmPassword) {
             try {
-                await signUp(data.email, data.password);
-                return toast.success(`Hello ${data.username}, Welcome our family`)
+
+                const user = await signUp(data.email, data.password);
+                if(user) {
+                    dispatch({type: "SIGN_UP", payload: user});
+                    toast.success(`Hello ${data.username}, Welcome our family`)
+                }
             } catch (e) {
                 toast.error(e.message);
             }

@@ -1,8 +1,10 @@
-import {useState} from "react";
-import {login} from "/src/store/firebase.js";
+import {useState, useContext} from "react";
 import toast from "react-hot-toast";
+import {AuthContext} from "/src/context/auth/AuthContext";
+import {login, auth} from "/src/store/firebase";
 
 const Login = () => {
+    const {dispatch} = useContext(AuthContext);
     const [data, setData] = useState({});
     const dataHandler = (e) => {
         setData({
@@ -10,11 +12,17 @@ const Login = () => {
             [e.target.id]: e.target.value
         })
     }
+
     const loginAction = async (e) => {
         e.preventDefault();
         try {
-            await login(data.email, data.password);
-            return toast.success("Welcome back")
+            const user = await login(data.email, data.password);
+            if (user) {
+                dispatch({type: "LOGIN", payload: user});
+                toast.success("Welcome back")
+                // return
+            }
+            return user
         } catch (e) {
             toast.error(e.message);
         }

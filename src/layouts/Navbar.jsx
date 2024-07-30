@@ -1,11 +1,12 @@
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {NavLink, useLocation} from "react-router-dom";
 import {Notification, Search, MenuLineHorizontalHalf, User} from "react-huge-icons/outline";
+import {AuthContext} from "/src/context/auth/AuthContext"
 
 import SearchModal from "/src/modals/SearchModal";
-// import {} from "react-huge-icons/solid";
 
 const Navbar = () => {
+    const {currentUser} = useContext(AuthContext);
     const [openNav, setOpenNav] = useState(false);
     const location = useLocation();
     const [activeSearch, setActiveSearch] = useState(false);
@@ -90,7 +91,7 @@ const Navbar = () => {
                                     </button>
                                 </li>
                                 <li className={`block text-white has-[.active]:text-[#E50000]`}>
-                                    <NavLink to={"register"}
+                                    <NavLink to={`${!currentUser ? "login" : "profile"}`}
                                              className="text-4xl"
                                              onClick={() => setOpenNav(!openNav)}>
                                         <User/>
