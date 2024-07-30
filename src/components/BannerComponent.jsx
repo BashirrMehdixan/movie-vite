@@ -10,7 +10,6 @@ export const BannerComponent = ({id, backdrop_path, original_title, name, overvi
     const {likedMovie, likeMovieAction} = useContext(FavouriteContext);
     const [mute, setMute] = useState(false);
     const location = useLocation();
-    console.log(type)
     return (
         <>
             <div className={`relative h-full w-full flex justify-center items-end`}>

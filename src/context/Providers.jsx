@@ -4,22 +4,25 @@ import CastsProvider from "/src/context/cast/CastContext";
 import ReviewsProvider from "/src/context/reviews/ReviewContext";
 import FavouritesProvider from "/src/context/favourite/FavouriteContext";
 import SeasonsProvider from "/src/context/series/SeasonsContext";
+import AuthProvider from "/src/context/auth/AuthContext";
 
 const Providers = ({children}) => {
     return (
-        <MoviesProvider>
-            <SeriesProvider>
-                <SeasonsProvider>
-                    <CastsProvider>
-                        <ReviewsProvider>
-                            <FavouritesProvider>
-                                {children}
-                            </FavouritesProvider>
-                        </ReviewsProvider>
-                    </CastsProvider>
-                </SeasonsProvider>
-            </SeriesProvider>
-        </MoviesProvider>
+        <AuthProvider>
+            <MoviesProvider>
+                <SeriesProvider>
+                    <SeasonsProvider>
+                        <CastsProvider>
+                            <ReviewsProvider>
+                                <FavouritesProvider>
+                                    {children}
+                                </FavouritesProvider>
+                            </ReviewsProvider>
+                        </CastsProvider>
+                    </SeasonsProvider>
+                </SeriesProvider>
+            </MoviesProvider>
+        </AuthProvider>
     )
 }
 

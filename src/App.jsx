@@ -8,6 +8,7 @@ import "swiper/css/pagination";
 
 // Layouts
 import RootLayout from "/src/layouts/RootLayout";
+import RegisterLayout from "/src/layouts/RegisterLayout";
 
 // Pages
 import HomeIndex from "/src/pages/home/HomeIndex";
@@ -17,6 +18,8 @@ import SeriesIndex from "/src/pages/series/SeriesIndex";
 import SeriesDetail from "/src/pages/series/SeriesDetail";
 import SupportIndex from "/src/pages/support/SupportIndex";
 import SubscriptionsIndex from "/src/pages/subscriptions/SubscriptionsIndex";
+import Register from "/src/pages/profile/Register";
+import Login from "/src/pages/profile/Login";
 import NotFound from "/src/pages/NotFound";
 
 function App() {
@@ -54,6 +57,20 @@ function App() {
                 {
                     path: "subscriptions",
                     element: <SubscriptionsIndex/>
+                }
+            ],
+        },
+        {
+            path: "/",
+            element: <RegisterLayout/>,
+            children: [
+                {
+                    path: "register",
+                    element: <Register/>
+                },
+                {
+                    path: "login",
+                    element: <Login/>
                 }
             ]
         }

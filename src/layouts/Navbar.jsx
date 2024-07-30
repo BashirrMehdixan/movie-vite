@@ -1,13 +1,15 @@
 import {useEffect, useState} from "react";
 import {NavLink, useLocation} from "react-router-dom";
-import {Notification, Search, MenuLineHorizontalHalf} from "react-huge-icons/outline";
+import {Notification, Search, MenuLineHorizontalHalf, User} from "react-huge-icons/outline";
 
 import SearchModal from "/src/modals/SearchModal";
+// import {} from "react-huge-icons/solid";
 
 const Navbar = () => {
     const [openNav, setOpenNav] = useState(false);
     const location = useLocation();
     const [activeSearch, setActiveSearch] = useState(false);
+
     useEffect(() => {
         const header = document.querySelector('header');
         window.addEventListener('scroll', () => {
@@ -21,7 +23,7 @@ const Navbar = () => {
     useEffect(() => {
         setOpenNav(false);
         setActiveSearch(false);
-    }, [location.pathname])
+    }, [location.pathname]);
     return (
         <>
             <SearchModal activeModal={activeSearch} closeAction={setActiveSearch}/>
@@ -86,6 +88,13 @@ const Navbar = () => {
                                         onClick={() => setOpenNav(!openNav)}>
                                         <MenuLineHorizontalHalf/>
                                     </button>
+                                </li>
+                                <li className={`block text-white has-[.active]:text-[#E50000]`}>
+                                    <NavLink to={"register"}
+                                             className="text-4xl"
+                                             onClick={() => setOpenNav(!openNav)}>
+                                        <User/>
+                                    </NavLink>
                                 </li>
                             </ul>
                         </div>
