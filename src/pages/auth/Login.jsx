@@ -4,12 +4,13 @@ const Login = () => {
     const {loginAction, dataHandler, data} = AuthHooks();
     return (
         <>
-            <div className={"h-[calc(80vh-.75rem)]"}>
+            <div className={"relative h-screen bg-[url(/public/images/login-bg.jpg)] bg-cover bg-center"}>
+                <div className="absolute w-full h-full bg-[#0F0F0F] bg-opacity-65 z-10"></div>
                 <div className="container h-full">
                     <form onSubmit={(e) => loginAction(e, data)}
                           className={"h-full flex flex-wrap justify-center items-center text-white"}>
                         <div
-                            className="w-full lg:w-1/3 pt-4 pb-2 px-6 border border-[#262626] rounded-lg">
+                            className="relative w-full lg:w-1/3 pt-4 pb-2 px-6 bg-[#0F0F0F] bg-opacity-80 border border-[#262626] rounded-lg z-20">
                             <div className="w-full">
                                 <div className="mb-3">
                                     <label htmlFor="email">

@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 const RegisterNavbar = () => {
     return (
         <>
-            <header className={"py-3"}>
+            <header className={"w-full fixed py-3 z-20 bg-gradient-to-b from-current to-transparent"}>
                 <div className="container">
                     <div className="flex items-center justify-between">
                         <NavLink to={"/"}>

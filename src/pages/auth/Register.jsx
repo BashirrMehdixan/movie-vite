@@ -6,12 +6,13 @@ const Register = () => {
     const [openSelect, setOpenSelect] = useState(false);
     return (
         <>
-            <div className={"h-[calc(80vh-.75rem)]"}>
+            <div className={"h-screen bg-[url(/public/images/login-bg.jpg)] bg-cover bg-center"}>
+                <div className="absolute w-full h-full bg-[#0F0F0F] bg-opacity-65 z-10"></div>
                 <div className="container h-full">
-                    <form onSubmit={(e) => signUpAction(e, data)}
+                    <form onSubmit={(e) => signUpAction(e, data, gender)}
                           className={"h-full flex flex-wrap justify-center items-center text-white"}>
                         <div
-                            className="w-1/3 h-full flex flex-wrap pt-5 pb-2 px-6 border border-[#262626] rounded-lg">
+                            className="relative w-full lg:w-1/3 flex flex-wrap pt-4 pb-2 px-6 bg-[#0F0F0F] bg-opacity-80 border border-[#262626] rounded-lg z-20">
                             <div className="w-full">
                                 <div className="mb-3">
                                     <label htmlFor="username">

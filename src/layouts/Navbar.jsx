@@ -7,12 +7,11 @@ import AuthHooks from "/src/hooks/auth/AuthHooks";
 import SearchModal from "/src/modals/SearchModal";
 
 const Navbar = () => {
+    const {currentUser, user} = useContext(AuthContext);
     const location = useLocation();
     const {logOutAction} = AuthHooks();
     const [openNav, setOpenNav] = useState(false);
-    const {currentUser} = useContext(AuthContext);
     const [activeSearch, setActiveSearch] = useState(false);
-
     useEffect(() => {
         const header = document.querySelector('header');
         window.addEventListener('scroll', () => {
@@ -31,7 +30,7 @@ const Navbar = () => {
         <>
             <SearchModal activeModal={activeSearch} closeAction={setActiveSearch}/>
             <header
-                className={`relative lg:fixed w-full z-20 bg-gradient-to-b from-current to-transparent transition-all duration-500`}>
+                className={`relative ${location.pathname.match(/^\/$|movies|series/) ? 'lg:fixed' : ''} w-full z-20 bg-gradient-to-b from-current to-transparent transition-all duration-500`}>
                 <div className="container">
                     <div className={"relative flex items-center justify-between py-3"}>
                         <div className={"w-w-1/6"}>
@@ -49,12 +48,12 @@ const Navbar = () => {
                                     </NavLink>
                                 </li>
                                 <li className={"opacity-50 transition-all duration-500 has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
-                                    <NavLink to={"movies"} className={"block py-3 px-4 rounded-xl"}>
+                                    <NavLink to={"/movies"} className={"block py-3 px-4 rounded-xl"}>
                                         Movies
                                     </NavLink>
                                 </li>
                                 <li className={"opacity-50 transition-all duration-500 has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
-                                    <NavLink to={"series"} className={"block py-3 px-4 rounded-xl"}>
+                                    <NavLink to={"/series"} className={"block py-3 px-4 rounded-xl"}>
                                         Series
                                     </NavLink>
                                 </li>
@@ -71,17 +70,18 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <div className="lg:block w-5/6 lg:w-1/6">
-                            <ul className="flex items-center justify-end text-white gap-2 lg:gap-8">
+                            <ul className="flex items-center justify-end text-white gap-2 lg:gap-3">
                                 <li>
                                     <button
                                         onClick={() => setActiveSearch(!activeSearch)}
-                                        className={"block text-2xl lg:text-3xl"}
+                                        className={"block text-2xl lg:text-3xl transition ease-linear duration-500 hover:text-[#E50000]"}
                                     >
                                         <Search/>
                                     </button>
                                 </li>
                                 <li>
-                                    <button className={"block text-3xl lg:text-4xl"}>
+                                    <button
+                                        className={"block text-3xl lg:text-4xl transition ease-linear duration-500 hover:text-[#E50000]"}>
                                         <Notification/>
                                     </button>
                                 </li>
@@ -93,29 +93,33 @@ const Navbar = () => {
                                     </button>
                                 </li>
                                 <li className={`relative group block text-white has-[.active]:text-[#E50000]`}>
-                                    <NavLink to={`profile`}
-                                             className={`text-4xl ${!currentUser ? "hidden" : ""}`}
-                                             onClick={() => setOpenNav(!openNav)}>
-                                        <User/>
+                                    <NavLink
+                                        to={`${location.pathname.includes("user") ? user.username : `/user/${user.username}`}`}
+                                        className={`${user.profile_picture ? 'text-4xl' : "text-4xl"} transition ease-linear duration-500 hover:text-[#E50000] ${!currentUser ? "hidden" : ""}`}
+                                        onClick={() => setOpenNav(!openNav)}>
+                                        {user.profile_picture ?
+                                            <img
+                                                src={user.profile_picture}
+                                                alt={user.username}/> : <User/>}
                                     </NavLink>
-                                    <NavLink to={`${!currentUser ? "login" : "profile"}`}
-                                             className={`text-xl ${currentUser ? "hidden" : ""}`}
+                                    <NavLink to={`login`}
+                                             className={`text-xl transition ease-linear duration-500 hover:text-[#E50000] ${currentUser ? "hidden" : ""}`}
                                              onClick={() => setOpenNav(!openNav)}>
                                         Login
                                     </NavLink>
                                     {currentUser && (
                                         <>
                                             <ul
-                                                className={`absolute w-[90px] -left-[20px] transition duration-500 origin-top rounded-lg text-white bg-[#262626] p-4 scale-y-0 group-hover:scale-y-100`}>
-                                                <li className={`text-lg transition duration-500 hover:text-[#E50000] mb-3`}>
+                                                className={`absolute w-[max-content] -left-[20px] transition duration-500 origin-top rounded-lg text-white bg-[#262626] p-4 scale-y-0 group-hover:scale-y-100`}>
+                                                <li className={`text-lg transition ease-linear duration-500 hover:text-[#E50000] mb-3`}>
                                                     <NavLink
-                                                        to={`profile`}
+                                                        to={`${location.pathname !== "/" ? user.username : `/user/${user.username}`}`}
 
                                                     >
-                                                        Profile
+                                                        Dashboard
                                                     </NavLink>
                                                 </li>
-                                                <li className={`text-lg transition duration-500 hover:text-[#E50000]`}>
+                                                <li className={`text-lg transition ease-linear duration-500 hover:text-[#E50000]`}>
                                                     <button
                                                         onClick={logOutAction}
                                                     >
