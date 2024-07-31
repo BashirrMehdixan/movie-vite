@@ -1,41 +1,14 @@
-import {useContext, useState} from "react";
-import toast from "react-hot-toast";
-import {signUp} from "/src/store/firebase";
-import {AuthContext} from "/src/context/auth/AuthContext";
+import {useState} from "react";
+import AuthHooks from "/src/hooks/auth/AuthHooks";
 
 const Register = () => {
-    const {dispatch} = useContext(AuthContext);
-    const [data, setData] = useState({});
-    const [gender, setGender] = useState("Gender");
+    const {signUpAction, dataHandler, data, gender, setGender} = AuthHooks();
     const [openSelect, setOpenSelect] = useState(false);
-    const dataHandler = (e) => {
-        setData({
-            ...data,
-            [e.target.id]: e.target.value
-        })
-    }
-    const signUpAction = async (e) => {
-        e.preventDefault();
-        if (data.password === data.confirmPassword) {
-            try {
-
-                const user = await signUp(data.email, data.password);
-                if(user) {
-                    dispatch({type: "SIGN_UP", payload: user});
-                    toast.success(`Hello ${data.username}, Welcome our family`)
-                }
-            } catch (e) {
-                toast.error(e.message);
-            }
-        } else {
-            toast.error("Passwords do not match");
-        }
-    }
     return (
         <>
             <div className={"h-[calc(80vh-.75rem)]"}>
                 <div className="container h-full">
-                    <form onSubmit={signUpAction}
+                    <form onSubmit={(e) => signUpAction(e, data)}
                           className={"h-full flex flex-wrap justify-center items-center text-white"}>
                         <div
                             className="w-1/3 h-full flex flex-wrap pt-5 pb-2 px-6 border border-[#262626] rounded-lg">

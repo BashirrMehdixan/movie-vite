@@ -18,7 +18,7 @@ const PopularSeries = () => {
                 <div className="container relative">
                     <div className="flex flex-wrap items-center py-7">
                         <SectionTitle
-                            heading={"Trending Movie"}
+                            heading={"Trending Series"}
                         />
                     </div>
                     <div className="cat-swiper">

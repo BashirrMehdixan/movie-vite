@@ -20,6 +20,7 @@ import SupportIndex from "/src/pages/support/SupportIndex";
 import SubscriptionsIndex from "/src/pages/subscriptions/SubscriptionsIndex";
 import Register from "/src/pages/profile/Register";
 import Login from "/src/pages/profile/Login";
+import Profile from "/src/pages/profile/Profile";
 import NotFound from "/src/pages/NotFound";
 
 function App() {
@@ -57,6 +58,10 @@ function App() {
                 {
                     path: "subscriptions",
                     element: <SubscriptionsIndex/>
+                },
+                {
+                    path: "profile",
+                    element: <Profile/>
                 }
             ],
         },

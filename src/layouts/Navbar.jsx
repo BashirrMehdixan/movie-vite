@@ -1,14 +1,16 @@
 import {useContext, useEffect, useState} from "react";
 import {NavLink, useLocation} from "react-router-dom";
 import {Notification, Search, MenuLineHorizontalHalf, User} from "react-huge-icons/outline";
-import {AuthContext} from "/src/context/auth/AuthContext"
+import {AuthContext} from "/src/context/auth/AuthContext";
+import AuthHooks from "/src/hooks/auth/AuthHooks";
 
 import SearchModal from "/src/modals/SearchModal";
 
 const Navbar = () => {
-    const {currentUser} = useContext(AuthContext);
-    const [openNav, setOpenNav] = useState(false);
     const location = useLocation();
+    const {logOutAction} = AuthHooks();
+    const [openNav, setOpenNav] = useState(false);
+    const {currentUser} = useContext(AuthContext);
     const [activeSearch, setActiveSearch] = useState(false);
 
     useEffect(() => {
@@ -90,12 +92,39 @@ const Navbar = () => {
                                         <MenuLineHorizontalHalf/>
                                     </button>
                                 </li>
-                                <li className={`block text-white has-[.active]:text-[#E50000]`}>
-                                    <NavLink to={`${!currentUser ? "login" : "profile"}`}
-                                             className="text-4xl"
+                                <li className={`relative group block text-white has-[.active]:text-[#E50000]`}>
+                                    <NavLink to={`profile`}
+                                             className={`text-4xl ${!currentUser ? "hidden" : ""}`}
                                              onClick={() => setOpenNav(!openNav)}>
                                         <User/>
                                     </NavLink>
+                                    <NavLink to={`${!currentUser ? "login" : "profile"}`}
+                                             className={`text-xl ${currentUser ? "hidden" : ""}`}
+                                             onClick={() => setOpenNav(!openNav)}>
+                                        Login
+                                    </NavLink>
+                                    {currentUser && (
+                                        <>
+                                            <ul
+                                                className={`absolute w-[90px] -left-[20px] transition duration-500 origin-top rounded-lg text-white bg-[#262626] p-4 scale-y-0 group-hover:scale-y-100`}>
+                                                <li className={`text-lg transition duration-500 hover:text-[#E50000] mb-3`}>
+                                                    <NavLink
+                                                        to={`profile`}
+
+                                                    >
+                                                        Profile
+                                                    </NavLink>
+                                                </li>
+                                                <li className={`text-lg transition duration-500 hover:text-[#E50000]`}>
+                                                    <button
+                                                        onClick={logOutAction}
+                                                    >
+                                                        Logout
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </>
+                                    )}
                                 </li>
                             </ul>
                         </div>
