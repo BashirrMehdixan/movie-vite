@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import {NavLink, useLocation} from "react-router-dom";
 import {Notification, Search, MenuLineHorizontalHalf, User} from "react-huge-icons/outline";
-import {AuthContext} from "/src/context/auth/AuthContext";
+import {AuthContext} from "/src/context/Context";
 import AuthHooks from "/src/hooks/auth/AuthHooks";
 
 import SearchModal from "/src/modals/SearchModal";

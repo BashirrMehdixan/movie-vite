@@ -98,21 +98,13 @@ const AuthHooks = () => {
         }
 
         const storage = getStorage();
-        const storageRef = ref(storage, `profile_pictures/${user.id}/${profilePicture.name}`);
+        const storageRef = ref(storage, `profile_pictures/${user.username}/${profilePicture.name}`);
 
         try {
-            // Resmi Firebase Storage'a yükle
             const snapshot = await uploadBytes(storageRef, profilePicture);
-
-            // Yüklenen resmin URL'sini al
             const downloadURL = await getDownloadURL(snapshot.ref);
-
-            // Firestore'daki kullanıcı dökümanını güncelle
             await updateDoc(doc(db, 'users', user.id), {profile_picture: downloadURL});
-
-            // Yerel state'i güncelle
             setProfilePicture(downloadURL);
-
             toast.success("Profile picture updated!");
         } catch (error) {
             toast.error("Error uploading image: " + error.message);

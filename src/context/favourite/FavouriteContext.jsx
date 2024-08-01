@@ -16,6 +16,10 @@ const FavouriteProvider = ({children}) => {
         const storedLikedMovies = localStorage.getItem("likedMovies");
         return storedLikedMovies ? JSON.parse(storedLikedMovies) : [];
     });
+    const [likedSeries, setLikedSeries] = useState(() => {
+        const storedLikedSeries = localStorage.getItem("likedSeries");
+        return storedLikedSeries ? JSON.parse(storedLikedSeries) : [];
+    });
     useEffect(() => {
         localStorage.setItem("likedMovies", JSON.stringify(likedMovie));
     }, [likedMovie]);
@@ -27,8 +31,23 @@ const FavouriteProvider = ({children}) => {
             setLikedMovie([...likedMovie, movieId]);
         }
     };
+    const likeSeriesAction = (movieId) => {
+        if (likedSeries.includes(movieId)) {
+            setLikedSeries(likedSeries.filter(id => id !== movieId));
+        } else {
+            setLikedSeries([...likedSeries, movieId]);
+        }
+    };
     return (
-        <FavouriteContext.Provider value={{likedMovie, likeMovieAction, favouriteMovies: movies, favouriteSeries: state.favouriteSeries, dispatch}}>
+        <FavouriteContext.Provider value={{
+            likedMovie,
+            likeMovieAction,
+            likedSeries,
+            likeSeriesAction,
+            favouriteMovies: movies,
+            favouriteSeries: state.favouriteSeries,
+            dispatch
+        }}>
             {children}
         </FavouriteContext.Provider>
     )

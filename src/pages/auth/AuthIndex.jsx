@@ -33,7 +33,7 @@ const AuthIndex = () => {
                                 {user.subscription === "free" ? "Subscribe" : "Upgrade"} plan
                             </Link>
                         </div>
-                        <ul className={"hidden lg:flex items-center justify-between text-white"}>
+                        <ul className={"hidden lg:flex items-center justify-between text-white pb-3"}>
                             <li>
                                 <ul className={"flex items-center gap-6 has-[.active]:text-[#E50000]"}>
                                     <li className={"transition ease-linear duration-500 hover:text-[#E50000] py-3"}>
@@ -42,27 +42,27 @@ const AuthIndex = () => {
                                         </Link>
                                     </li>
                                     <li className={"transition ease-linear duration-500 hover:text-[#E50000] py-3"}>
-                                        <Link to={"favorites"}>
+                                        <Link to={`${user.username}/favorites`}>
                                             Favorites
                                         </Link>
                                     </li>
                                     <li className={"transition ease-linear duration-500 hover:text-[#E50000] py-3"}>
-                                        <Link to={"history"}>
+                                        <Link to={`${user.username}/history`}>
                                             History
                                         </Link>
                                     </li>
                                     <li className={"transition ease-linear duration-500 hover:text-[#E50000] py-3"}>
-                                        <Link to={"playlist"}>
+                                        <Link to={`${user.username}/playlist`}>
                                             Playlist
                                         </Link>
                                     </li>
                                     <li className={"transition ease-linear duration-500 hover:text-[#E50000] py-3"}>
-                                        <Link to={"watchlist"}>
+                                        <Link to={`${user.username}/watchlist`}>
                                             Watchlist
                                         </Link>
                                     </li>
                                     <li className={"transition ease-linear duration-500 hover:text-[#E50000] py-3"}>
-                                        <Link to={"videos"}>
+                                        <Link to={`${user.username}/videos`}>
                                             Videos
                                         </Link>
                                     </li>

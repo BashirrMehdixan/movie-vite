@@ -7,7 +7,7 @@ import {FavouriteContext} from "/src/context/favourite/FavouriteContext";
 
 export const BannerComponent = ({id, backdrop_path, original_title, name, overview, title, type}) => {
     const imgSize = 'original';
-    const {likedMovie, likeMovieAction} = useContext(FavouriteContext);
+    const {likedMovie, likedSeries, likeMovieAction, likeSeriesAction} = useContext(FavouriteContext);
     const [mute, setMute] = useState(false);
     const location = useLocation();
     return (
@@ -58,8 +58,9 @@ export const BannerComponent = ({id, backdrop_path, original_title, name, overvi
                                     </button>
                                     <button
                                         className="bg-[#0F0F0F] border-2 border-[#262626] px-5 py-4 rounded-xl text-white"
-                                        onClick={() => likeMovieAction(id)}>
-                                        {likedMovie.includes(id) ? <Like className={"text-3xl text-[#E50000]"}/> :
+                                        onClick={() => type === "movies" ? likeMovieAction(id) : likeSeriesAction(id)}>
+                                        {likedMovie.includes(id) || likedSeries.includes(id) ?
+                                            <Like className={"text-3xl text-[#E50000]"}/> :
                                             <Like className={"text-3xl"}/>}
                                     </button>
                                     <button

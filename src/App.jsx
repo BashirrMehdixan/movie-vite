@@ -14,7 +14,6 @@ import {
     Register,
     Login,
     Profile,
-    EditProfile,
     History,
     Favorites,
     Playlist,
@@ -81,14 +80,11 @@ function App() {
         {
             path: "/user",
             element: <AuthLayout/>,
+            errorElement: <NotFound/>,
             children: [
                 {
                     path: ":username",
                     element: <Profile/>
-                },
-                {
-                    path: ":username/edit",
-                    element: <EditProfile/>
                 },
                 {
                     path: ":username/favorites",
@@ -101,6 +97,10 @@ function App() {
                 {
                     path: ":username/playlist",
                     element: <Playlist/>
+                },
+                {
+                    path: ":username/watchlist",
+                    element: <Watchlist/>
                 },
                 {
                     path: ":username/videos",

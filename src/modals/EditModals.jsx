@@ -8,11 +8,12 @@ import AuthHooks from "/src/hooks/auth/AuthHooks";
 
 const EditProfileModal = () => {
     const {user} = useContext(AuthContext);
-    const {dataHandler, updateData, data, setGender, profilePicture, handleImageChange} = AuthHooks();
+    const {dataHandler, updateData, data, setGender, handleImageChange} = AuthHooks();
     const [open, setOpen] = useState(false);
     const [openSelect, setOpenSelect] = useState(false);
     const [imagePreview, setImagePreview] = useState(null);
     const fileInputRef = useRef(null);
+
     const handleImageChangePreview = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -22,7 +23,7 @@ const EditProfileModal = () => {
             };
             reader.readAsDataURL(file);
         }
-        handleImageChange(e); // Profil resmi güncelleme
+        handleImageChange(e);
     };
 
     const getImageSrc = () => {
