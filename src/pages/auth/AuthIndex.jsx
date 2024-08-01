@@ -1,15 +1,15 @@
 import {useContext} from "react";
 import {Link, Outlet} from "react-router-dom";
 import {AuthContext} from "/src/context/auth/AuthContext";
-import {auth} from "/src/store/firebase";
+import {auth, verifyEmail} from "/src/store/firebase";
 
 const AuthIndex = () => {
     const {user} = useContext(AuthContext);
     return (
         user &&
         <>
-            <section>
-                <div className={"py-4 bg-[#262626]"}>
+            <section className={"mb-11"}>
+                <div className={"bg-[#262626]"}>
                     <div className={"container"}>
                         <div className={"flex flex-wrap items-center gap-16 py-11"}>
                             <div className={"flex items-center"}>
@@ -33,7 +33,7 @@ const AuthIndex = () => {
                                 {user.subscription === "free" ? "Subscribe" : "Upgrade"} plan
                             </Link>
                         </div>
-                        <ul className={"flex items-center justify-between text-white"}>
+                        <ul className={"hidden lg:flex items-center justify-between text-white"}>
                             <li>
                                 <ul className={"flex items-center gap-6 has-[.active]:text-[#E50000]"}>
                                     <li className={"transition ease-linear duration-500 hover:text-[#E50000] py-3"}>
@@ -70,6 +70,7 @@ const AuthIndex = () => {
                             </li>
                             <li>
                                 <button
+                                    onClick={verifyEmail}
                                     className={`bg-[#E50000] transition ease-linear duration-500 hover:bg-opacity-70 px-6 py-3 rounded-lg ${auth.currentUser && auth.currentUser.emailVerified ? 'hidden' : 'block'}`}>
                                     Verify Email
                                 </button>

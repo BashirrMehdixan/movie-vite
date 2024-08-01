@@ -95,12 +95,14 @@ const Navbar = () => {
                                 <li className={`relative group block text-white has-[.active]:text-[#E50000]`}>
                                     <NavLink
                                         to={`${location.pathname.includes("user") ? user.username : `/user/${user.username}`}`}
-                                        className={`${user.profile_picture ? 'text-4xl' : "text-4xl"} transition ease-linear duration-500 hover:text-[#E50000] ${!currentUser ? "hidden" : ""}`}
+                                        className={`${user.profile_picture ? 'w-[60px] h-[60px] rounded-full flex items-center justify-center border-4 border-[#262626]' : "text-4xl"} transition ease-linear duration-500 hover:text-[#E50000] ${!currentUser ? "hidden" : ""}`}
                                         onClick={() => setOpenNav(!openNav)}>
                                         {user.profile_picture ?
                                             <img
                                                 src={user.profile_picture}
-                                                alt={user.username}/> : <User/>}
+                                                alt={user.username}
+                                                className={"w-full h-full rounded-full object-fill"}
+                                            /> : <User/>}
                                     </NavLink>
                                     <NavLink to={`login`}
                                              className={`text-xl transition ease-linear duration-500 hover:text-[#E50000] ${currentUser ? "hidden" : ""}`}

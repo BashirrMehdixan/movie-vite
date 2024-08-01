@@ -1,7 +1,7 @@
 import {useContext} from "react";
 import {AuthContext} from "/src/context/auth/AuthContext";
-import {Link, NavLink} from "react-router-dom";
-import SectionTitle from "../../components/SectionTitle.jsx";
+import SectionTitle from "/src/components/SectionTitle";
+import {EditProfileModal, PasswordModal} from "/src/modals/EditModals";
 
 const Profile = () => {
     const {user} = useContext(AuthContext);
@@ -10,13 +10,11 @@ const Profile = () => {
             <div className="container">
                 <div className="flex items-center justify-between pt-9 pb-5">
                     <SectionTitle heading={"Account and security"}/>
-                    <Link
-                        className={"bg-[#E50000] transition ease-linear duration-500 hover:bg-opacity-70 px-6 py-3 rounded-lg text-white"}
-                        to={"edit"}>Edit</Link>
+                    <EditProfileModal/>
                 </div>
                 <div className={"bg-[#262626] rounded-md py-4"}>
-                    <div className={""}>
-                        <div className="w-full mb-3 px-5">
+                    <div className={"flex flex-wrap items-center mb-3 px-5"}>
+                        <div className={"w-full md:w-1/2 lg:pr-4"}>
                             <div
                                 className="flex items-center justify-between text-white py-6 border-b border-opacity-45">
                                 <div className={"flex items-center gap-2"}>
@@ -25,10 +23,9 @@ const Profile = () => {
                                         {user.firstname}
                                     </p>
                                 </div>
-                                <button
-                                    className={"text-lg font-medium"}
-                                >Change</button>
                             </div>
+                        </div>
+                        <div className={"w-full md:w-1/2 lg:pr-4"}>
                             <div
                                 className="flex items-center justify-between text-white py-6 border-b border-opacity-45">
                                 <div className={"flex items-center gap-2"}>
@@ -37,10 +34,9 @@ const Profile = () => {
                                         {user.lastname}
                                     </p>
                                 </div>
-                                <button
-                                    className={"text-lg font-medium"}
-                                >Change</button>
                             </div>
+                        </div>
+                        <div className={"w-full md:w-1/2 lg:pr-4"}>
                             <div
                                 className="flex items-center justify-between text-white py-6 border-b border-opacity-45">
                                 <div className={"flex items-center gap-2"}>
@@ -49,10 +45,9 @@ const Profile = () => {
                                         {user.gender}
                                     </p>
                                 </div>
-                                <button
-                                    className={"text-lg font-medium"}
-                                >Change</button>
                             </div>
+                        </div>
+                        <div className={"w-full md:w-1/2 lg:pr-4"}>
                             <div
                                 className="flex items-center justify-between text-white py-6 border-b border-opacity-45">
                                 <div className={"flex items-center gap-2"}>
@@ -61,10 +56,9 @@ const Profile = () => {
                                         {user.birthday}
                                     </p>
                                 </div>
-                                <button
-                                    className={"text-lg font-medium"}
-                                >Change</button>
                             </div>
+                        </div>
+                        <div className={"w-full md:w-1/2 lg:pr-4"}>
                             <div
                                 className="flex items-center justify-between text-white py-6 border-b border-opacity-45">
                                 <div className={"flex items-center gap-2"}>
@@ -73,10 +67,9 @@ const Profile = () => {
                                         {user.username}
                                     </p>
                                 </div>
-                                <button
-                                    className={"text-lg font-medium"}
-                                >Change</button>
                             </div>
+                        </div>
+                        <div className={"w-full md:w-1/2 lg:pr-4"}>
                             <div
                                 className="flex items-center justify-between text-white py-6 border-b border-opacity-45">
                                 <div className={"flex items-center gap-2"}>
@@ -85,21 +78,15 @@ const Profile = () => {
                                         {user.email}
                                     </p>
                                 </div>
-                                <button
-                                    className={"text-lg font-medium"}
-                                >Change</button>
                             </div>
+                        </div>
+                        <div className={"w-full md:w-1/2 lg:pr-4"}>
                             <div
                                 className="flex items-center justify-between text-white py-6 border-b border-opacity-45">
-                                <div className={"flex items-center gap-2"}>
-                                    <p className={"text-xl font-semibold"}>Password: </p>
-                                    <p>
-                                        ********
-                                    </p>
+                                <div className={"text-xl font-medium"}>
+                                    Forgot password?
                                 </div>
-                                <button
-                                    className={"text-lg font-medium"}
-                                >Change</button>
+                                <PasswordModal/>
                             </div>
                         </div>
                     </div>

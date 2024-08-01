@@ -42,3 +42,13 @@
 
 
 }
+
+.custom-form-modal {
+    background: #262626;
+    color: #fff;
+    border-radius: .625rem;
+}
+
+.custom-form-modal path {
+    fill: #fff;
+}

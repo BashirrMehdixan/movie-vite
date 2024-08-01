@@ -1,23 +1,33 @@
 import {useState, useContext} from "react";
 import {useNavigate} from "react-router-dom";
-import {doc, setDoc, Timestamp} from "firebase/firestore";
-import {updateProfile} from "firebase/auth";
+import {doc, setDoc, updateDoc, Timestamp} from "firebase/firestore";
+import {
+    sendEmailVerification,
+    updateEmail,
+    updateProfile,
+} from "firebase/auth";
+import {getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import toast from "react-hot-toast";
-import {db, login, logout, signUp} from "/src/store/firebase";
+import {db, login, logout, signUp, auth} from "/src/store/firebase";
 import {AuthContext} from "/src/context/auth/AuthContext";
 
 const AuthHooks = () => {
     const navigate = useNavigate();
-    const {dispatch} = useContext(AuthContext);
+    const {dispatch, user} = useContext(AuthContext);
     const [data, setData] = useState({});
-    const [gender, setGender] = useState("Gender");
+    const [gender, setGender] = useState(user.gender ? user.gender : "Gender");
+    const [profilePicture, setProfilePicture] = useState(user.profile_picture || null);
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        setProfilePicture(file);
+    };
 
     const dataHandler = (e) => {
         setData({
             ...data,
             [e.target.id]: e.target.value
-        })
-    }
+        });
+    };
 
     // Signup Action
     const signUpAction = async (e, data, gender) => {
@@ -25,12 +35,11 @@ const AuthHooks = () => {
         if (data.password === data.confirmPassword && gender !== "Gender") {
             try {
                 const user = await signUp(data.email, data.password);
-                console.log(user)
                 if (user) {
                     dispatch({type: "SIGN_UP", payload: user});
                     await updateProfile(user, {
                         displayName: data.username,
-                    })
+                    });
                     await setDoc(doc(db, "users", user.uid), {
                         id: user.uid.toString(),
                         username: data.username,
@@ -42,9 +51,9 @@ const AuthHooks = () => {
                         profile_picture: "",
                         subscription: "free",
                         createdAt: Timestamp.fromDate(new Date()),
-                    })
+                    });
                     navigate({pathname: `/user/${data.username}`});
-                    toast.success(`Hello ${data.username}, Welcome our family. Your verification email has been sent to ${data.email}`);
+                    toast.success(`Hello ${data.username}, Welcome to our family. Your verification email has been sent to ${data.email}`);
                 }
             } catch (e) {
                 toast.error(e.message);
@@ -76,13 +85,86 @@ const AuthHooks = () => {
                 navigate({pathname: `/user/${user.displayName}`});
                 toast.success("Welcome back");
             }
-            return user
+            return user;
         } catch (e) {
             toast.error(e.message);
         }
     }
 
-    return {logOutAction, signUpAction, loginAction, dataHandler, data, gender, setGender}
+    const handleSaveProfile = async () => {
+        if (!profilePicture) {
+            toast.error("Please select a profile picture to upload.");
+            return;
+        }
+
+        const storage = getStorage();
+        const storageRef = ref(storage, `profile_pictures/${user.id}/${profilePicture.name}`);
+
+        try {
+            // Resmi Firebase Storage'a yükle
+            const snapshot = await uploadBytes(storageRef, profilePicture);
+
+            // Yüklenen resmin URL'sini al
+            const downloadURL = await getDownloadURL(snapshot.ref);
+
+            // Firestore'daki kullanıcı dökümanını güncelle
+            await updateDoc(doc(db, 'users', user.id), {profile_picture: downloadURL});
+
+            // Yerel state'i güncelle
+            setProfilePicture(downloadURL);
+
+            toast.success("Profile picture updated!");
+        } catch (error) {
+            toast.error("Error uploading image: " + error.message);
+        }
+    };
+
+
+    const updateData = async (e, data) => {
+        e.preventDefault();
+        try {
+            await updateDoc(doc(db, 'users', user.id), {
+                firstname: data.firstname || user.firstname,
+                lastname: data.lastname || user.lastname,
+                birthday: data.birthday || user.birthday,
+                gender: gender === 'Gender' ? user.gender : gender,
+            });
+
+            if (data.email) {
+                await updateEmail(auth.currentUser, data.email);
+                await sendEmailVerification(auth.currentUser);
+                await updateDoc(doc(db, 'users', user.id), {email: data.email});
+                toast.success(`Verification email was sent to ${data.email} address`);
+            }
+
+            if (profilePicture) {
+                await handleSaveProfile();
+            }
+
+            if (data.username) {
+                await updateProfile(auth.currentUser, {
+                    displayName: data.username
+                });
+                await updateDoc(doc(db, 'users', user.id), {username: data.username});
+            }
+
+        } catch (error) {
+            toast.error(error.message);
+        }
+    };
+    return {
+        dataHandler,
+        logOutAction,
+        signUpAction,
+        loginAction,
+        updateData,
+        data,
+        gender,
+        setGender,
+        profilePicture,
+        setProfilePicture,
+        handleImageChange
+    }
 }
 
 export default AuthHooks;

@@ -7,6 +7,7 @@ import {
     signOut,
     sendEmailVerification
 } from "firebase/auth";
+import toast from "react-hot-toast";
 
 const firebaseConfig = {
     apiKey: "AIzaSyB9qfDYlUV8YR8xjPAkeb80rScpYI5zAPw",
@@ -36,4 +37,9 @@ const logout = async () => {
     return true
 };
 
-export {signUp, login, logout, auth, app, db};
+const verifyEmail = async () => {
+    await sendEmailVerification(auth.currentUser);
+    toast.success(`Verification email has been sent to ${auth.currentUser.email}`);
+}
+
+export {signUp, login, logout, verifyEmail, auth, app, db};
