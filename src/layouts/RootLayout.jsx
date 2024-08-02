@@ -1,15 +1,33 @@
-import {Outlet} from "react-router-dom";
+import {useContext, useEffect, useState} from "react";
+import {Outlet, useLocation} from "react-router-dom";
 import Navbar from "/src/layouts/Navbar";
 import Footer from "/src/layouts/Footer";
 import SubscriptionComponent from "/src/components/SubscriptionComponent";
-import ScrollToTop from "/src/components/ScrollToTop.jsx";
+import LoadingAnimation from "/src/components/LoadingAnimation";
+import ScrollToTop from "/src/components/ScrollToTop";
+import {MoviesContext, SeriesContext} from "/src/context/Context";
 
 const RootLayout = () => {
+    const location = useLocation();
+    const {movies} = useContext(MoviesContext);
+    const {series} = useContext(SeriesContext);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        if (movies.length > 0 && series.length > 0) {
+            setLoading(false);
+        } else {
+            setLoading(false);
+        }
+    }, [location]);
     return (
         <>
             <Navbar/>
             <main>
-                <Outlet/>
+                {loading ? (
+                        <LoadingAnimation/>
+                    ) :
+                    <Outlet/>
+                }
             </main>
             <SubscriptionComponent/>
             <ScrollToTop/>

@@ -8,7 +8,6 @@ import {MovieComponent} from "/src/components/MovieCards";
 const TrendMovie = () => {
     const {popularMovies} = useContext(MoviesContext);
     return (
-        popularMovies &&
         <>
             <section className="py-5">
                 <div className="container relative">

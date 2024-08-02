@@ -7,6 +7,7 @@ import {Like, Speaker, SpeakerMute} from "react-huge-icons/outline";
 import {Plus, TrackPlay} from "react-huge-icons/solid";
 // Context
 import {FavoriteContext, AuthContext} from "/src/context/Context";
+import {toast} from "react-toastify";
 
 export const BannerComponent = ({id, item, type}) => {
     const imgSize = 'original';
@@ -28,6 +29,7 @@ export const BannerComponent = ({id, item, type}) => {
                 type: type === "movies" ? "TOGGLE_FAVOURITE_MOVIE" : "TOGGLE_FAVOURITE_SERIE",
                 payload: {id}
             });
+            toast.success(`Removed ${item.title || item.name} from your favorites ${type}`);
         } else {
             await setDoc(docRef, {
                 ...item,
@@ -43,6 +45,7 @@ export const BannerComponent = ({id, item, type}) => {
                     type: type
                 }
             });
+            toast.success(`Added ${item.title || item.name} to your favorite ${type}`);
         }
     };
 

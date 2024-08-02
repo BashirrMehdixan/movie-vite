@@ -1,5 +1,5 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import {Toaster} from "react-hot-toast";
+import {ToastContainer} from "react-toastify";
 import AOS from "aos";
 // import 'aos/dist/aos.css';
 
@@ -7,6 +7,7 @@ import AOS from "aos";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import "swiper/css/pagination";
+import 'react-toastify/dist/ReactToastify.css';
 
 import {RootLayout, RegisterLayout, AuthLayout} from "/src/layouts/Layouts";
 import {HomeIndex, MoviesIndex, SeriesIndex, SupportIndex, SubscriptionsIndex, NotFound} from "/src/pages/Pages";
@@ -19,7 +20,7 @@ import {
     Playlist,
     Watchlist,
     Videos
-} from "/src/pages/auth/ProfilePages"
+} from "/src/pages/auth/ProfilePages";
 
 // Detail Pages
 import MovieDetail from "/src/pages/movies/MovieDetail";
@@ -112,9 +113,9 @@ function App() {
     return (
         <>
             <RouterProvider router={router}/>
-            <Toaster
+            <ToastContainer
+                theme="dark"
                 position="top-right"
-                reverseOrder={false}
             />
         </>
     )

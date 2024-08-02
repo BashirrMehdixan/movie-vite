@@ -8,7 +8,6 @@ import {BannerComponent} from "/src/components/BannerComponent";
 const SeriesBanner = () => {
     const {series} = useContext(SeriesContext);
     return (
-        series &&
         <>
             <div className={"h-screen"}>
                 <Swiper

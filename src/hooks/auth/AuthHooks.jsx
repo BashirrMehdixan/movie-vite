@@ -7,7 +7,7 @@ import {
     updateProfile,
 } from "firebase/auth";
 import {getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage";
-import toast from "react-hot-toast";
+import {toast} from "react-toastify";
 import {db, login, logout, signUp, auth} from "/src/store/firebase";
 import {AuthContext} from "/src/context/auth/AuthContext";
 

@@ -10,7 +10,6 @@ import {BannerComponent} from "/src/components/BannerComponent.jsx";
 const HomeBanner = () => {
     const {movies} = useContext(MoviesContext);
     return (
-        movies &&
         <>
             <section className={'home-banner'}>
                 <div className="h-screen">

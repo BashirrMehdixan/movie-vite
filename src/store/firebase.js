@@ -7,7 +7,7 @@ import {
     signOut,
     sendEmailVerification
 } from "firebase/auth";
-import toast from "react-hot-toast";
+import {toast} from "react-toastify";
 
 const firebaseConfig = {
     apiKey: "AIzaSyB9qfDYlUV8YR8xjPAkeb80rScpYI5zAPw",
