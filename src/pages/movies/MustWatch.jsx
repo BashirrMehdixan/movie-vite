@@ -4,7 +4,7 @@ import {Navigation, Pagination} from "swiper/modules";
 
 import SectionTitle from "/src/components/SectionTitle";
 import {MustWatchCard} from "/src/components/MovieCards";
-import {MoviesContext} from "/src/context/movies/MoviesContext";
+import {MoviesContext} from "/src/context/Context";
 
 // import
 const MustWatch = () => {
@@ -50,7 +50,7 @@ const MustWatch = () => {
                             {topRated.map((movie, index) => {
                                 return (
                                     <SwiperSlide key={index}>
-                                        <MustWatchCard {...movie} src={"movies"} />
+                                        <MustWatchCard id={movie.id} item={movie} type={"movies"} />
                                     </SwiperSlide>
                                 )
                             })}

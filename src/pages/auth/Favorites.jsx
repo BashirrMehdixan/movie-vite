@@ -1,38 +1,21 @@
 import {useContext} from "react";
-import {FavoriteContext, MoviesContext, SeriesContext} from "/src/context/Context";
-import SectionTitle from "../../components/SectionTitle.jsx";
-import {MovieComponent} from "../../components/MovieCards.jsx";
+import {FavoriteContext} from "/src/context/Context";
+import SectionTitle from "/src/components/SectionTitle";
+import {MovieComponent} from "/src/components/MovieCards";
+import FavoriteComponent from "../../components/FavoriteComponent.jsx";
 
 const Favorites = () => {
-    const {movies} = useContext(MoviesContext);
-    const {series} = useContext(SeriesContext);
+    const {favoriteMovies, favoriteSeries} = useContext(FavoriteContext);
+    console.log(favoriteMovies);
     return (
         <>
             <section className={"pb-11"}>
                 <div className={"container"}>
                     <div className={"pt-11"}>
-                        <SectionTitle heading={"Favorites movies"}/>
-                        {/*<div className={"flex items-center flex-wrap gap-5 my-5"}>*/}
-                        {/*    {favMovies.map((movie, index) => {*/}
-                        {/*        return (*/}
-                        {/*            <div className={`w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1rem)]`} key={index}>*/}
-                        {/*                <MovieComponent {...movie} />*/}
-                        {/*            </div>*/}
-                        {/*        )*/}
-                        {/*    })}*/}
-                        {/*</div>*/}
+                        <FavoriteComponent title={"Favorites movies"} emptyMessage={"There's no favorite movies"} favorites={favoriteMovies}/>
                     </div>
                     <div className={"pt-11"}>
-                        <SectionTitle heading={"Favorites series"}/>
-                        {/*<div className={"flex items-center flex-wrap gap-5 my-5"}>*/}
-                        {/*    {favSeries.map((series, index) => {*/}
-                        {/*        return (*/}
-                        {/*            <div className={`w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1rem)]`} key={index}>*/}
-                        {/*                <MovieComponent {...series} />*/}
-                        {/*            </div>*/}
-                        {/*        )*/}
-                        {/*    })}*/}
-                        {/*</div>*/}
+                        <FavoriteComponent title={"Favorites Series"} emptyMessage={"There's no favorite series"} favorites={favoriteSeries}/>
                     </div>
                 </div>
             </section>

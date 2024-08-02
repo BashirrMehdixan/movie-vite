@@ -5,7 +5,7 @@ import {useParams} from "react-router-dom";
 import {PlusThin} from "react-huge-icons/outline";
 
 // Context
-import {MoviesContext} from "/src/context/movies/MoviesContext";
+import {MoviesContext} from "/src/context/Context";
 // Components
 import {BannerComponent} from "/src/components/BannerComponent";
 import CastComponent from "/src/components/CastComponent";
@@ -19,7 +19,7 @@ const MovieDetail = () => {
     return (movie && <>
         <section>
             <div className="h-screen">
-                <BannerComponent {...movie} type={"movies"}/>
+                <BannerComponent id={movie.id} item={movie} type={"movies"}/>
             </div>
         </section>
         <div className="my-5">
@@ -62,7 +62,7 @@ const MovieDetail = () => {
                         </div>
                     </div>
                     <div className="w-full lg:w-[calc(30%-8px)]">
-                        <DetailComponent item={movie} itemGenres={movieGenres} />
+                        <DetailComponent id={movie.id} item={movie} itemGenres={movieGenres}/>
                     </div>
                 </div>
             </div>

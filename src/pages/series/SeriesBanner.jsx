@@ -14,7 +14,7 @@ const SeriesBanner = () => {
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay]}
                     autoplay={{
-                        delay: 4000,
+                        delay: 6000,
                         disableOnInteraction: false
                     }}
                     className={"h-full series-banner"}
@@ -23,7 +23,7 @@ const SeriesBanner = () => {
                         return (
                             index < 6 &&
                             <SwiperSlide key={index}>
-                                <BannerComponent {...serie} type={series}/>
+                                <BannerComponent id={serie.id} item={serie} type={"series"}/>
                             </SwiperSlide>
                         )
                     })}

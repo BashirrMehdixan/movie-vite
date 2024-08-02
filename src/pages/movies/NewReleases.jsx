@@ -50,14 +50,14 @@ const NewReleases = () => {
                             }
 
                             className="w-full h-full categorySwiper">
-                            {upComing.map((genre, index) => {
+                            {upComing.map((movie, index) => {
                                 return (
                                     <SwiperSlide
                                         className={'flex items-center justify-center'} key={index}
                                         data-aos={"fade-up"}
                                         data-aos-duration={"3000"}
                                     >
-                                        <NewReleasesCard {...genre} src={"movies"} />
+                                        <NewReleasesCard id={movie.id} item={movie} type={"movies"} />
                                     </SwiperSlide>
                                 )
                             })}

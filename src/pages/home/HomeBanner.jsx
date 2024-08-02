@@ -21,7 +21,7 @@ const HomeBanner = () => {
                         }}
                         modules={[Navigation, Autoplay]}
                         autoplay={{
-                            delay: 4000,
+                            delay: 6000,
                             disableOnInteraction: false
                         }}
                         loop={true}
@@ -30,7 +30,7 @@ const HomeBanner = () => {
                             return (
                                 index < 8 &&
                                 <SwiperSlide className={'flex items-center justify-center'} key={index}>
-                                    <BannerComponent {...newMovie} type={"movies"} />
+                                    <BannerComponent id={newMovie.id} item={newMovie} type={"movies"}/>
                                 </SwiperSlide>
                             )
                         })}

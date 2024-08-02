@@ -115,7 +115,7 @@ const Navbar = () => {
                                                 className={`absolute w-[max-content] -left-[20px] transition duration-500 origin-top rounded-lg text-white bg-[#262626] p-4 scale-y-0 group-hover:scale-y-100`}>
                                                 <li className={`text-lg transition ease-linear duration-500 hover:text-[#E50000] mb-3`}>
                                                     <NavLink
-                                                        to={`${location.pathname !== "/" ? user.username : `/user/${user.username}`}`}
+                                                        to={`/user/${user.username}`}
 
                                                     >
                                                         Dashboard

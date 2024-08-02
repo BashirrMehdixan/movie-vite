@@ -5,19 +5,19 @@ import StarRating from "/src/components/StarRating";
 import {ClockCircle, Eye} from "react-huge-icons/outline";
 import {ArrowRight} from "react-huge-icons/solid";
 
-export const CategoryComponent = ({name}) => {
+export const CategoryComponent = ({item}) => {
     return (
         <>
-            <Link to={`/movies#${name.toLocaleLowerCase()}`}
+            <Link to={`/movies#${item.name.toLocaleLowerCase()}`}
                   className={'block w-full transition-all duration-300 hover:scale-[.95]'}>
                 <div className={"bg-[#1A1A1A] w-full p-2 border border-[#333333] rounded-xl"}>
                     <div className="p-3 overflow-hidden">
                         <img
                             src={"/images/category-img/action.png"}
-                            className={'w-full'} alt={name}/>
+                            className={'w-full'} alt={item.name}/>
                     </div>
                     <div className="text-white flex items-center justify-between px-3 py-2">
-                        <h3 className={"text-xl"}>{name}</h3>
+                        <h3 className={"text-xl"}>{item.name}</h3>
                         <span>
                             <ArrowRight className={"text-3xl"}/>
                         </span>
@@ -28,31 +28,31 @@ export const CategoryComponent = ({name}) => {
     )
 }
 
-export const MovieComponent = ({src, id, title, poster_path, release_date, vote_average, first_air_date}) => {
+export const MovieComponent = ({id, item, type}) => {
     const imgSize = 'original'
     return (
         <>
-            <Link to={`/${src}/${id.toString()}`}
+            <Link to={`/${type}/${id.toString()}`}
                   className={'block w-full transition-all duration-300 hover:scale-[.95]'}>
                 <div className={"bg-[#1A1A1A] w-full p-2 border border-[#333333] rounded-xl"}>
                     <div className="p-1 h-[350px] overflow-hidden">
                         <img
-                            src={`https://image.tmdb.org/t/p/${imgSize}${poster_path}`}
-                            className={'w-full h-full rounded-xl'} alt={title}/>
+                            src={`https://image.tmdb.org/t/p/${imgSize}${item.poster_path}`}
+                            className={'w-full h-full rounded-xl'} alt={item.title || item.name}/>
                     </div>
                     <div className="flex items-center justify-between px-3 py-2 text-[#999999]">
                         <h3 className={"flex items-center bg-[#141414] border-2 border-[#262626] px-3 py-2 rounded-lg"}>
                             <span className={"mr-2 text-xl"}>
                                 <ClockCircle/>
                             </span>
-                            {release_date || first_air_date}
+                            {item.release_date || item.first_air_date}
                         </h3>
                         <div
                             className={"flex items-center bg-[#141414] border-2 border-[#262626] px-3 py-2 rounded-lg"}>
                             <span className={"mr-2"}>
                                 <Eye/>
                             </span>
-                            {vote_average}
+                            {item.vote_average}
                         </div>
                     </div>
                 </div>
@@ -61,30 +61,30 @@ export const MovieComponent = ({src, id, title, poster_path, release_date, vote_
     )
 }
 
-export const NewReleasesCard = ({id, title, poster_path, release_date}) => {
+export const NewReleasesCard = ({id, item, type}) => {
     const imgSize = 'original'
     return (
         <>
-            <Link to={`/movies/${id.toString()}`}
+            <Link to={`/${type}/${id.toString()}`}
                   className={'block w-full transition-all duration-300 hover:scale-[.95]'}>
                 <div className={"bg-[#1A1A1A] w-full p-2 border border-[#333333] rounded-xl"}>
                     <div className="p-1 h-[350px] overflow-hidden">
                         <img
-                            src={`https://image.tmdb.org/t/p/${imgSize}${poster_path}`}
-                            className={'w-full h-full rounded-xl'} alt={title}/>
+                            src={`https://image.tmdb.org/t/p/${imgSize}${item.poster_path}`}
+                            className={'w-full h-full rounded-xl'} alt={item.title || item.name}/>
                     </div>
                     {/*<div className="px-3 py-2 ">*/}
                     <h3 className={"bg-[#141414] text-center text-[#999999] border-2 border-[#262626] px-3 py-2 rounded-2xl mt-4"}>
-                        Released at <span className={"ml-1 text-white"}>{release_date}</span>
+                        Released at <span
+                        className={"ml-1 text-white"}>{item.release_date || item.first_air_date}</span>
                     </h3>
-                    {/*</div>*/}
                 </div>
             </Link>
         </>
     )
 }
 
-export const MustWatchCard = ({id, title, poster_path, release_date, vote_average}) => {
+export const MustWatchCard = ({id, item, type}) => {
     const imgSize = 'original'
     return (
         <>
@@ -93,19 +93,19 @@ export const MustWatchCard = ({id, title, poster_path, release_date, vote_averag
                 <div className={"bg-[#1A1A1A] w-full p-2 border border-[#333333] rounded-xl"}>
                     <div className="p-1 h-[350px] overflow-hidden">
                         <img
-                            src={`https://image.tmdb.org/t/p/${imgSize}${poster_path}`}
-                            className={'w-full h-full rounded-xl'} alt={title}/>
+                            src={`https://image.tmdb.org/t/p/${imgSize}${item.poster_path || item.backdrop_path}`}
+                            className={'w-full h-full rounded-xl'} alt={item.title || item.name}/>
                     </div>
                     <div className="flex flex-wrap items-center justify-between px-3 py-2 text-[#999999]">
                         <h3 className={"flex items-center bg-[#141414] border-2 border-[#262626] px-3 py-2 rounded-lg mb-2"}>
                             <span className={"mr-2 text-xl"}>
                                 <ClockCircle/>
                             </span>
-                            {release_date}
+                            {item.release_date || item.first_air_date}
                         </h3>
                         <div
                             className={"flex items-center bg-[#141414] border-2 border-[#262626] px-3 py-2 rounded-lg"}>
-                            <StarRating rating={vote_average}/>
+                            <StarRating rating={item.vote_average}/>
                         </div>
                     </div>
                 </div>

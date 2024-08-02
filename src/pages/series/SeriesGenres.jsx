@@ -60,7 +60,7 @@ const SeriesGenres = () => {
                                             data-aos={"fade-up"}
                                             data-aos-duration={"3000"}
                                         >
-                                            <CategoryComponent {...genre} />
+                                            <CategoryComponent item={genre} />
                                         </SwiperSlide>
                                     )
                                 })}

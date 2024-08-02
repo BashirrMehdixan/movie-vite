@@ -5,7 +5,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
 
 // Components
-import {MoviesContext} from "/src/context/movies/MoviesContext";
+import {MoviesContext} from "/src/context/Context";
 import {CategoryComponent} from "/src/components/MovieCards";
 import SectionTitle from "/src/components/SectionTitle";
 
@@ -57,7 +57,7 @@ const PopularGenres = () => {
                                         data-aos={"fade-up"}
                                         data-aos-duration={"3000"}
                                     >
-                                        <CategoryComponent {...genre} />
+                                        <CategoryComponent item={genre} />
                                     </SwiperSlide>
                                 )
                             })}

@@ -1,8 +1,8 @@
 import {useContext} from "react";
-import SectionTitle from "/src/components/SectionTitle";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
-import {MoviesContext} from "/src/context/movies/MoviesContext";
+import SectionTitle from "/src/components/SectionTitle";
+import {MoviesContext} from "/src/context/Context";
 import {CategoryComponent} from "/src/components/MovieCards";
 
 const MovieGenres = () => {
@@ -56,7 +56,7 @@ const MovieGenres = () => {
                                             data-aos={"fade-up"}
                                             data-aos-duration={"3000"}
                                         >
-                                            <CategoryComponent {...genre} />
+                                            <CategoryComponent item={genre} />
                                         </SwiperSlide>
                                     )
                                 })}

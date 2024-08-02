@@ -27,7 +27,7 @@ const SeriesDetail = () => {
         serie &&
         <>
             <section className="h-screen">
-                <BannerComponent {...serie} />
+                <BannerComponent id={serie.id} item={serie} type={"series"} />
             </section>
             <section className="py-3">
                 <div className="container">
@@ -57,7 +57,7 @@ const SeriesDetail = () => {
                             </div>
                         </div>
                         <div className={"w-full lg:w-[calc(30%-.5rem)]"}>
-                            <DetailComponent item={serie} itemGenres={seriesGenres}/>
+                            <DetailComponent id={serie.id} item={serie} itemGenres={seriesGenres}/>
                         </div>
                     </div>
                 </div>

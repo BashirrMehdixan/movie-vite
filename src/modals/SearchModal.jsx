@@ -74,7 +74,7 @@ const SearchModal = ({activeModal, closeAction}) => {
                             searchMovies.length > 0 ?
                                 searchMovies.map((searchMovie, index) => (
                                     <div className="w-full md:w-[calc(25%-1rem)] m-2" key={index}>
-                                        <MovieComponent {...searchMovie} src={searchMovie.type}/>
+                                        <MovieComponent id={searchMovie.id} item={searchMovie} src={searchMovie.type}/>
                                     </div>
                                 )) : <div
                                     className="w-full h-[calc(100vh-130px)] flex items-center justify-center text-4xl text-white m-2">

@@ -1,7 +1,7 @@
 import {useContext} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
-import {MoviesContext} from "/src/context/movies/MoviesContext";
+import {MoviesContext} from "/src/context/Context";
 import SectionTitle from "/src/components/SectionTitle";
 import {MovieComponent} from "/src/components/MovieCards";
 
@@ -53,7 +53,7 @@ const TrendMovie = () => {
                                         data-aos={"fade-up"}
                                         data-aos-duration={"3000"}
                                     >
-                                        <MovieComponent {...movie} src={"movies"} />
+                                        <MovieComponent id={movie.id} item={movie} type={"movies"}/>
                                     </SwiperSlide>
                                 )
                             })}
