@@ -3,7 +3,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
 
 import SectionTitle from "/src/components/SectionTitle";
-import {MustWatchCard} from "/src/components/MovieCards";
+import {MustWatchCard} from "/src/components/cards/MovieCards";
 import {MoviesContext} from "/src/context/Context";
 
 // import

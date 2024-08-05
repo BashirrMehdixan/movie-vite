@@ -6,7 +6,7 @@ import {Navigation, Pagination} from "swiper/modules";
 
 // Custom Components
 import {MoviesContext} from "/src/context/movies/MoviesContext";
-import {NewReleasesCard} from "/src/components/MovieCards";
+import {NewReleasesCard} from "/src/components/cards/MovieCards";
 import SectionTitle from "/src/components/SectionTitle";
 
 const NewReleases = () => {

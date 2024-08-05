@@ -7,9 +7,9 @@ import {PlusThin} from "react-huge-icons/outline";
 // Context
 import {MoviesContext} from "/src/context/Context";
 // Components
-import {BannerComponent} from "/src/components/BannerComponent";
-import CastComponent from "/src/components/CastComponent";
-import ReviewComponent from "/src/components/ReviewComponent";
+import {BannerComponent} from "/src/components/cards/BannerComponent";
+import CastComponent from "/src/components/cards/CastComponent";
+import ReviewComponent from "/src/components/cards/ReviewComponent";
 import DetailComponent from "/src/components/DetailComponent";
 
 const MovieDetail = () => {

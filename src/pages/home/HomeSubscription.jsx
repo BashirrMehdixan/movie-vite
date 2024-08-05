@@ -1,7 +1,7 @@
 import {useState} from "react";
 import SectionTitle from "/src/components/SectionTitle";
 import TabComponent from "/src/components/TabComponent";
-import PriceComponents from "/src/components/PriceComponents.jsx";
+import PriceComponents from "/src/components/cards/PriceComponents.jsx";
 
 const HomeSubscription = () => {
     const [plan, setPlan] = useState("monthly");

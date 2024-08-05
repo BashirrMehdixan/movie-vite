@@ -3,7 +3,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Navigation, Pagination} from "swiper/modules";
 
 import {SeriesContext} from "/src/context/series/SeriesContext";
-import {BannerComponent} from "/src/components/BannerComponent";
+import {BannerComponent} from "/src/components/cards/BannerComponent";
 
 const SeriesBanner = () => {
     const {series} = useContext(SeriesContext);

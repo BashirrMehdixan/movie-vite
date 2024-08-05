@@ -1,5 +1,5 @@
-import Navbar from "/src/layouts/Navbar";
-import Footer from "/src/layouts/Footer";
+import Navbar from "/src/components/Navbar";
+import Footer from "/src/components/Footer";
 import AuthIndex from "/src/pages/auth/AuthIndex";
 
 const AuthLayout = () => {
