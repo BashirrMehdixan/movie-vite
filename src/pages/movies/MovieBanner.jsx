@@ -4,7 +4,7 @@ import {Autoplay, Navigation, Pagination} from "swiper/modules";
 import {MoviesContext} from "/src/context/movies/MoviesContext";
 import {useContext} from "react";
 
-import {BannerComponent} from "/src/components/BannerComponent";
+import {BannerComponent} from "/src/components/cards/BannerComponent";
 
 const MovieBanner = () => {
     const {movies} = useContext(MoviesContext);

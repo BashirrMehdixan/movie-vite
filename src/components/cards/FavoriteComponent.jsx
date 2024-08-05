@@ -1,4 +1,4 @@
-import SectionTitle from "./SectionTitle.jsx";
+import SectionTitle from "../SectionTitle.jsx";
 import {MovieComponent} from "./MovieCards.jsx";
 import {Swiper, SwiperSlide} from "swiper/react";
 
@@ -23,7 +23,7 @@ const FavoriteComponent = ({title, favorites, emptyMessage}) => {
                             }
                         }
                         }
-                        className="py-5 md:px-8"
+                        className="py-5 md:pr-10"
                     >
                         {favorites.map((favorite, index) => {
                             return (

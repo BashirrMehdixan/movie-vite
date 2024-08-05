@@ -1,8 +1,8 @@
 import {useContext} from "react";
 import {FavoriteContext} from "/src/context/Context";
 import SectionTitle from "/src/components/SectionTitle";
-import {MovieComponent} from "/src/components/MovieCards";
-import FavoriteComponent from "../../components/FavoriteComponent.jsx";
+import {MovieComponent} from "/src/components/cards/MovieCards";
+import FavoriteComponent from "../../components/cards/FavoriteComponent.jsx";
 
 const Favorites = () => {
     const {favoriteMovies, favoriteSeries} = useContext(FavoriteContext);

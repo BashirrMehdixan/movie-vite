@@ -4,7 +4,7 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import {Autoplay, Navigation} from 'swiper/modules';
 
 import {MoviesContext} from "/src/context/movies/MoviesContext";
-import {BannerComponent} from "/src/components/BannerComponent.jsx";
+import {BannerComponent} from "/src/components/cards/BannerComponent.jsx";
 
 
 const HomeBanner = () => {

@@ -1,6 +1,6 @@
 import {useEffect, useContext, useState} from "react";
 import {MoviesContext} from "/src/context/movies/MoviesContext";
-import {MovieComponent} from "/src/components/MovieCards";
+import {MovieComponent} from "/src/components/cards/MovieCards";
 import {SeriesContext} from "/src/context/series/SeriesContext";
 
 const SearchModal = ({activeModal, closeAction}) => {

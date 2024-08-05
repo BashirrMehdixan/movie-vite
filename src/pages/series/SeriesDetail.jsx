@@ -2,11 +2,11 @@ import {useContext, useEffect} from "react";
 import {useParams} from "react-router-dom";
 import {SeriesContext} from "/src/context/series/SeriesContext";
 import {SeasonsContext} from "/src/context/series/SeasonsContext";
-import {BannerComponent} from "/src/components/BannerComponent";
-import EpisodeComponent from "/src/components/EpisodeComponent";
+import {BannerComponent} from "/src/components/cards/BannerComponent";
+import EpisodeComponent from "/src/components/cards/EpisodeComponent";
 import DetailComponent from "/src/components/DetailComponent";
-import ReviewComponent from "../../components/ReviewComponent.jsx";
-import CastComponent from "../../components/CastComponent.jsx";
+import ReviewComponent from "../../components/cards/ReviewComponent.jsx";
+import CastComponent from "../../components/cards/CastComponent.jsx";
 
 const SeriesDetail = () => {
     const {id} = useParams();

@@ -1,7 +1,7 @@
 import {useContext, useEffect} from "react";
 import {Navigation, Pagination} from "swiper/modules";
 import {Swiper, SwiperSlide} from "swiper/react";
-import CastCards from "/src/components/CastCards";
+import CastCards from "/src/components/cards/CastCards";
 import {CastContext} from "/src/context/cast/CastContext";
 
 const CastComponent = ({id, type}) => {

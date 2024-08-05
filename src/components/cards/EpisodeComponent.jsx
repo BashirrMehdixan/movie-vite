@@ -1,4 +1,4 @@
-import SeriesAccordion from "./SeriesAccordion.jsx";
+import SeriesAccordion from "../SeriesAccordion.jsx";
 
 const EpisodeComponent = ({id, seasons}) => {
     return (

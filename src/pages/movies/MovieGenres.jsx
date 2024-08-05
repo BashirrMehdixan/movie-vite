@@ -3,7 +3,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
 import SectionTitle from "/src/components/SectionTitle";
 import {MoviesContext} from "/src/context/Context";
-import {CategoryComponent} from "/src/components/MovieCards";
+import {CategoryComponent} from "/src/components/cards/MovieCards";
 
 const MovieGenres = () => {
     const {movieGenres} = useContext(MoviesContext);

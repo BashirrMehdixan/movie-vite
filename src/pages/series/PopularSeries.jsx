@@ -8,7 +8,7 @@ import {Navigation, Pagination} from "swiper/modules";
 import {SeriesContext} from "/src/context/Context";
 // Components
 import SectionTitle from "/src/components/SectionTitle";
-import {MovieComponent} from "/src/components/MovieCards";
+import {MovieComponent} from "/src/components/cards/MovieCards";
 
 const PopularSeries = () => {
     const {popularSeries} = useContext(SeriesContext);

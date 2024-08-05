@@ -2,7 +2,7 @@ import {useContext, useEffect} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
 import {ReviewContext} from "/src/context/reviews/ReviewContext";
-import ReviewCard from "/src/components/ReviewCard";
+import ReviewCard from "/src/components/cards/ReviewCard";
 
 const ReviewComponent = ({id, type}) => {
     const {moviesReview, fetchMovieReview, seriesReview, fetchSeriesReview} = useContext(ReviewContext);

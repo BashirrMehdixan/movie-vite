@@ -6,7 +6,7 @@ import {Navigation, Pagination} from "swiper/modules";
 
 // Components
 import {MoviesContext} from "/src/context/Context";
-import {CategoryComponent} from "/src/components/MovieCards";
+import {CategoryComponent} from "/src/components/cards/MovieCards";
 import SectionTitle from "/src/components/SectionTitle";
 
 const PopularGenres = () => {
