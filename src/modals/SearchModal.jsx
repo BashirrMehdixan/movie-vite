@@ -47,7 +47,7 @@ const SearchModal = ({activeModal, closeAction}) => {
 
     return (
         <div
-            className={`fixed w-full h-full bg-[#1A1A1A] origin-top transition-all duration-300 top-0 left-0 z-50 ${activeModal ? "scale-y-100" : "scale-y-0"}`}
+            className={`fixed w-full h-full bg-[#1A1A1A] origin-bottom custom-lg:origin-top transition-all duration-300 top-0 left-0 z-50 ${activeModal ? "scale-y-100" : "scale-y-0"}`}
         >
             <div className="flex items-center justify-end pt-5 pr-2">
                 <button className="border border-white text-white rounded-full px-5 py-3" onClick={() => closeAction()}>
