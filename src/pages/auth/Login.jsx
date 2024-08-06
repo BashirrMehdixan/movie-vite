@@ -4,7 +4,7 @@ const Login = () => {
     const {loginAction, dataHandler, data} = AuthHooks();
     return (
         <>
-            <div className={"relative h-screen bg-[url(/public/images/login-bg.jpg)] bg-cover bg-center"}>
+            <div className={"relative h-screen bg-[url(/images/login-bg.jpg)] bg-cover bg-center"}>
                 <div className="absolute w-full h-full bg-[#0F0F0F] bg-opacity-65 z-10"></div>
                 <div className="container h-full">
                     <form onSubmit={(e) => loginAction(e, data)}
