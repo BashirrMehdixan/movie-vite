@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import {getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {toast} from "react-toastify";
-import {db, login, logout, signUp, auth} from "/src/store/firebase";
+import {db, login, logout, signUp, auth} from "/src/app/firebase";
 import {AuthContext} from "/src/context/auth/AuthContext";
 
 const AuthHooks = () => {

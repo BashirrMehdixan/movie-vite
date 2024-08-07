@@ -1,7 +1,7 @@
 import {useContext} from "react";
 import {deleteDoc, doc, getDoc, setDoc} from "firebase/firestore";
 import {toast} from "react-toastify";
-import {db, auth} from "/src/store/firebase";
+import {db, auth} from "/src/app/firebase";
 import {FavoriteContext} from "/src/context/favorite/FavoriteContext";
 
 const Actions = () => {

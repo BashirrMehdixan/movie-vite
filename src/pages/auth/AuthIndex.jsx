@@ -1,7 +1,7 @@
 import {useContext} from "react";
 import {Link, Outlet} from "react-router-dom";
 import {AuthContext} from "/src/context/auth/AuthContext";
-import {auth, verifyEmail} from "/src/store/firebase";
+import {auth, verifyEmail} from "/src/app/firebase";
 
 const AuthIndex = () => {
     const {user} = useContext(AuthContext);

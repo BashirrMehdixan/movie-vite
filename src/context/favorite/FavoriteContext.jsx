@@ -2,7 +2,7 @@ import {createContext, useContext, useEffect, useReducer} from "react";
 import {collection, onSnapshot} from "firebase/firestore";
 import FavoriteReducer from "/src/context/favorite/FavoriteReducer";
 import {AuthContext} from "/src/context/Context";
-import {db, auth} from "/src/store/firebase";
+import {db, auth} from "/src/app/firebase";
 
 const initialState = {
     favoriteMovies: [],
