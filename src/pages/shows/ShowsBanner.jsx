@@ -2,11 +2,11 @@ import {useContext} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Navigation, Pagination} from "swiper/modules";
 
-import {SeriesContext} from "/src/context/series/SeriesContext";
+import {ShowsContext} from "/src/context/shows/ShowsContext";
 import {BannerComponent} from "/src/components/cards/BannerComponent";
 
-const SeriesBanner = () => {
-    const {series} = useContext(SeriesContext);
+const ShowsBanner = () => {
+    const {shows} = useContext(ShowsContext);
     return (
         <>
             <div className={"h-screen"}>
@@ -16,13 +16,13 @@ const SeriesBanner = () => {
                         delay: 6000,
                         disableOnInteraction: false
                     }}
-                    className={"h-full series-banner"}
+                    className={"h-full shows-banner"}
                 >
-                    {series.map((serie, index) => {
+                    {shows.map((show, index) => {
                         return (
                             index < 6 &&
                             <SwiperSlide key={index}>
-                                <BannerComponent id={serie.id} item={serie} type={"series"}/>
+                                <BannerComponent id={show.id} item={show} type={"shows"}/>
                             </SwiperSlide>
                         )
                     })}
@@ -31,4 +31,4 @@ const SeriesBanner = () => {
         </>
     )
 }
-export default SeriesBanner;
+export default ShowsBanner;

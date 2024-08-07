@@ -1,11 +1,10 @@
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 // Swiper
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Autoplay, Navigation} from 'swiper/modules';
 
 import {MoviesContext} from "/src/context/movies/MoviesContext";
-import {BannerComponent} from "/src/components/cards/BannerComponent.jsx";
-
+import {BannerComponent} from "/src/components/cards/BannerComponent";
 
 const HomeBanner = () => {
     const {movies} = useContext(MoviesContext);
@@ -25,11 +24,11 @@ const HomeBanner = () => {
                         }}
                         loop={true}
                         className="w-full h-full homeBannerSwiper">
-                        {movies.map((newMovie, index) => {
+                        {movies?.map((movie, index) => {
                             return (
                                 index < 8 &&
                                 <SwiperSlide className={'flex items-center justify-center'} key={index}>
-                                    <BannerComponent id={newMovie.id} item={newMovie} type={"movies"}/>
+                                    <BannerComponent id={movie.id} item={movie} type={"movies"}/>
                                 </SwiperSlide>
                             )
                         })}

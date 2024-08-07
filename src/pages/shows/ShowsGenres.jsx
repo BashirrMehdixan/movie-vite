@@ -5,15 +5,15 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
 
 // Context
-import {SeriesContext} from "/src/context/series/SeriesContext";
+import {ShowsContext} from "/src/context/shows/ShowsContext";
 // Components
 import SectionTitle from "/src/components/SectionTitle";
 import {CategoryComponent} from "/src/components/cards/MovieCards";
 
-const SeriesGenres = () => {
-    const {seriesGenres} = useContext(SeriesContext);
+const ShowsGenres = () => {
+    const {showGenres} = useContext(ShowsContext);
     return (
-        seriesGenres &&
+        showGenres &&
         <>
             <section className="mt-20 mb-10">
                 <div className="container">
@@ -53,7 +53,7 @@ const SeriesGenres = () => {
                                 }
 
                                 className="w-full h-full categorySwiper">
-                                {seriesGenres.map((genre, index) => {
+                                {showGenres.map((genre, index) => {
                                     return (
                                         <SwiperSlide
                                             className={'flex items-center justify-center'} key={index}
@@ -84,4 +84,4 @@ const SeriesGenres = () => {
     )
 }
 
-export default SeriesGenres;
+export default ShowsGenres;

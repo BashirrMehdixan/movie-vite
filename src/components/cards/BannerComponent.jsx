@@ -1,53 +1,16 @@
-import {useContext, useState} from "react";
+import {useState} from "react";
 import {Link, useLocation} from "react-router-dom";
-import {setDoc, deleteDoc, getDoc, doc} from "firebase/firestore";
-import {auth, db} from "/src/store/firebase";
 // Icons
 import {Like, Speaker, SpeakerMute} from "react-huge-icons/outline";
 import {Plus, TrackPlay} from "react-huge-icons/solid";
 // Context
-import {FavoriteContext, AuthContext} from "/src/context/Context";
-import {toast} from "react-toastify";
+import {Actions} from "/src/hooks/Hooks";
 
 export const BannerComponent = ({id, item, type}) => {
     const imgSize = 'original';
-    const {dispatch} = useContext(FavoriteContext);
-    const {user} = useContext(AuthContext);
+    const {favAction} = Actions();
     const [mute, setMute] = useState(false);
-    const [favorite, setFavorite] = useState(false);
     const location = useLocation();
-
-    const handleLike = async () => {
-        if (!user) return;
-        const collectionName = type === ("movies") ? "favoriteMovies" : "favoriteSeries";
-        const docRef = doc(db, "users", user.id, collectionName, item.id.toString());
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-            setFavorite(false);
-            await deleteDoc(docRef);
-            dispatch({
-                type: type === "movies" ? "TOGGLE_FAVOURITE_MOVIE" : "TOGGLE_FAVOURITE_SERIE",
-                payload: {id}
-            });
-            toast.success(`Removed ${item.title || item.name} from your favorites ${type}`);
-        } else {
-            await setDoc(docRef, {
-                ...item,
-                isFavorite: true,
-                type: type
-            });
-            setFavorite(true)
-            dispatch({
-                type: type === "movies" ? "TOGGLE_FAVOURITE_MOVIE" : "TOGGLE_FAVOURITE_SERIE",
-                payload: {
-                    ...item,
-                    isFavorite: true,
-                    type: type
-                }
-            });
-            toast.success(`Added ${item.title || item.name} to your favorite ${type}`);
-        }
-    };
 
     return (
         <>
@@ -71,7 +34,7 @@ export const BannerComponent = ({id, item, type}) => {
                                 {item.overview}
                             </p>
                             <div className="flex flex-wrap items-center justify-center gap-4">
-                                <Link to={`/${type === "movies" ? "movies" : 'series'}/${item.id.toString()}`}
+                                <Link to={`/${type === "movies" ? "movies" : 'shows'}/${item.id.toString()}`}
                                       className={'inline-flex items-center justify-center bg-[#E50000] px-7 py-4 space-x-2 rounded-lg capitalize transition-all duration-500 hover:bg-opacity-60'}
                                       data-aos={"fade-up"} data-aos-duration={"3000"}>
                                 <span>
@@ -89,10 +52,10 @@ export const BannerComponent = ({id, item, type}) => {
                                             <Plus className={"transition duration-500 hover:text-[#E50000] text-3xl"}/>
                                         </button>
                                         <button
-                                            className="bg-[#0F0F0F] border-2 border-[#262626] px-5 py-4 rounded-xl text-white"
-                                            onClick={handleLike}>
+                                            className="bg-[#0F0F0F] border-2 border-[#262626] px-5 py-4 rounded-xl text-white hover:text-[#E50000]"
+                                            onClick={() => favAction(item, type)}>
                                             <Like
-                                                className={`text-3xl transition duration-300 hover:text-[#E50000] ${favorite ? "text-[#E50000]" : "text-white"}`}/>
+                                                className={`text-3xl transition duration-300`}/>
                                         </button>
                                         <button
                                             className="bg-[#0F0F0F] border-2 border-[#262626] p-5 rounded-xl text-white"

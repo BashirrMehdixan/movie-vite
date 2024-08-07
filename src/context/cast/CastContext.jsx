@@ -1,47 +1,34 @@
 import {useState, useEffect, createContext} from "react";
+import axios from "axios";
 
 export const CastContext = createContext({
-    movieCasts: [],
-    seriesCasts: [],
-    fetchMovieCast: (movieId) => {
+    casts: [],
+    getCasts: (type, id) => {
     },
-    fetchSeriesCast: (showId) => {
-    }
 });
 
 const CastsProvider = ({children}) => {
-    const [movieCasts, setMovieCasts] = useState([]);
-    const [seriesCasts, setSeriesCasts] = useState([]);
+    const [casts, setCasts] = useState([]);
 
-    const apiKey = '286a82355468525bb9e08f91eac5c6dc';
-    const apiUrl = 'https://api.themoviedb.org/3/'
-
-    const fetchMovieCast = async (movieId) => {
-
+    const apiUrl = import.meta.env.VITE_APP_BASE_API_URL;
+    const apiKey = import.meta.env.VITE_APP_API_KEY;
+    const getCasts = async (id, type) => {
         try {
-            fetch(`${apiUrl}movie/${movieId}/credits?api_key=${apiKey}&language=en-US`)
-                .then(response => response.json())
-                .then(data => setMovieCasts(data.cast));
+            if (type === "movie") {
+                const castsRes = await axios.get(`${apiUrl}movie/${id}/credits?api_key=${apiKey}&language=en-US`)
+                    .then(data => setCasts(data.data.cast))
+            } else {
+                const castsRes = await axios.get(`${apiUrl}tv/${id}/credits?api_key=${apiKey}&language=en-US`)
+                    .then(data => setCasts(data.data.cast));
+            }
         } catch (error) {
             console.error(error);
         }
-    };
-
-    const fetchSeriesCast = async (showId) => {
-        const apiKey = '286a82355468525bb9e08f91eac5c6dc';
-        const showUrl = `https://api.themoviedb.org/3/tv/${showId}/credits?api_key=${apiKey}&language=en-US`;
-
-        try {
-            fetch(`${apiUrl}tv/${showId}/credits?api_key=${apiKey}&language=en-US`)
-                .then(response => response.json())
-                .then(data => setSeriesCasts(data.cast));
-        } catch (error) {
-            console.error(error);
-        }
-    };
+        return casts;
+    }
 
     return (
-        <CastContext.Provider value={{movieCasts, seriesCasts, fetchMovieCast, fetchSeriesCast}}>
+        <CastContext.Provider value={{casts, getCasts}}>
             {children}
         </CastContext.Provider>
     );

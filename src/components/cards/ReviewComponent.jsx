@@ -5,23 +5,20 @@ import {ReviewContext} from "/src/context/reviews/ReviewContext";
 import ReviewCard from "/src/components/cards/ReviewCard";
 
 const ReviewComponent = ({id, type}) => {
-    const {moviesReview, fetchMovieReview, seriesReview, fetchSeriesReview} = useContext(ReviewContext);
+    const {reviews, getReviews} = useContext(ReviewContext);
 
     useEffect(() => {
         if (id) {
             if (type === "movie") {
-                fetchMovieReview(id);
+                getReviews(id, "movie");
             } else {
-                fetchSeriesReview(id);
+                getReviews(id, "show");
             }
         }
     }, []);
 
-    const moviesReviewExists = moviesReview && moviesReview.length > 0;
-    const seriesReviewExists = seriesReview && seriesReview.length > 0;
-
     return (
-        (moviesReviewExists || seriesReviewExists) ? (
+        reviews.length ? (
             <Swiper
                 slidesPerView={1}
                 modules={[Navigation, Pagination]}
@@ -38,12 +35,7 @@ const ReviewComponent = ({id, type}) => {
                 }}
                 className={"my-5"}
             >
-                {moviesReviewExists && moviesReview.map((review, index) => (
-                    <SwiperSlide key={index}>
-                        <ReviewCard {...review} />
-                    </SwiperSlide>
-                ))}
-                {seriesReviewExists && seriesReview.map((review, index) => (
+                {reviews.map((review, index) => (
                     <SwiperSlide key={index}>
                         <ReviewCard {...review} />
                     </SwiperSlide>
@@ -54,7 +46,7 @@ const ReviewComponent = ({id, type}) => {
                 No reviews yet
             </div>
         )
-    );
+    )
 }
 
 export default ReviewComponent;

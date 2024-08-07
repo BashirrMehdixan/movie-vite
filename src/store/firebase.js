@@ -10,12 +10,12 @@ import {
 import {toast} from "react-toastify";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyB9qfDYlUV8YR8xjPAkeb80rScpYI5zAPw",
-    authDomain: "movie-27dcf.firebaseapp.com",
-    projectId: "movie-27dcf",
-    storageBucket: "movie-27dcf.appspot.com",
-    messagingSenderId: "990071315004",
-    appId: "1:990071315004:web:5187920bf875bb717d0139"
+    apiKey: import.meta.env.VITE_APP_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_APP_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_APP_FIREBASE_APP_ID
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);

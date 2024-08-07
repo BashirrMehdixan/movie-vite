@@ -1,11 +1,9 @@
-import {useContext} from "react";
+import {memo,useContext} from "react";
 import {FavoriteContext} from "/src/context/Context";
-import SectionTitle from "/src/components/SectionTitle";
-import {MovieComponent} from "/src/components/cards/MovieCards";
-import FavoriteComponent from "../../components/cards/FavoriteComponent.jsx";
+import FavoriteComponent from "/src/components/cards/FavoriteComponent.jsx";
 
 const Favorites = () => {
-    const {favoriteMovies, favoriteSeries} = useContext(FavoriteContext);
+    const {favoriteMovies, favoriteShows} = useContext(FavoriteContext);
     return (
         <>
             <section className={"pb-11"}>
@@ -19,12 +17,12 @@ const Favorites = () => {
                     <div className={"pt-11"}>
                         <FavoriteComponent
                             title={"Favorites Series"}
-                            emptyMessage={"There's no favorite series"}
-                            favorites={favoriteSeries}/>
+                            emptyMessage={"There's no favorite shows"}
+                            favorites={favoriteShows}/>
                     </div>
                 </div>
             </section>
         </>
     )
 }
-export default Favorites;
+export default memo(Favorites);

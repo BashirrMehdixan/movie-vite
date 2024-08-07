@@ -5,20 +5,14 @@ import CastCards from "/src/components/cards/CastCards";
 import {CastContext} from "/src/context/cast/CastContext";
 
 const CastComponent = ({id, type}) => {
-    const {movieCasts, fetchMovieCast, fetchSeriesCast, seriesCasts} = useContext(CastContext);
+    const {casts, getCasts} = useContext(CastContext);
     useEffect(() => {
         if (id) {
-            if (type === "movie") {
-                fetchMovieCast(id);
-            } else {
-                fetchSeriesCast(id);
-            }
+            getCasts(id, type);
         }
     }, []);
-    const moviesCastsExists = movieCasts && movieCasts.length > 0;
-    const seriesCastsExists = seriesCasts && seriesCasts.length > 0;
     return (
-        (moviesCastsExists || seriesCastsExists) && (
+        casts.length && (
             <>
                 <Swiper
                     slidesPerView={2}
@@ -41,12 +35,7 @@ const CastComponent = ({id, type}) => {
                         el: '.swiper-pagination', clickable: true
                     }}
                 >
-                    {moviesCastsExists && movieCasts.map((cast, index) => {
-                        return (<SwiperSlide key={index}>
-                            <CastCards {...cast}/>
-                        </SwiperSlide>)
-                    })}
-                    {seriesCastsExists && seriesCasts.map((cast, index) => {
+                    {casts?.map((cast, index) => {
                         return (<SwiperSlide key={index}>
                             <CastCards {...cast}/>
                         </SwiperSlide>)

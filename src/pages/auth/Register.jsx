@@ -1,5 +1,5 @@
 import {useState} from "react";
-import AuthHooks from "/src/hooks/auth/AuthHooks";
+import {AuthHooks} from "/src/hooks/Hooks";
 
 const Register = () => {
     const {signUpAction, dataHandler, data, gender, setGender} = AuthHooks();

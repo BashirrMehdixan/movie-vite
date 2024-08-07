@@ -4,7 +4,7 @@ import {Modal} from 'react-responsive-modal';
 import {Edit} from "react-huge-icons/outline";
 // Context
 import {AuthContext} from "/src/context/auth/AuthContext";
-import AuthHooks from "/src/hooks/auth/AuthHooks";
+import {AuthHooks} from "/src/hooks/Hooks";
 
 const EditProfileModal = () => {
     const {user} = useContext(AuthContext);

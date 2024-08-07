@@ -85,28 +85,28 @@ const Footer = () => {
                                 <ul>
                                     <li className={"mb-3"}>
                                         <Link
-                                            to={"/series#genres"}
+                                            to={"/shows#genres"}
                                             className={"transition-all duration-300 text-lg font-normal opacity-45 hover:opacity-100"}>
                                             Genres
                                         </Link>
                                     </li>
                                     <li className={"mb-3"}>
                                         <Link
-                                            to={"/series#trending"}
+                                            to={"/shows#trending"}
                                             className={"transition-all duration-300 text-lg font-normal opacity-45 hover:opacity-100"}>
                                             Trending
                                         </Link>
                                     </li>
                                     <li className={"mb-3"}>
                                         <Link
-                                            to={"/series#newReleases"}
+                                            to={"/shows#newReleases"}
                                             className={"transition-all duration-300 text-lg font-normal opacity-45 hover:opacity-100"}>
                                             New releases
                                         </Link>
                                     </li>
                                     <li className={"mb-3"}>
                                         <Link
-                                            to={"/series#popular"}
+                                            to={"/shows#popular"}
                                             className={"transition-all duration-300 text-lg font-normal opacity-45 hover:opacity-100"}>
                                             Popular
                                         </Link>

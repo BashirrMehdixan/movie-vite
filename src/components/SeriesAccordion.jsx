@@ -1,6 +1,6 @@
 import {useContext, useEffect, useRef, useState} from "react";
 import {ArrowUp} from "react-huge-icons/solid";
-import {SeasonsContext} from "/src/context/series/SeasonsContext";
+import {SeasonsContext} from "/src/context/shows/SeasonsContext";
 import SingleEpisode from "/src/components/SingleEpisode";
 
 const SeriesAccordion = ({serieId, season_number, name, episode_count}) => {

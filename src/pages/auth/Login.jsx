@@ -1,4 +1,4 @@
-import AuthHooks from "/src/hooks/auth/AuthHooks";
+import {AuthHooks} from "/src/hooks/Hooks";
 
 const Login = () => {
     const {loginAction, dataHandler, data} = AuthHooks();

@@ -5,21 +5,20 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
 
 // Context
-import {SeriesContext} from "/src/context/series/SeriesContext";
+import {ShowsContext} from "/src/context/Context";
 // Components
 import SectionTitle from "/src/components/SectionTitle";
-import {CategoryComponent} from "/src/components/cards/MovieCards";
+import {MovieComponent} from "/src/components/cards/MovieCards";
 
-const PopularSeriesGenres = () => {
-    const {popularSeriesGenres} = useContext(SeriesContext);
+const PopularShows = () => {
+    const {popularShows} = useContext(ShowsContext);
     return (
-        popularSeriesGenres &&
         <>
             <section className="py-5">
                 <div className="container relative">
                     <div className="flex flex-wrap items-center py-7">
                         <SectionTitle
-                            heading={"Popular Top 10 In Genres"}
+                            heading={"Trending Series"}
                         />
                     </div>
                     <div className="cat-swiper">
@@ -51,14 +50,14 @@ const PopularSeriesGenres = () => {
                             }
 
                             className="w-full h-full categorySwiper">
-                            {popularSeriesGenres.map((genre, index) => {
+                            {popularShows.map((show, index) => {
                                 return (
                                     <SwiperSlide
                                         className={'flex items-center justify-center'} key={index}
                                         data-aos={"fade-up"}
                                         data-aos-duration={"3000"}
                                     >
-                                        <CategoryComponent item={genre} />
+                                        <MovieComponent id={ show.id} item={show} type={"shows"}/>
                                     </SwiperSlide>
                                 )
                             })}
@@ -81,4 +80,4 @@ const PopularSeriesGenres = () => {
     )
 }
 
-export default PopularSeriesGenres;
+export default PopularShows

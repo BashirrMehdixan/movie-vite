@@ -7,12 +7,13 @@ import {
     User,
     Home,
     FilmstripCircle,
-    SmartTv
+    SmartTv, BellNotification, Queue, HeadphonesMicrophone
 } from "react-huge-icons/outline";
 import {AuthContext} from "/src/context/Context";
-import AuthHooks from "/src/hooks/auth/AuthHooks";
+import {AuthHooks} from "/src/hooks/Hooks";
 
 import SearchModal from "/src/modals/SearchModal";
+import {EffectCube} from "swiper/modules";
 
 const Navbar = () => {
     const {currentUser, user} = useContext(AuthContext);
@@ -38,7 +39,7 @@ const Navbar = () => {
         <>
             <SearchModal activeModal={activeSearch} closeAction={setActiveSearch}/>
             <header
-                className={`${location.pathname.match(/^\/$|movies|series/) ? 'fixed' : ''} w-full z-20 bg-gradient-to-b from-current to-transparent transition-all duration-500`}>
+                className={`${location.pathname.match(/^\/$|movies|shows/) ? 'fixed' : ''} w-full z-20 bg-gradient-to-b from-current to-transparent transition-all duration-500`}>
                 <div className="container">
                     <div className={"relative flex items-center justify-between gap-4 py-3"}>
                         <div className={"w-1/6 custom-lg:w-1/3 lg:w-1/6"}>
@@ -62,8 +63,8 @@ const Navbar = () => {
                                         </NavLink>
                                     </li>
                                     <li className={"opacity-50 transition-all duration-500 has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
-                                        <NavLink to={"/series"} className={"block py-3 px-4 rounded-xl"}>
-                                            Series
+                                        <NavLink to={"/shows"} className={"block py-3 px-4 rounded-xl"}>
+                                            Shows
                                         </NavLink>
                                     </li>
                                     <li className={"opacity-50 transition-all duration-500 has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
@@ -102,7 +103,7 @@ const Navbar = () => {
                                         <MenuLineHorizontalHalf/>
                                     </button>
                                 </li>
-                                <li className={`relative hidden group custom-lg:block text-white has-[.active]:text-[#E50000]`}>
+                                <li className={`relative group block text-white has-[.active]:text-[#E50000]`}>
                                     <button
                                         className={`${user.profile_picture ? 'w-[60px] h-[60px] rounded-full flex items-center justify-center border-4 border-[#262626]' : "text-4xl"} transition ease-linear duration-500 hover:text-[#E50000] ${!currentUser ? "hidden" : ""}`}
                                         onClick={() => setOpenNav(!openNav)}>
@@ -201,9 +202,9 @@ const Navbar = () => {
                                     className={`flex flex-col items-center gap-1 text-3xl py-3 px-2`}
                                 >
                                     <Home/>
-                                    <p className={`text-xs`}>
-                                        Home
-                                    </p>
+                                    {/*<p className={`text-xs`}>*/}
+                                    {/*    Home*/}
+                                    {/*</p>*/}
                                 </NavLink>
                             </li>
                             <li>
@@ -212,18 +213,40 @@ const Navbar = () => {
                                     className={`flex flex-col items-center gap-1 text-3xl py-3 px-2`}
                                 >
                                     <FilmstripCircle/>
-                                    <p className={`text-xs`}>Movie</p>
+                                    {/*<p className={`text-xs`}>Movie</p>*/}
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink
-                                    to={`/series`}
+                                    to={`/shows`}
                                     className={`flex flex-col items-center gap-1 text-3xl py-3 px-2`}
                                 >
                                     <SmartTv/>
-                                    <p className={`text-xs`}>
-                                        Series
-                                    </p>
+                                    {/*<p className={`text-xs`}>*/}
+                                    {/*    Shows*/}
+                                    {/*</p>*/}
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to={"/support"}
+                                    className={`flex flex-col items-center gap-1 text-3xl py-3 px-2`}
+                                >
+                                    <HeadphonesMicrophone/>
+                                    {/*<p className={`text-sm`}>*/}
+                                    {/*    Subscriptions*/}
+                                    {/*</p>*/}
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to={"/subscriptions"}
+                                    className={`flex flex-col items-center gap-1 text-3xl py-3 px-2`}
+                                >
+                                    <BellNotification/>
+                                    {/*<p className={`text-sm`}>*/}
+                                    {/*    Subscriptions*/}
+                                    {/*</p>*/}
                                 </NavLink>
                             </li>
                             <li>
@@ -232,22 +255,22 @@ const Navbar = () => {
                                     onClick={() => setActiveSearch(!activeSearch)}
                                 >
                                     <Search/>
-                                    <p className={`text-xs`}>
-                                        Search
-                                    </p>
+                                    {/*<p className={`text-xs`}>*/}
+                                    {/*    Search*/}
+                                    {/*</p>*/}
                                 </button>
                             </li>
-                            <li>
-                                <NavLink
-                                    to={`${user.length ? `/user/${user.username}` : "/login"}`}
-                                    className={`flex flex-col items-center gap-1 text-3xl py-3 px-2`}
-                                >
-                                    <User/>
-                                    <p className={`text-xs`}>
-                                        {user ? user.username : "Login"}
-                                    </p>
-                                </NavLink>
-                            </li>
+                            {/*<li>*/}
+                            {/*    <NavLink*/}
+                            {/*        to={`${user.length ? `/user/${user.username}` : "/login"}`}*/}
+                            {/*        className={`flex flex-col items-center gap-1 text-3xl py-3 px-2`}*/}
+                            {/*    >*/}
+                            {/*        <User/>*/}
+                            {/*        <p className={`text-xs`}>*/}
+                            {/*            {user ? user.username : "Login"}*/}
+                            {/*        </p>*/}
+                            {/*    </NavLink>*/}
+                            {/*</li>*/}
                         </ul>
                     </nav>
                 </div>

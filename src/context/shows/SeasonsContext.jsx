@@ -13,8 +13,8 @@ export const SeasonsContext = createContext({
 const SeasonsProvider = ({children}) => {
     const [seasons, setSeasons] = useState([]);
     const [episodes, setEpisodes] = useState([]);
-    const apiKey = '286a82355468525bb9e08f91eac5c6dc';
-    const apiUrl = 'https://api.themoviedb.org/3/';
+    const apiUrl = import.meta.env.VITE_APP_BASE_API_URL;
+    const apiKey = import.meta.env.VITE_APP_API_KEY;
 
     const fetchSeasons = (id) => {
         try {

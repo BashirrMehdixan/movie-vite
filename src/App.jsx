@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 import 'react-toastify/dist/ReactToastify.css';
 
 import {RootLayout, RegisterLayout, AuthLayout} from "/src/layouts/Layouts";
-import {HomeIndex, MoviesIndex, SeriesIndex, SupportIndex, SubscriptionsIndex, NotFound} from "/src/pages/Pages";
+import {HomeIndex, MoviesIndex, ShowsIndex, SupportIndex, SubscriptionsIndex, NotFound} from "/src/pages/Pages";
 import {
     Register,
     Login,
@@ -24,7 +24,7 @@ import {
 
 // Detail Pages
 import MovieDetail from "/src/pages/movies/MovieDetail";
-import SeriesDetail from "/src/pages/series/SeriesDetail";
+import ShowsDetail from "/src/pages/shows/ShowsDetail";
 
 function App() {
     const router = createBrowserRouter([
@@ -46,12 +46,12 @@ function App() {
                     element: <MovieDetail/>
                 },
                 {
-                    path: "series",
-                    element: <SeriesIndex/>
+                    path: "shows",
+                    element: <ShowsIndex/>
                 },
                 {
-                    path: "series/:id",
-                    element: <SeriesDetail/>
+                    path: "shows/:id",
+                    element: <ShowsDetail/>
                 }
                 ,
                 {

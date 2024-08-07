@@ -5,20 +5,26 @@ import Footer from "/src/components/Footer";
 import SubscriptionComponent from "/src/components/SubscriptionComponent";
 import LoadingAnimation from "/src/components/LoadingAnimation";
 import ScrollToTop from "/src/components/ScrollToTop";
-import {MoviesContext, SeriesContext} from "/src/context/Context";
+import {MoviesContext, ShowsContext} from "/src/context/Context";
 
 const RootLayout = () => {
     const location = useLocation();
-    const {movies} = useContext(MoviesContext);
-    const {series} = useContext(SeriesContext);
+    const {movies, fetchMovies} = useContext(MoviesContext);
+    const {shows, fetchShows} = useContext(ShowsContext);
     const [loading, setLoading] = useState(true);
+
     useEffect(() => {
-        if (movies.length > 0 && series.length > 0) {
+        fetchMovies();
+        fetchShows();
+    }, []);
+
+    useEffect(() => {
+        if (movies.length > 0 && shows.length > 0) {
             setLoading(false);
         } else {
             setLoading(false);
         }
-    }, [location]);
+    }, [location.pathname]);
     return (
         <>
             <Navbar/>

@@ -1,16 +1,16 @@
 import {useEffect, useContext, useState} from "react";
 import {MoviesContext} from "/src/context/movies/MoviesContext";
 import {MovieComponent} from "/src/components/cards/MovieCards";
-import {SeriesContext} from "/src/context/series/SeriesContext";
+import {ShowsContext} from "/src/context/shows/ShowsContext";
 
 const SearchModal = ({activeModal, closeAction}) => {
     const [search, setSearch] = useState("");
     const [searchMovies, setSearchMovies] = useState([]);
     const {movies} = useContext(MoviesContext);
-    const {series} = useContext(SeriesContext);
+    const {shows} = useContext(ShowsContext);
 
-    const all = series && movies && [
-        ...series.map(serie => ({...serie, type: 'series'})),
+    const all = shows && movies && [
+        ...shows.map(serie => ({...serie, type: 'shows'})),
         ...movies.map(movie => ({...movie, type: 'movies'})),
     ];
     const searchAction = () => {
