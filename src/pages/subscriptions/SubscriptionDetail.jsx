@@ -1,5 +1,7 @@
 import SectionTitle from "/src/components/SectionTitle";
 import SubscriptionPlan from "/src/components/cards/SubscriptionPlan";
+import SubscriptionTab from "/src/components/SubscriptionTab";
+
 
 const SubscriptionDetail = () => {
     return (
@@ -11,7 +13,7 @@ const SubscriptionDetail = () => {
                         inner={'StreamVibe offers three different plans to fit your needs: Basic, Standard, and Premium. Compare the features of each plan and choose the one that\'s right for you.'}
                     />
                     <SubscriptionPlan/>
-
+                    <SubscriptionTab/>
                 </div>
             </section>
         </>

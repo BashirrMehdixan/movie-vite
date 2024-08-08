@@ -1,13 +1,24 @@
 const SubscriptionPlan = () => {
     return (
         <>
-            <table className={`hidden lg:block w-full my-11`}>
+            <table className={`hidden lg:table w-full my-11`}>
                 <thead>
                 <tr className={`text-white bg-[#0F0F0F]`}>
-                    <th className={`w-1/4 font-medium capitalize text-left p-4 border border-[#262626]`}>Plan</th>
-                    <th className={`w-1/4 font-medium capitalize text-left p-4 border border-[#262626]`}>Basic</th>
-                    <th className={`w-1/4 font-medium capitalize text-left p-4 border border-[#262626]`}>Standard</th>
-                    <th className={`w-1/4 font-medium capitalize text-left p-4 border border-[#262626]`}>Premium</th>
+                    <th className={`w-1/4 font-medium capitalize text-left p-4 border border-[#262626]`}>
+                        Plan
+                    </th>
+                    <th className={`w-1/4 font-medium capitalize text-left p-4 border border-[#262626]`}>
+                        Basic
+                    </th>
+                    <th className={`w-1/4 font-medium capitalize text-left p-4 border border-[#262626]`}>
+                        Standard
+                        <span className={`inline-block bg-[#E50000] text-xs text-white rounded-md px-2 py-1 ml-2`}>
+                            Popular
+                        </span>
+                    </th>
+                    <th className={`w-1/4 font-medium capitalize text-left p-4 border border-[#262626]`}>
+                        Premium
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
