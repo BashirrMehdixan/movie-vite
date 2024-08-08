@@ -1,7 +1,7 @@
 import {useState} from "react";
 import SectionTitle from "/src/components/SectionTitle";
 import TabComponent from "/src/components/TabComponent";
-import PriceComponents from "/src/components/cards/PriceComponents.jsx";
+import PriceComponents from "/src/components/cards/PriceComponents";
 
 const PlanTable = () => {
     const [plan, setPlan] = useState("monthly");
@@ -17,7 +17,7 @@ const PlanTable = () => {
                                 inner={'Join StreamVibe and select from our flexible subscription options tailored to suit your viewing preferences. Get ready for non-stop entertainment!'}
                             />
                         </div>
-                        <div className="w-[250px]">
+                        <div className="w-[250px] mt-10 lg:mt-0">
                             <TabComponent plan={plan} setPlan={setPlan}/>
                         </div>
                     </div>
