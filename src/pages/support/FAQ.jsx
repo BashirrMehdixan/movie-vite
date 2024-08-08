@@ -1,8 +1,8 @@
 import {Link} from "react-router-dom";
-import AccordionItem from "/src/components/AccordionItem";
 import SectionTitle from "/src/components/SectionTitle";
+import AccordionItem from "/src/components/AccordionItem";
 
-const HomeFAQ = () => {
+const FAQ = () => {
     return (
         <>
             <section className={"my-10"}>
@@ -12,7 +12,7 @@ const HomeFAQ = () => {
                             heading={'Frequently Asked Questions'}
                             inner={'Got questions? We\'ve got answers! Check out our FAQ section to find answers to the most common questions about StreamVibe.'}
                         />
-                        <Link to={"/"}
+                        <Link to={"/support"}
                               className={"bg-[#E50000] text-white font-medium p-4 rounded-lg transition duration-500 hover:bg-[#B10000]"}>
                             Ask a Question
                         </Link>
@@ -80,4 +80,4 @@ const HomeFAQ = () => {
         </>
     )
 }
-export default HomeFAQ;
+export default FAQ;

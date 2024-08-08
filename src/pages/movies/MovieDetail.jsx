@@ -52,8 +52,8 @@ const MovieDetail = () => {
                             </div>
                             <div
                                 className="bg-[#1A1A1A] border-2 border-[#262626] text-white px-5 py-10 rounded-lg mb-5">
-                                <div className="flex items-center justify-between">
-                                    <h4 className="text-2xl font-medium opacity-45">
+                                <div className="flex flex-wrap items-center justify-between">
+                                    <h4 className="text-2xl font-medium opacity-45 mb-2 lg:mb-0">
                                         Reviews
                                     </h4>
                                     <button

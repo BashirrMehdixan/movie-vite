@@ -43,7 +43,11 @@ const NewReleases = () => {
                                     768: {
                                         slidesPerView: 2
                                     },
-                                    1024: {
+                                    984: {
+                                        slidesPerView: 3
+                                    }
+                                    ,
+                                    1240: {
                                         slidesPerView: 4
                                     }
                                 }
@@ -57,7 +61,7 @@ const NewReleases = () => {
                                         data-aos={"fade-up"}
                                         data-aos-duration={"3000"}
                                     >
-                                        <NewReleasesCard id={movie.id} item={movie} type={"movies"} />
+                                        <NewReleasesCard id={movie.id} item={movie} type={"movies"}/>
                                     </SwiperSlide>
                                 )
                             })}

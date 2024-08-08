@@ -49,10 +49,10 @@ const Navbar = () => {
                             </NavLink>
                         </div>
                         <div
-                            className={`absolute top-[65px] lg:static w-full lg:w-4/6`}>
+                            className={`absolute top-[65px] lg:static w-full lg:w-4/6 transition ease-linear duration-500 origin-top lg:scale-y-100 ${openNav ? "scale-y-100 " : "scale-y-0"}`}>
                             <nav>
                                 <ul
-                                    className={`w-full lg:w-[max-content] flex flex-col lg:flex-row gap-3 lg:items-center justify-between text-white bg-[#0F0F0F] border-[2px] border-[#1F1F1F] p-3 transition ease-linear duration-500 origin-top lg:scale-y-100 mx-auto rounded-2xl ${openNav ? "scale-y-100 " : "scale-y-0"}`}>
+                                    className={`w-full lg:w-[max-content] flex flex-col lg:flex-row gap-3 lg:items-center justify-between text-white bg-[#0F0F0F] border-[2px] border-[#1F1F1F] mx-auto rounded-2xl p-3`}>
                                     <li className={`relative lg:hidden opacity-50 transition-all duration-500 has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl`}>
                                         {currentUser ? (
                                                 <>

@@ -11,6 +11,7 @@ import EpisodeComponent from "/src/components/cards/EpisodeComponent";
 import DetailComponent from "/src/components/DetailComponent";
 import ReviewComponent from "/src/components/cards/ReviewComponent";
 import CastComponent from "/src/components/cards/CastComponent";
+import {PlusThin} from "react-huge-icons/outline";
 
 const ShowsDetail = () => {
     const {id} = useParams();
@@ -57,7 +58,14 @@ const ShowsDetail = () => {
                                 <EpisodeComponent id={show.id} seasons={seasons}/>
                             </div>
                             <div className="bg-[#1A1A1A] border-2 border-[#262626] text-white rounded-lg mb-5 p-3">
-                                <h4 className="text-3xl font-medium py-6">Reviews</h4>
+                                <div className={`flex flex-wrap items-center justify-between`}>
+                                    <h4 className="text-3xl font-medium py-6 mb-2 lg:mb-0">Reviews</h4>
+                                    <button
+                                        className="flex items-center gap-1 bg-[#1A1A1A] text-sm capitalize px-2 py-4 border-2 border-[#262626] rounded-xl">
+                                        <PlusThin className={"text-2xl"}/>
+                                        <span>Add your review</span>
+                                    </button>
+                                </div>
                                 <ReviewComponent id={show.id} type={"shows"}/>
                             </div>
                         </div>
