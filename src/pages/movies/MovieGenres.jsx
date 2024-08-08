@@ -42,7 +42,11 @@ const MovieGenres = () => {
                                         768: {
                                             slidesPerView: 2
                                         },
-                                        1024: {
+                                        984: {
+                                            slidesPerView: 3
+                                        }
+                                        ,
+                                        1240: {
                                             slidesPerView: 4
                                         }
                                     }

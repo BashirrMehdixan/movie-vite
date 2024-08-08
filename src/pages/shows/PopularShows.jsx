@@ -43,7 +43,11 @@ const PopularShows = () => {
                                     768: {
                                         slidesPerView: 2
                                     },
-                                    1024: {
+                                    984: {
+                                        slidesPerView: 3
+                                    }
+                                    ,
+                                    1240: {
                                         slidesPerView: 4
                                     }
                                 }
@@ -57,7 +61,7 @@ const PopularShows = () => {
                                         data-aos={"fade-up"}
                                         data-aos-duration={"3000"}
                                     >
-                                        <MovieComponent id={ show.id} item={show} type={"shows"}/>
+                                        <MovieComponent id={show.id} item={show} type={"shows"}/>
                                     </SwiperSlide>
                                 )
                             })}
