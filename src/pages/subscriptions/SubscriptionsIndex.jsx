@@ -1,7 +1,13 @@
+import Head from "/src/components/Head";
+import PlanTable from "/src/pages/subscriptions/PlanTable";
+import SubscriptionDetail from "/src/pages/subscriptions/SubscriptionDetail";
+
 const SubscriptionsIndex = () => {
     return (
         <>
-            Subscription Index
+            <Head title={`Subscription`}/>
+            <PlanTable/>
+            <SubscriptionDetail/>
         </>
     )
 }
