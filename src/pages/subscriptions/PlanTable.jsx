@@ -3,7 +3,7 @@ import SectionTitle from "/src/components/SectionTitle";
 import TabComponent from "/src/components/TabComponent";
 import PriceComponents from "/src/components/cards/PriceComponents.jsx";
 
-const HomeSubscription = () => {
+const PlanTable = () => {
     const [plan, setPlan] = useState("monthly");
 
     return (
@@ -56,4 +56,4 @@ const HomeSubscription = () => {
     )
 }
 
-export default HomeSubscription;
+export default PlanTable;

@@ -1,7 +1,7 @@
 const PriceComponents = ({plan, title, description, price}) => {
     return (
         <>
-            <div className={"bg-[#1f1f1f] text-white rounded-xl p-8"}>
+            <div className={"bg-[#262626] text-white rounded-xl p-8 transition duration-300 ease-linear hover:bg-[#0F0F0F] cursor-pointer"}>
                 <h3 className="text-2xl font-semibold capitalize">
                     {title} plan
                 </h3>
