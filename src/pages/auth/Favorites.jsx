@@ -1,4 +1,5 @@
-import {memo,useContext} from "react";
+import {memo, useContext} from "react";
+import Head from "/src/components/Head";
 import {FavoriteContext} from "/src/context/Context";
 import FavoriteComponent from "/src/components/cards/FavoriteComponent";
 
@@ -6,6 +7,7 @@ const Favorites = () => {
     const {favoriteMovies, favoriteShows} = useContext(FavoriteContext);
     return (
         <>
+            <Head title={"Favorites"} />
             <section className={"pb-11"}>
                 <div className={"container"}>
                     <div className={"pt-11"}>

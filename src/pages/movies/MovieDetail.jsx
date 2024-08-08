@@ -7,6 +7,7 @@ import {PlusThin} from "react-huge-icons/outline";
 // Context
 import {MoviesContext} from "/src/context/Context";
 // Components
+import Head from "/src/components/Head";
 import {BannerComponent} from "/src/components/cards/BannerComponent";
 import CastComponent from "/src/components/cards/CastComponent";
 import ReviewComponent from "/src/components/cards/ReviewComponent";
@@ -19,6 +20,7 @@ const MovieDetail = () => {
     return (
         movie &&
         <>
+            <Head title={movie.title} />
             <section>
                 <div className="h-screen">
                     <BannerComponent id={movie.id} item={movie} type={"movies"}/>
