@@ -52,7 +52,7 @@ const AuthHooks = () => {
                         subscription: "free",
                         createdAt: Timestamp.fromDate(new Date()),
                     });
-                    navigate({pathname: `/user/${data.username}`});
+                    navigate({pathname: `/users/${data.username}`});
                     toast.success(`Hello ${data.username}, Welcome to our family. Your verification email has been sent to ${data.email}`);
                 }
             } catch (e) {
@@ -82,7 +82,7 @@ const AuthHooks = () => {
             const user = await login(data.email, data.password);
             if (user) {
                 dispatch({type: "LOGIN", payload: user});
-                navigate({pathname: `/user/${user.displayName}`});
+                navigate({pathname: `/users/${user.displayName}`});
                 toast.success("Welcome back");
             }
             return user;

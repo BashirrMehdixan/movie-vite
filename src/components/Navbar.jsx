@@ -31,6 +31,7 @@ const Navbar = () => {
             }
         })
     }, []);
+
     useEffect(() => {
         setOpenNav(false);
         setActiveSearch(false);
@@ -42,18 +43,51 @@ const Navbar = () => {
                 className={`${location.pathname.match(/^\/$|movies|shows/) ? 'fixed' : ''} w-full z-20 bg-gradient-to-b from-current to-transparent transition-all duration-500`}>
                 <div className="container">
                     <div className={"relative flex items-center justify-between gap-4 py-3"}>
-                        <div className={"w-1/6 custom-lg:w-1/3 lg:w-1/6"}>
+                        <div className={"w-1/6 lg:w-1/6"}>
                             <NavLink to={"/"} className={"block w-36 lg:w-48"}>
                                 <img src={"/images/logo.png"} className={"w-full"} alt=""/>
                             </NavLink>
                         </div>
                         <div
-                            className={`hidden custom-lg:block custom-lg:w-4/6`}>
+                            className={`absolute top-[65px] lg:static w-full lg:w-4/6`}>
                             <nav>
                                 <ul
-                                    className={`w-[max-content] flex gap-3 items-center justify-between text-white bg-[#0F0F0F] border-[2px] border-[#1F1F1F] p-3 mx-auto rounded-2xl ${openNav ? "opened" : ""}`}>
+                                    className={`w-full lg:w-[max-content] flex flex-col lg:flex-row gap-3 lg:items-center justify-between text-white bg-[#0F0F0F] border-[2px] border-[#1F1F1F] p-3 transition ease-linear duration-500 origin-top lg:scale-y-100 mx-auto rounded-2xl ${openNav ? "scale-y-100 " : "scale-y-0"}`}>
+                                    <li className={`relative lg:hidden opacity-50 transition-all duration-500 has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl`}>
+                                        {currentUser ? (
+                                                <>
+                                                    <button
+                                                        className={`block p-3 rounded-xl`}
+                                                    >
+                                                        {user?.firstname + " " + user?.lastname}
+                                                    </button>
+                                                    <ul className={`w-full transition duration-300 origin-top scale-y-100`}>
+                                                        <li className={`pl-3`}>
+                                                            <NavLink to={`/users/${user.username}`}
+                                                                     className={`block p-3 rounded-xl`}>
+                                                                Dashboard
+                                                            </NavLink>
+                                                        </li>
+                                                        <li className={`pl-3`}>
+                                                            <button
+                                                                onClick={logOutAction}
+                                                                className={`block p-3 rounded-xl`}>
+                                                                Log out
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </>
+                                            )
+                                            : (
+                                                <NavLink to={"/login"} className={"block p-3 rounded-xl"}>
+                                                    Login
+                                                </NavLink>
+                                            )
+                                        }
+
+                                    </li>
                                     <li className={"opacity-50 transition-all duration-500 has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl"}>
-                                        <NavLink to={"/"} className={"block py-3 px-3 rounded-xl"}>
+                                        <NavLink to={"/"} className={"block p-3 rounded-xl"}>
                                             Home
                                         </NavLink>
                                     </li>
@@ -80,9 +114,9 @@ const Navbar = () => {
                                 </ul>
                             </nav>
                         </div>
-                        <div className="custom-lg:block w-5/6 custom-lg:w-1/6">
+                        <div className="lg:block w-5/6 lg:w-1/6">
                             <ul className="flex items-center justify-end text-white gap-2 lg:gap-3">
-                                <li className={`hidden custom-lg:block `}>
+                                <li className={`block `}>
                                     <button
                                         onClick={() => setActiveSearch(!activeSearch)}
                                         className={"block text-2xl lg:text-3xl transition ease-linear duration-500 hover:text-[#E50000]"}
@@ -96,14 +130,14 @@ const Navbar = () => {
                                         <Notification/>
                                     </button>
                                 </li>
-                                <li className={"hidden"}>
+                                <li className={"lg:hidden"}>
                                     <button
                                         className="text-white text-4xl"
                                         onClick={() => setOpenNav(!openNav)}>
                                         <MenuLineHorizontalHalf/>
                                     </button>
                                 </li>
-                                <li className={`relative group block text-white has-[.active]:text-[#E50000]`}>
+                                <li className={`relative group hidden lg:block text-white has-[.active]:text-[#E50000]`}>
                                     <button
                                         className={`${user.profile_picture ? 'w-[60px] h-[60px] rounded-full flex items-center justify-center border-4 border-[#262626]' : "text-4xl"} transition ease-linear duration-500 hover:text-[#E50000] ${!currentUser ? "hidden" : ""}`}
                                         onClick={() => setOpenNav(!openNav)}>
@@ -125,7 +159,7 @@ const Navbar = () => {
                                                 className={`absolute w-[max-content] -left-[80px] transition duration-500 origin-top rounded-lg text-white bg-[#262626] -translate-x-[25px] translate-y-[8px] pb-4 scale-y-0 group-hover:scale-y-100`}>
                                                 <li>
                                                     <NavLink
-                                                        to={`/user/${user.username}`}
+                                                        to={`/users/${user.username}`}
                                                         className={`flex items-center gap-3 font-bold bg-[#0F0F0F] p-3`}
                                                     >
                                                         <img src={user.profile_picture}
@@ -138,7 +172,7 @@ const Navbar = () => {
                                                 </li>
                                                 <li className={`text-lg transition ease-linear duration-500 hover:text-[#E50000]`}>
                                                     <NavLink
-                                                        to={`/user/${user.username}/favorites`}
+                                                        to={`/users/${user.username}/favorites`}
                                                         className={"block p-3"}
                                                     >
                                                         Favorites
@@ -146,7 +180,7 @@ const Navbar = () => {
                                                 </li>
                                                 <li className={`text-lg transition ease-linear duration-500 hover:text-[#E50000]`}>
                                                     <NavLink
-                                                        to={`/user/${user.username}/history`}
+                                                        to={`/users/${user.username}/history`}
                                                         className={"block p-3"}
                                                     >
                                                         History
@@ -154,7 +188,7 @@ const Navbar = () => {
                                                 </li>
                                                 <li className={`text-lg transition ease-linear duration-500 hover:text-[#E50000]`}>
                                                     <NavLink
-                                                        to={`/user/${user.username}/playlist`}
+                                                        to={`/users/${user.username}/playlist`}
                                                         className={"block p-3"}
                                                     >
                                                         Playlist
@@ -162,7 +196,7 @@ const Navbar = () => {
                                                 </li>
                                                 <li className={`text-lg transition ease-linear duration-500 hover:text-[#E50000]`}>
                                                     <NavLink
-                                                        to={`/user/${user.username}/watchlist`}
+                                                        to={`/users/${user.username}/watchlist`}
                                                         className={"block p-3"}
                                                     >
                                                         Watchlist
@@ -170,7 +204,7 @@ const Navbar = () => {
                                                 </li>
                                                 <li className={`text-lg transition ease-linear duration-500 hover:text-[#E50000]`}>
                                                     <NavLink
-                                                        to={`/user/${user.username}/videos`}
+                                                        to={`/users/${user.username}/videos`}
                                                         className={"block p-3"}
                                                     >
                                                         Videos
@@ -191,88 +225,6 @@ const Navbar = () => {
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div
-                    className={`w-full block custom-lg:hidden fixed bottom-0 left-0 z-30 text-white bg-[#262626] md:px-4`}>
-                    <nav>
-                        <ul className={`flex justify-between items-center`}>
-                            <li>
-                                <NavLink
-                                    to={`/`}
-                                    className={`flex flex-col items-center gap-1 text-3xl py-3 px-2`}
-                                >
-                                    <Home/>
-                                    {/*<p className={`text-xs`}>*/}
-                                    {/*    Home*/}
-                                    {/*</p>*/}
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    to={`/movies`}
-                                    className={`flex flex-col items-center gap-1 text-3xl py-3 px-2`}
-                                >
-                                    <FilmstripCircle/>
-                                    {/*<p className={`text-xs`}>Movie</p>*/}
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    to={`/shows`}
-                                    className={`flex flex-col items-center gap-1 text-3xl py-3 px-2`}
-                                >
-                                    <SmartTv/>
-                                    {/*<p className={`text-xs`}>*/}
-                                    {/*    Shows*/}
-                                    {/*</p>*/}
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    to={"/support"}
-                                    className={`flex flex-col items-center gap-1 text-3xl py-3 px-2`}
-                                >
-                                    <HeadphonesMicrophone/>
-                                    {/*<p className={`text-sm`}>*/}
-                                    {/*    Subscriptions*/}
-                                    {/*</p>*/}
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    to={"/subscriptions"}
-                                    className={`flex flex-col items-center gap-1 text-3xl py-3 px-2`}
-                                >
-                                    <BellNotification/>
-                                    {/*<p className={`text-sm`}>*/}
-                                    {/*    Subscriptions*/}
-                                    {/*</p>*/}
-                                </NavLink>
-                            </li>
-                            <li>
-                                <button
-                                    className={`flex flex-col items-center gap-1 text-3xl py-3 px-2`}
-                                    onClick={() => setActiveSearch(!activeSearch)}
-                                >
-                                    <Search/>
-                                    {/*<p className={`text-xs`}>*/}
-                                    {/*    Search*/}
-                                    {/*</p>*/}
-                                </button>
-                            </li>
-                            {/*<li>*/}
-                            {/*    <NavLink*/}
-                            {/*        to={`${user.length ? `/user/${user.username}` : "/login"}`}*/}
-                            {/*        className={`flex flex-col items-center gap-1 text-3xl py-3 px-2`}*/}
-                            {/*    >*/}
-                            {/*        <User/>*/}
-                            {/*        <p className={`text-xs`}>*/}
-                            {/*            {user ? user.username : "Login"}*/}
-                            {/*        </p>*/}
-                            {/*    </NavLink>*/}
-                            {/*</li>*/}
-                        </ul>
-                    </nav>
                 </div>
             </header>
         </>

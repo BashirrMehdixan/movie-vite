@@ -1,12 +1,16 @@
 import {useContext, useEffect} from "react";
 import {useParams} from "react-router-dom";
+// Context
 import {ShowsContext} from "/src/context/shows/ShowsContext";
 import {SeasonsContext} from "/src/context/shows/SeasonsContext";
+
+// Components
+import Head from "/src/components/Head";
 import {BannerComponent} from "/src/components/cards/BannerComponent";
 import EpisodeComponent from "/src/components/cards/EpisodeComponent";
 import DetailComponent from "/src/components/DetailComponent";
-import ReviewComponent from "../../components/cards/ReviewComponent.jsx";
-import CastComponent from "../../components/cards/CastComponent.jsx";
+import ReviewComponent from "/src/components/cards/ReviewComponent";
+import CastComponent from "/src/components/cards/CastComponent";
 
 const ShowsDetail = () => {
     const {id} = useParams();
@@ -26,8 +30,9 @@ const ShowsDetail = () => {
     return (
         show &&
         <>
+            <Head title={show.name}/>
             <section className="h-screen">
-                <BannerComponent id={show.id} item={show} type={"shows"} />
+                <BannerComponent id={show.id} item={show} type={"shows"}/>
             </section>
             <section className="py-3">
                 <div className="container">

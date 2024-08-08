@@ -79,7 +79,7 @@ function App() {
             ]
         },
         {
-            path: "/user",
+            path: "/users",
             element: <AuthLayout/>,
             errorElement: <NotFound/>,
             children: [

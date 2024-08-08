@@ -19,7 +19,7 @@ export const BannerComponent = ({id, item, type}) => {
                 <div className="absolute w-full h-full" data-aos={"fade-up"} data-aos-duration={"3000"}>
                     <img
                         src={`https://image.tmdb.org/t/p/${imgSize}${item.backdrop_path}`}
-                        className={'w-full h-full object-cover lg:object-fill'} alt={item.original_title || item.name}
+                        className={'w-full h-full object-cover lg:object-fill'} alt={item.title || item.name}
                     />
                 </div>
                 <div className="relative z-10 w-full bg-gradient-to-t from-current to-transparent">

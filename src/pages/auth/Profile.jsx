@@ -2,11 +2,13 @@ import {useContext} from "react";
 import {AuthContext} from "/src/context/auth/AuthContext";
 import SectionTitle from "/src/components/SectionTitle";
 import {EditProfileModal, PasswordModal} from "/src/modals/EditModals";
+import Head from "../../components/Head.jsx";
 
 const Profile = () => {
     const {user} = useContext(AuthContext);
     return (
         <>
+            <Head title={Object.keys(user).length ? (user?.firstname ? (user?.firstname + " " + user?.lastname) : user.username) : ""}/>
             <div className="container">
                 <div className="flex items-center justify-between pt-9 pb-5">
                     <SectionTitle heading={"Account and security"}/>
