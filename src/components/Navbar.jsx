@@ -49,7 +49,7 @@ const Navbar = () => {
                             </NavLink>
                         </div>
                         <div
-                            className={`absolute top-[65px] lg:static w-full lg:w-4/6 transition ease-linear duration-500 origin-top lg:scale-y-100 z-10 ${openNav ? "scale-y-100 " : "scale-y-0"}`}>
+                            className={`absolute top-[65px] lg:static w-full lg:w-4/6 transition ease-linear duration-500 origin-top lg:scale-y-100 z-10 ${openNav ? "scale-y-100" : "scale-y-0"}`}>
                             <nav>
                                 <ul
                                     className={`w-full lg:w-[max-content] flex flex-col lg:flex-row gap-3 lg:items-center justify-between text-white bg-[#0F0F0F] border-[2px] border-[#1F1F1F] mx-auto rounded-2xl p-3`}>
