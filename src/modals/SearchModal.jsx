@@ -1,17 +1,17 @@
-import {useEffect, useContext, useState} from "react";
-import {MoviesContext} from "/src/context/movies/MoviesContext";
-import {MovieComponent} from "/src/components/cards/MovieCards";
-import {ShowsContext} from "/src/context/shows/ShowsContext";
+import { useEffect, useContext, useState } from "react";
+import { MoviesContext } from "/src/context/movies/MoviesContext";
+import { MovieComponent } from "/src/components/cards/MovieCards";
+import { ShowsContext } from "/src/context/shows/ShowsContext";
 
-const SearchModal = ({activeModal, closeAction}) => {
+const SearchModal = ({ activeModal, closeAction }) => {
     const [search, setSearch] = useState("");
     const [searchMovies, setSearchMovies] = useState([]);
-    const {movies} = useContext(MoviesContext);
-    const {shows} = useContext(ShowsContext);
+    const { movies } = useContext(MoviesContext);
+    const { shows } = useContext(ShowsContext);
 
     const all = shows && movies && [
-        ...shows.map(serie => ({...serie, type: 'shows'})),
-        ...movies.map(movie => ({...movie, type: 'movies'})),
+        ...shows.map(serie => ({ ...serie, type: 'shows' })),
+        ...movies.map(movie => ({ ...movie, type: 'movies' })),
     ];
     const searchAction = () => {
         if (search) {
@@ -47,8 +47,8 @@ const SearchModal = ({activeModal, closeAction}) => {
 
     return (
         <div
-            className={`fixed w-full h-full bg-[#1A1A1A] origin-bottom lg:origin-top transition-all duration-300 top-0 left-0 z-50 ${activeModal ? "scale-y-100" : "scale-y-0"}`}
-        >
+            className={`fixed w-full h-full bg-[#1A1A1A] origin-bottom lg:origin-top transition-all duration-300 top-0 left-0 z-50 ${activeModal ? "scale-y-100" : `scale-y-0`}`}
+                >
             <div className="flex items-center justify-end pt-5 pr-2">
                 <button className="border border-white text-white rounded-full px-5 py-3" onClick={() => closeAction()}>
                     X
@@ -84,9 +84,9 @@ const SearchModal = ({activeModal, closeAction}) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
-        ;
+;
 };
 
 export default SearchModal;

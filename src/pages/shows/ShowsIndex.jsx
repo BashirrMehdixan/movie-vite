@@ -7,11 +7,11 @@ import PopularShows from "/src/pages/shows/PopularShows";
 const ShowsIndex = () => {
     return (
         <>
-            <Head title={"Shows"}/>
-            <ShowsBanner/>
-            <ShowsGenres/>
-            <PopularShowsGenres/>
-            <PopularShows/>
+            <Head title={`Shows`} />
+            <ShowsBanner />
+            <ShowsGenres />
+            <PopularShowsGenres />
+            <PopularShows />
         </>
     )
 }

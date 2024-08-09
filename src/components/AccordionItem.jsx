@@ -1,7 +1,7 @@
-import {useState} from 'react';
-import {Minus, Plus} from "react-huge-icons/solid";
+import { useState } from 'react';
+import { Minus, Plus } from "react-huge-icons/solid";
 
-const AccordionItem = ({count, title, content}) => {
+const AccordionItem = ({ count, title, content }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleAccordion = () => {
@@ -21,11 +21,11 @@ const AccordionItem = ({count, title, content}) => {
                     <span>{title}</span>
                 </div>
                 <span>
-                    {isOpen ? <Minus className={"text-3xl"}/> : <Plus className={"text-3xl"}/>}
+                    {isOpen ? <Minus className={`text-3xl`} /> : <Plus className={`text-3xl`} />}
                 </span>
             </button>
             {/*{isOpen && (*/}
-            <div className={`px-5 bg-transparent transition-all duration-500 origin-top ${!isOpen ? 'scale-y-0 h-0' : 'h-[90px] overflow-hidden'}`}>
+            <div className={`px-5 bg-transparent transition-all duration-500 origin-top ${!isOpen ? 'scale-y-0 h-0' : `h-[90px] overflow-hidden`}`}>
                 <p className="opacity-45">{content}</p>
             </div>
             {/*)}*/}

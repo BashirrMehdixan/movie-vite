@@ -8,12 +8,12 @@ import FAQ from "/src/pages/support/FAQ";
 const HomeIndex = () => {
     return (
         <>
-            <Head title={"Home"}/>
-            <HomeBanner/>
-            <HomeCategory/>
-            <HomeDevices/>
-            <FAQ/>
-            <PlanTable/>
+            <Head title={`Home`} />
+            <HomeBanner />
+            <HomeCategory />
+            <HomeDevices />
+            <FAQ />
+            <PlanTable />
         </>
     )
 }

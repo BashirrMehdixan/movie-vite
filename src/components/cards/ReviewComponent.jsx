@@ -1,11 +1,11 @@
-import {useContext, useEffect} from "react";
-import {Swiper, SwiperSlide} from "swiper/react";
-import {Navigation, Pagination} from "swiper/modules";
-import {ReviewContext} from "/src/context/reviews/ReviewContext";
+import { useContext, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import { ReviewContext } from "/src/context/reviews/ReviewContext";
 import ReviewCard from "/src/components/cards/ReviewCard";
 
-const ReviewComponent = ({id, type}) => {
-    const {reviews, getReviews} = useContext(ReviewContext);
+const ReviewComponent = ({ id, type }) => {
+    const { reviews, getReviews } = useContext(ReviewContext);
 
     useEffect(() => {
         if (id) {
@@ -33,7 +33,7 @@ const ReviewComponent = ({id, type}) => {
                         slidesPerView: 2, spaceBetween: 20
                     },
                 }}
-                className={"my-5"}
+                className={`my-5`}
             >
                 {reviews.map((review, index) => (
                     <SwiperSlide key={index}>

@@ -1,18 +1,18 @@
-const SectionTitle = ({heading, inner}) => {
+const SectionTitle = ({ heading, inner }) => {
     return (
         <>
             <div className="text-white">
                 <h2
-                    className={'text-xl md:text-2xl lg:text-4xl font-medium'}
-                    data-aos={"fade-up"}
-                    data-aos-duration={"3000"}
+                    className={`text-xl md:text-2xl lg:text-4xl font-medium`}
+                    data-aos={`fade-up`}
+                    data-aos-duration={`3000`}
                 >
                     {heading}
                 </h2>
                 <p
-                    className={`${!inner && 'hidden'} text-sm md:text-base opacity-45 pt-4`}
-                    data-aos={"fade-up"}
-                    data-aos-duration={"3000"}
+                    className={`${!inner && 'hidden`} text-sm md:text-base opacity-45 pt-4`}
+                    data-aos={`fade-up`}
+                    data-aos-duration={`3000`}
                 >
                     {inner}
                 </p>

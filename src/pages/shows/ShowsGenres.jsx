@@ -1,17 +1,17 @@
-import {useContext} from "react";
+import { useContext } from "react";
 
 // Swiper
-import {Swiper, SwiperSlide} from "swiper/react";
-import {Navigation, Pagination} from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
 
 // Context
-import {ShowsContext} from "/src/context/shows/ShowsContext";
+import { ShowsContext } from "/src/context/shows/ShowsContext";
 // Components
 import SectionTitle from "/src/components/SectionTitle";
-import {CategoryComponent} from "/src/components/cards/MovieCards";
+import { CategoryComponent } from "/src/components/cards/MovieCards";
 
 const ShowsGenres = () => {
-    const {showGenres} = useContext(ShowsContext);
+    const { showGenres } = useContext(ShowsContext);
     return (
         showGenres &&
         <>
@@ -23,7 +23,7 @@ const ShowsGenres = () => {
                             Series
                         </h4>
                         <div className="flex flex-wrap items-center px-2 py-5">
-                            <SectionTitle heading={"Our Genres"}/>
+                            <SectionTitle heading={`Our Genres`} />
                         </div>
                         <div className="cat-swiper">
                             <Swiper
@@ -60,9 +60,9 @@ const ShowsGenres = () => {
                                 {showGenres.map((genre, index) => {
                                     return (
                                         <SwiperSlide
-                                            className={'flex items-center justify-center'} key={index}
-                                            data-aos={"fade-up"}
-                                            data-aos-duration={"3000"}
+                                            className={`flex items-center justify-center`} key={index}
+                                            data-aos={`fade-up`}
+                                            data-aos-duration={`3000`}
                                         >
                                             <CategoryComponent item={genre} />
                                         </SwiperSlide>

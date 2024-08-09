@@ -1,21 +1,21 @@
-import {useContext} from "react";
-import {Swiper, SwiperSlide} from "swiper/react";
-import {Navigation, Pagination} from "swiper/modules";
+import { useContext } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
 
 import SectionTitle from "/src/components/SectionTitle";
-import {MustWatchCard} from "/src/components/cards/MovieCards";
-import {MoviesContext} from "/src/context/Context";
+import { MustWatchCard } from "/src/components/cards/MovieCards";
+import { MoviesContext } from "/src/context/Context";
 
 // import
 const MustWatch = () => {
-    const {topRated} = useContext(MoviesContext);
+    const { topRated } = useContext(MoviesContext);
     return (
         <>
             <section className="pt-5">
                 <div className="relative container">
                     <div className="flex flex-wrap items-center py-7">
                         <SectionTitle
-                            heading={"Must Watch"}
+                            heading={`Must Watch`}
                         />
                     </div>
                     <div className="cat-swiper py-5">
@@ -54,7 +54,7 @@ const MustWatch = () => {
                             {topRated.map((movie, index) => {
                                 return (
                                     <SwiperSlide key={index}>
-                                        <MustWatchCard id={movie.id} item={movie} type={"movies"} />
+                                        <MustWatchCard id={movie.id} item={movie} type={`movies`} />
                                     </SwiperSlide>
                                 )
                             })}

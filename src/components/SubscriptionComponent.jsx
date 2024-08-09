@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SubscriptionComponent = () => {
     return (
@@ -21,7 +21,7 @@ const SubscriptionComponent = () => {
                                 </div>
                             </div>
                             <div className="w-full lg:w-1/2 py-5 text-center lg:text-right">
-                                <Link to={"subscription"} className="bg-[#E50000] text-white px-6 py-5 rounded-lg">
+                                <Link to={`subscription`} className="bg-[#E50000] text-white px-6 py-5 rounded-lg">
                                     Start a Free Trial
                                 </Link>
                             </div>
