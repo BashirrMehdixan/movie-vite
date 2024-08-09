@@ -9,7 +9,9 @@ import 'swiper/css/navigation';
 import "swiper/css/pagination";
 import 'react-toastify/dist/ReactToastify.css';
 
+// Layouts
 import {RootLayout, RegisterLayout, AuthLayout} from "/src/layouts/Layouts";
+// Pages
 import {HomeIndex, MoviesIndex, ShowsIndex, SupportIndex, SubscriptionsIndex, NotFound} from "/src/pages/Pages";
 import {
     Register,
@@ -17,10 +19,8 @@ import {
     Profile,
     History,
     Favorites,
-    Playlist,
     Watchlist,
-    Videos
-} from "/src/pages/auth/ProfilePages";
+} from "/src/pages/auth/AuthPages";
 
 // Detail Pages
 import MovieDetail from "/src/pages/movies/MovieDetail";
@@ -96,16 +96,8 @@ function App() {
                     element: <History/>
                 },
                 {
-                    path: ":username/playlist",
-                    element: <Playlist/>
-                },
-                {
                     path: ":username/watchlist",
                     element: <Watchlist/>
-                },
-                {
-                    path: ":username/videos",
-                    element: <Videos/>
                 },
             ]
         }

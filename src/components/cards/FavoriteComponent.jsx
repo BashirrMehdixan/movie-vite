@@ -1,4 +1,3 @@
-import {memo} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import SectionTitle from "/src/components/SectionTitle";
 import {MovieComponent} from "/src/components/cards/MovieCards";
@@ -45,4 +44,4 @@ const FavoriteComponent = ({title, favorites, emptyMessage}) => {
         </>
     )
 }
-export default memo(FavoriteComponent);
+export default FavoriteComponent;

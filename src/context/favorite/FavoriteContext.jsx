@@ -1,7 +1,7 @@
 import {createContext, useContext, useEffect, useReducer} from "react";
 import {collection, onSnapshot} from "firebase/firestore";
-import FavoriteReducer from "/src/context/favorite/FavoriteReducer";
 import {AuthContext} from "/src/context/Context";
+import FavoriteReducer from "/src/context/favorite/FavoriteReducer";
 import {db, auth} from "/src/app/firebase";
 
 const initialState = {
@@ -12,10 +12,11 @@ const initialState = {
 export const FavoriteContext = createContext(initialState);
 
 const FavoriteProvider = ({children}) => {
+    const {user} = useContext(AuthContext);
     const [state, dispatch] = useReducer(FavoriteReducer, initialState);
 
     useEffect(() => {
-        if (!auth.currentUser) return;
+        if (!Object.keys(user).length) return;
 
         const unsubscribeMovies = onSnapshot(
             collection(db, "users", auth.currentUser.uid, "favoriteMovies"),
@@ -32,6 +33,7 @@ const FavoriteProvider = ({children}) => {
                 dispatch({type: "SET_FAVORITE_SHOWS", payload: favShows});
             }
         );
+
 
         return () => {
             unsubscribeMovies();

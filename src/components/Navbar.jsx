@@ -188,26 +188,10 @@ const Navbar = () => {
                                                 </li>
                                                 <li className={`text-lg transition ease-linear duration-500 hover:text-[#E50000]`}>
                                                     <NavLink
-                                                        to={`/users/${user.username}/playlist`}
-                                                        className={"block p-3"}
-                                                    >
-                                                        Playlist
-                                                    </NavLink>
-                                                </li>
-                                                <li className={`text-lg transition ease-linear duration-500 hover:text-[#E50000]`}>
-                                                    <NavLink
                                                         to={`/users/${user.username}/watchlist`}
                                                         className={"block p-3"}
                                                     >
                                                         Watchlist
-                                                    </NavLink>
-                                                </li>
-                                                <li className={`text-lg transition ease-linear duration-500 hover:text-[#E50000]`}>
-                                                    <NavLink
-                                                        to={`/users/${user.username}/videos`}
-                                                        className={"block p-3"}
-                                                    >
-                                                        Videos
                                                     </NavLink>
                                                 </li>
                                                 <li className={`text-lg transition ease-linear duration-500 hover:text-[#E50000]`}>

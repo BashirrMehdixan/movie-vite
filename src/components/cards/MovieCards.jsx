@@ -113,3 +113,26 @@ export const MustWatchCard = ({id, item, type}) => {
         </>
     )
 }
+
+export const HistoryCard = ({id, item, type}) => {
+    const imgSize = 'original'
+    return (
+        <>
+            <div className={`w-full mb-7`}>
+                <div
+                    className={`block w-full lg:h-[150px]`}>
+                    <img
+                        src={`https://image.tmdb.org/t/p/${imgSize}${item.backdrop_path || item.poster_path}`}
+                        className={`w-full h-full object-fill rounded-md`} alt={item.title || item.name}/>
+                </div>
+                <Link
+                    className={`block h-[35px] text-white opacity-65 transition ease-linear duration-300 hover:opacity-100 py-2`}
+                    to={`/${type}/${item.id.toString()}`}>
+                    {item.name || item.title}
+                </Link>
+            </div>
+        </>
+    )
+}
+
+export default HistoryCard;
