@@ -11,7 +11,7 @@ const UserNavbar = ({user}) => {
                         <li
                             className={`transition ease-linear duration-500 hover:text-[#E50000] py-3 has-[.active]:text-[#E50000]`}>
                             <Link
-                                className={`${location.pathname === `/users/${user?.username}` ? 'active' : '`}`}
+                                className={`${location.pathname === `/users/${user?.username}` ? 'active' : ``}`}
                                 to={`${user?.username}`}>
                                 Dashboard
                             </Link>
@@ -19,7 +19,7 @@ const UserNavbar = ({user}) => {
                         <li
                             className={`transition ease-linear duration-500 hover:text-[#E50000] py-3 has-[.active]:text-[#E50000]`}>
                             <Link
-                                className={`${location.pathname.includes(`favorites`) ? `active` : '`}`}
+                                className={`${location.pathname.includes(`favorites`) ? `active` : ``}`}
                                 to={`${user?.username}/favorites`}>
                                 Favorites
                             </Link>
@@ -27,7 +27,7 @@ const UserNavbar = ({user}) => {
                         <li
                             className={`transition ease-linear duration-500 hover:text-[#E50000] py-3 has-[.active]:text-[#E50000]`}>
                             <Link
-                                className={`${location.pathname.includes(`history`) ? `active` : '`}`}
+                                className={`${location.pathname.includes(`history`) ? `active` : ``}`}
                                 to={`${user?.username}/history`}>
                                 History
                             </Link>
@@ -36,7 +36,7 @@ const UserNavbar = ({user}) => {
                         <li
                             className={`transition ease-linear duration-500 hover:text-[#E50000] py-3 has-[.active]:text-[#E50000]`}>
                             <Link
-                                className={`${location.pathname.includes(`watchlist`) ? `active` : '`}`}
+                                className={`${location.pathname.includes(`watchlist`) ? `active` : ``}`}
                                 to={`${user?.username}/watchlist`}>
                                 Watchlist
                             </Link>
@@ -47,7 +47,7 @@ const UserNavbar = ({user}) => {
                 <li>
                     <button
                         onClick={verifyEmail}
-                        className={`bg-[#E50000] transition ease-linear duration-500 hover:bg-opacity-70 px-6 py-3 rounded-lg ${auth.currentUser && auth.currentUser.emailVerified ? 'hidden' : 'block`}`}>
+                        className={`bg-[#E50000] transition ease-linear duration-500 hover:bg-opacity-70 px-6 py-3 rounded-lg ${auth.currentUser && auth.currentUser.emailVerified ? 'hidden' : `block`}`}>
                         Verify Email
                     </button>
                 </li>

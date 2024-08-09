@@ -16,7 +16,7 @@ const ScrollToTop = () => {
         <>
             <a
                 href={`#`}
-                className={`fixed flex items-center justify-center w-[55px] h-[55px] bg-[#E50000] rounded-full bottom-[85px] lg:bottom-[20px] right-[10px] transition-all duration-500 z-20 ${!showScroll ? 'scale-0' : 'scale-100`}`}>
+                className={`fixed flex items-center justify-center w-[55px] h-[55px] bg-[#E50000] rounded-full bottom-[85px] lg:bottom-[20px] right-[10px] transition-all duration-500 z-20 ${!showScroll ? 'scale-0' : `scale-100`}`}>
                 <ArrowUp className={`text-white text-3xl`} />
             </a>
         </>

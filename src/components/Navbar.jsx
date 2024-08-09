@@ -40,7 +40,7 @@ const Navbar = () => {
         <>
             <SearchModal activeModal={activeSearch} closeAction={setActiveSearch} />
             <header
-                className={`${location.pathname.match(/^\/$|movies|shows/) ? 'fixed' : '`} w-full z-20 bg-gradient-to-b from-current to-transparent transition-all duration-500`}>
+                className={`${location.pathname.match(/^\/$|movies|shows/) ? 'fixed' : ``} w-full z-20 bg-gradient-to-b from-current to-transparent transition-all duration-500`}>
                 <div className="container">
                     <div className={`relative flex items-center justify-between gap-4 py-3`}>
                         <div className={`w-1/6 lg:w-1/6`}>
