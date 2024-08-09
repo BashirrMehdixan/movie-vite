@@ -1,27 +1,27 @@
-import {useContext} from "react";
+import { useContext } from "react";
 // Swiper
-import {Swiper, SwiperSlide} from 'swiper/react';
-import {Navigation, Pagination} from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import SectionTitle from "/src/components/SectionTitle";
-import {CategoryComponent} from "/src/components/cards/MovieCards";
-import {MoviesContext} from "/src/context/movies/MoviesContext.jsx";
+import { CategoryComponent } from "/src/components/cards/MovieCards";
+import { MoviesContext } from "/src/context/movies/MoviesContext.jsx";
 
 const HomeCategory = () => {
-    const {movieGenres} = useContext(MoviesContext);
+    const { movieGenres } = useContext(MoviesContext);
     return (
         movieGenres &&
         <>
-            <section className={'home-category pt-32 pb-10'} id={"categories"}>
-                <div className={'relative container'}>
+            <section className={`home-category pt-32 pb-10`} id={`categories`}>
+                <div className={`relative container`}>
                     <div className="flex items-center justify-between">
                         <div className="w-full lg:w-3/4">
                             <SectionTitle
-                                heading={'Explore our wide variety of categories'}
-                                inner={'Whether you\'re looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new'}
+                                heading={`Explore our wide variety of categories`}
+                                inner={`Whether you\'re looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new`}
                             />
                         </div>
                     </div>
@@ -58,9 +58,9 @@ const HomeCategory = () => {
                             {movieGenres.map((genre, index) => {
                                 return (
                                     <SwiperSlide
-                                        className={'flex items-center justify-center'} key={index}
-                                        data-aos={"fade-up"}
-                                        data-aos-duration={"3000"}
+                                        className={`flex items-center justify-center`} key={index}
+                                        data-aos={`fade-up`}
+                                        data-aos-duration={`3000`}
                                     >
                                         <CategoryComponent item={genre} />
                                     </SwiperSlide>

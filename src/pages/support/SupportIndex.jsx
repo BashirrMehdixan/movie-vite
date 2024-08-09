@@ -5,7 +5,7 @@ import FAQ from "/src/pages/support/FAQ";
 const SupportIndex = () => {
     return (
         <>
-            <Head title={"Support"}/>
+            <Head title={`Support`} />
             <section className={`pt-28 mb-20`}>
                 <div className="container">
                     <div className={`flex flex-wrap justify-between`}>
@@ -19,7 +19,7 @@ const SupportIndex = () => {
                                 <img
                                     src={`/images/banner/Container.png`}
                                     className={`w-full h-full rounded-md`}
-                                    alt={`Support`}/>
+                                    alt={`Support`} />
                             </div>
                         </div>
                         <div className={`w-full lg:w-[calc(70%-4rem)]`}>
@@ -129,7 +129,7 @@ const SupportIndex = () => {
                     </div>
                 </div>
             </section>
-            <FAQ/>
+            <FAQ />
         </>
     )
 }

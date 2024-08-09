@@ -9,13 +9,13 @@ import Head from "/src/components/Head";
 const MoviesIndex = () => {
     return (
         <>
-            <Head title={"Movies"}/>
-            <MovieBanner/>
-            <MovieGenres/>
-            <PopularGenres/>
-            <TrendMovie/>
-            <NewReleases/>
-            <MustWatch/>
+            <Head title={`Movies`} />
+            <MovieBanner />
+            <MovieGenres />
+            <PopularGenres />
+            <TrendMovie />
+            <NewReleases />
+            <MustWatch />
         </>
     )
 }

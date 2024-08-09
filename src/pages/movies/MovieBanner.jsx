@@ -27,8 +27,8 @@ const MovieBanner = () => {
                     {movies.map((movie, index) => {
                         return (
                             index < 5 &&
-                            <SwiperSlide className={'flex items-center justify-center'} key={index}>
-                                <BannerComponent id={movie.id} item={movie} type={'movies'}/>
+                            <SwiperSlide className={`flex items-center justify-center`} key={index}>
+                                <BannerComponent id={movie.id} item={movie} type={`movies`}/>
                             </SwiperSlide>
                         )
                     })}

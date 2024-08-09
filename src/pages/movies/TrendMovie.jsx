@@ -1,19 +1,19 @@
-import {useContext} from "react";
-import {Swiper, SwiperSlide} from "swiper/react";
-import {Navigation, Pagination} from "swiper/modules";
-import {MoviesContext} from "/src/context/Context";
+import { useContext } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import { MoviesContext } from "/src/context/Context";
 import SectionTitle from "/src/components/SectionTitle";
-import {MovieComponent} from "/src/components/cards/MovieCards";
+import { MovieComponent } from "/src/components/cards/MovieCards";
 
 const TrendMovie = () => {
-    const {popularMovies} = useContext(MoviesContext);
+    const { popularMovies } = useContext(MoviesContext);
     return (
         <>
             <section className="py-5">
                 <div className="container relative">
                     <div className="flex flex-wrap items-center py-7">
                         <SectionTitle
-                            heading={"Trending Movie"}
+                            heading={`Trending Movie`}
                         />
                     </div>
                     <div className="cat-swiper">
@@ -51,11 +51,11 @@ const TrendMovie = () => {
                             {popularMovies.map((movie, index) => {
                                 return (
                                     <SwiperSlide
-                                        className={'flex items-center justify-center'} key={index}
-                                        data-aos={"fade-up"}
-                                        data-aos-duration={"3000"}
+                                        className={`flex items-center justify-center`} key={index}
+                                        data-aos={`fade-up`}
+                                        data-aos-duration={`3000`}
                                     >
-                                        <MovieComponent id={movie.id} item={movie} type={"movies"}/>
+                                        <MovieComponent id={movie.id} item={movie} type={`movies`} />
                                     </SwiperSlide>
                                 )
                             })}

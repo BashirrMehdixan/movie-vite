@@ -1,21 +1,21 @@
-import {useContext} from "react";
-import {useParams} from "react-router-dom";
+import { useContext } from "react";
+import { useParams } from "react-router-dom";
 
 // Icons
-import {PlusThin} from "react-huge-icons/outline";
+import { PlusThin } from "react-huge-icons/outline";
 
 // Context
-import {MoviesContext} from "/src/context/Context";
+import { MoviesContext } from "/src/context/Context";
 // Components
 import Head from "/src/components/Head";
-import {BannerComponent} from "/src/components/cards/BannerComponent";
+import { BannerComponent } from "/src/components/cards/BannerComponent";
 import CastComponent from "/src/components/cards/CastComponent";
 import ReviewComponent from "/src/components/cards/ReviewComponent";
 import DetailComponent from "/src/components/DetailComponent";
 
 const MovieDetail = () => {
-    const {id} = useParams();
-    const {movies, movieGenres} = useContext(MoviesContext);
+    const { id } = useParams();
+    const { movies, movieGenres } = useContext(MoviesContext);
     const movie = movies.find(movieItem => movieItem.id.toString() === id.toString());
     return (
         movie &&
@@ -23,7 +23,7 @@ const MovieDetail = () => {
             <Head title={movie.title} />
             <section>
                 <div className="h-screen">
-                    <BannerComponent id={movie.id} item={movie} type={"movies"}/>
+                    <BannerComponent id={movie.id} item={movie} type={`movies`} />
                 </div>
             </section>
             <div className="my-5">
@@ -47,7 +47,7 @@ const MovieDetail = () => {
                                     Cast
                                 </h4>
                                 <div className="cat-swiper pt-8">
-                                    <CastComponent id={movie.id} type={"movie"}/>
+                                    <CastComponent id={movie.id} type={`movie`} />
                                 </div>
                             </div>
                             <div
@@ -58,15 +58,15 @@ const MovieDetail = () => {
                                     </h4>
                                     <button
                                         className="flex items-center gap-1 bg-[#1A1A1A] text-sm capitalize px-2 py-4 border-2 border-[#262626] rounded-xl">
-                                        <PlusThin className={"text-2xl"}/>
+                                        <PlusThin className={`text-2xl`} />
                                         <span>Add your review</span>
                                     </button>
                                 </div>
-                                <ReviewComponent id={movie.id} type={"movie"}/>
+                                <ReviewComponent id={movie.id} type={`movie`} />
                             </div>
                         </div>
                         <div className="w-full lg:w-[calc(30%-8px)]">
-                            <DetailComponent id={movie.id} item={movie} itemGenres={movieGenres}/>
+                            <DetailComponent id={movie.id} item={movie} itemGenres={movieGenres} />
                         </div>
                     </div>
                 </div>

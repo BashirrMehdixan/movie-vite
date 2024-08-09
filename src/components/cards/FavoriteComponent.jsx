@@ -1,11 +1,11 @@
-import {Swiper, SwiperSlide} from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import SectionTitle from "/src/components/SectionTitle";
-import {MovieComponent} from "/src/components/cards/MovieCards";
+import { MovieComponent } from "/src/components/cards/MovieCards";
 
-const FavoriteComponent = ({title, favorites, emptyMessage}) => {
+const FavoriteComponent = ({ title, favorites, emptyMessage }) => {
     return (
         <>
-            <SectionTitle heading={title}/>
+            <SectionTitle heading={title} />
             {favorites.length ? (
                 <>
                     <Swiper
@@ -28,7 +28,7 @@ const FavoriteComponent = ({title, favorites, emptyMessage}) => {
                         {favorites.map((favorite, index) => {
                             return (
                                 <SwiperSlide key={index}>
-                                    <MovieComponent id={favorite.id} item={favorite} type={favorite.type}/>
+                                    <MovieComponent id={favorite.id} item={favorite} type={favorite.type} />
                                 </SwiperSlide>
                             )
                         })}
@@ -36,7 +36,7 @@ const FavoriteComponent = ({title, favorites, emptyMessage}) => {
                 </>
             ) : (
                 <>
-                    <div className={"text-white text-3xl text-center py-6"}>
+                    <div className={`text-white text-3xl text-center py-6`}>
                         {emptyMessage}
                     </div>
                 </>
