@@ -49,7 +49,7 @@ const Navbar = () => {
                             </NavLink>
                         </div>
                         <div
-                            className={`absolute top-[65px] lg:static w-full lg:w-4/6 transition ease-linear duration-500 origin-top lg:scale-y-100 ${openNav ? "scale-y-100 " : "scale-y-0"}`}>
+                            className={`absolute top-[65px] lg:static w-full lg:w-4/6 transition ease-linear duration-500 origin-top lg:scale-y-100 z-10 ${openNav ? "scale-y-100 " : "scale-y-0"}`}>
                             <nav>
                                 <ul
                                     className={`w-full lg:w-[max-content] flex flex-col lg:flex-row gap-3 lg:items-center justify-between text-white bg-[#0F0F0F] border-[2px] border-[#1F1F1F] mx-auto rounded-2xl p-3`}>
@@ -156,7 +156,7 @@ const Navbar = () => {
                                     {currentUser && (
                                         <>
                                             <ul
-                                                className={`absolute w-[max-content] -left-[80px] transition duration-500 origin-top rounded-lg text-white bg-[#262626] -translate-x-[25px] translate-y-[8px] pb-4 scale-y-0 group-hover:scale-y-100`}>
+                                                className={`absolute w-[max-content] -left-[80px] transition duration-500 origin-top rounded-lg text-white bg-[#262626] -translate-x-[25px] translate-y-[8px] pb-4 z-10 scale-y-0 group-hover:scale-y-100`}>
                                                 <li>
                                                     <NavLink
                                                         to={`/users/${user.username}`}
