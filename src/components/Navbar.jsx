@@ -139,7 +139,8 @@ const Navbar = () => {
                                 </li>
                                 <li className={`relative group hidden lg:block text-white has-[.active]:text-[#E50000]`}>
                                     <button
-                                        className={`${user.profile_picture ? 'w-[60px] h-[60px] rounded-full flex items-center justify-center border-4 border-[#262626]' : `text-4xl`} transition ease-linear duration-500 hover:text-[#E50000] ${!currentUser ? `hidden` : ``}`}
+                                        className={`${user.profile_picture ? 'w-[55px] h-[55px] rounded-full flex items-center justify-center' +
+                                            ' border-[3px] border-[#262626]' : `text-4xl`} transition ease-linear duration-500 hover:text-[#E50000] ${!currentUser ? `hidden` : ``}`}
                                         onClick={() => setOpenNav(!openNav)}>
                                         {user.profile_picture ?
                                             <img
