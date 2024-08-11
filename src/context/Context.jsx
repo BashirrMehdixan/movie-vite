@@ -4,6 +4,7 @@ import {FavoriteContext} from "/src/context/favorite/FavoriteContext";
 import {MoviesContext} from "/src/context/movies/MoviesContext";
 import {ShowsContext} from "/src/context/shows/ShowsContext";
 import {ReviewContext} from "/src/context/reviews/ReviewContext";
+import {WatchlistContext} from "/src/context/watchlist/WatchlistContext";
 
 export {
     AuthContext,
@@ -11,5 +12,6 @@ export {
     FavoriteContext,
     MoviesContext,
     ShowsContext,
-    ReviewContext
+    ReviewContext,
+    WatchlistContext,
 }
