@@ -7,17 +7,14 @@ const api_key = import.meta.env.VITE_APP_API_KEY;
 const instance = axios.create({
     baseURL,
     params: {
-        api_key: api_key, // API anahtarını buraya ekliyoruz
+        api_key: api_key,
     },
 });
 
-// Request interceptor
 instance.interceptors.request.use(
     (config) => {
-        // Her sorğuya API anahtarını Authorization başlığı olarak əlavə edirik
         config.headers.Authorization = `Bearer ${api_key}`;
 
-        // API anahtarını her isteğe query parametresi olarak ekliyoruz
         config.params = {
             ...config.params,
             api_key: api_key,
@@ -30,7 +27,6 @@ instance.interceptors.request.use(
     }
 );
 
-// Response interceptor
 instance.interceptors.response.use(
     (response) => {
         if (response.config.method === "post") {

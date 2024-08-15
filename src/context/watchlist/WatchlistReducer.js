@@ -1,16 +1,25 @@
 const WatchListReducer = (state, action) => {
-    const isMovieExist = state.watchlist.some(movie => movie.id === action.payload.id);
-    const isShowExist = state.watchlist.some(shows => shows.id === action.payload.id);
     switch (action.type) {
         case "TOGGLE_WATCHLIST": {
+            if (Array.isArray(action.payload)) {
+                return {
+                    ...state,
+                    watchlist: action.payload
+                };
+            }
+
+            const isExist = state.watchlist.some(item => item.id === action.payload.id);
+
             return {
                 ...state,
-                watchlist: isMovieExist
-                    ? state.watchlist.filter(movie => movie.id !== action.payload.id)
+                watchlist: isExist
+                    ? state.watchlist.filter(item => item.id !== action.payload.id)
                     : [...state.watchlist, action.payload]
-            }
+            };
         }
+        default:
+            return state;
     }
-}
+};
 
 export default WatchListReducer;

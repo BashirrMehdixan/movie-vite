@@ -3,12 +3,14 @@ import { Link, useLocation } from "react-router-dom";
 // Icons
 import { Like, Speaker, SpeakerMute } from "react-huge-icons/outline";
 import { Plus, TrackPlay } from "react-huge-icons/solid";
-// Context
+// Hooks
 import { Actions } from "/src/hooks/Hooks";
+import {WatchActionHook}  from "/src/hooks/Hooks"
 
 export const BannerComponent = ({ id, item, type }) => {
     const imgSize = 'original';
     const { favAction } = Actions();
+    const { watchActions } = WatchActionHook();
     const [mute, setMute] = useState(false);
     const location = useLocation();
 
@@ -34,7 +36,7 @@ export const BannerComponent = ({ id, item, type }) => {
                                 {item.overview}
                             </p>
                             <div className="flex flex-wrap items-center justify-center gap-4">
-                                <Link to={`/${type === "movies" ? "movies" : `  shows`}/${item.id.toString()}`}
+                                <Link to={`/${type === "movies" ? "movies" : `shows`}/${item.id.toString()}`}
                                     className={`inline-flex items-center justify-center bg-[#E50000] px-7 py-4 space-x-2 rounded-lg capitalize transition-all duration-500 hover:bg-opacity-60`}
                                     data-aos={`fade-up`} data-aos-duration={`3000`}>
                                     <span>
@@ -48,6 +50,7 @@ export const BannerComponent = ({ id, item, type }) => {
                                     location.pathname !== "/" &&
                                     <div className={`flex items-center justify-center w-full lg:w-auto gap-4`}>
                                         <button
+                                            onClick={() => watchActions(item, type)}
                                             className="bg-[#0F0F0F] border-2 border-[#262626] px-5 py-4 rounded-xl text-white">
                                             <Plus className={`transition duration-500 hover:text-[#E50000] text-3xl`} />
                                         </button>
