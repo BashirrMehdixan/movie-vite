@@ -1,8 +1,8 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
-import { collection, onSnapshot } from "firebase/firestore";
-import { AuthContext } from "/src/context/Context";
+import {createContext, useContext, useEffect, useReducer} from "react";
+import {collection, onSnapshot} from "firebase/firestore";
+import {AuthContext} from "/src/context/Context";
 import FavoriteReducer from "/src/context/favorite/FavoriteReducer";
-import { db, auth } from "/src/app/firebase";
+import {db, auth} from "/src/app/firebase";
 
 const initialState = {
     favoriteMovies: [],
@@ -11,8 +11,8 @@ const initialState = {
 
 export const FavoriteContext = createContext(initialState);
 
-const FavoriteProvider = ({ children }) => {
-    const { user } = useContext(AuthContext);
+const FavoriteProvider = ({children}) => {
+    const {user} = useContext(AuthContext);
     const [state, dispatch] = useReducer(FavoriteReducer, initialState);
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const FavoriteProvider = ({ children }) => {
             collection(db, "users", auth.currentUser.uid, "favoriteMovies"),
             (snapshot) => {
                 const favMovies = snapshot.docs.map(doc => doc.data());
-                dispatch({ type: "SET_FAVORITE_MOVIES", payload: favMovies });
+                dispatch({type: "SET_FAVORITE_MOVIES", payload: favMovies});
             }
         );
 
@@ -30,7 +30,7 @@ const FavoriteProvider = ({ children }) => {
             collection(db, "users", auth.currentUser.uid, "favoriteShows"),
             (snapshot) => {
                 const favShows = snapshot.docs.map(doc => doc.data());
-                dispatch({ type: "SET_FAVORITE_SHOWS", payload: favShows });
+                dispatch({type: "SET_FAVORITE_SHOWS", payload: favShows});
             }
         );
 
@@ -43,7 +43,7 @@ const FavoriteProvider = ({ children }) => {
 
     return (
         <FavoriteContext.Provider
-            value={{ favoriteMovies: state.favoriteMovies, favoriteShows: state.favoriteShows, dispatch }}>
+            value={{favoriteMovies: state.favoriteMovies, favoriteShows: state.favoriteShows, dispatch}}>
             {children}
         </FavoriteContext.Provider>
     );

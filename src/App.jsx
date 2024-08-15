@@ -1,5 +1,6 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
+import {AuthContext} from "/src/context/Context";
 import AOS from "aos";
 // import 'aos/dist/aos.css';
 
@@ -25,6 +26,8 @@ import {
 // Detail Pages
 import MovieDetail from "/src/pages/movies/MovieDetail";
 import ShowsDetail from "/src/pages/shows/ShowsDetail";
+import {useContext, useState} from "react";
+import LoadingAnimation from "./components/LoadingAnimation.jsx";
 
 function App() {
     const router = createBrowserRouter([
@@ -107,7 +110,9 @@ function App() {
             <RouterProvider router={router}/>
             <ToastContainer
                 theme="dark"
+                autoClose={3000}
                 position="top-right"
+                pauseOnFocusLoss={false}
             />
         </>
     )

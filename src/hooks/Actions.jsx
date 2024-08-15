@@ -2,7 +2,7 @@ import {useContext} from "react";
 import {deleteDoc, doc, getDoc, setDoc} from "firebase/firestore";
 import {toast} from "react-toastify";
 import {db, auth} from "/src/app/firebase";
-import {FavoriteContext} from "/src/context/favorite/FavoriteContext";
+import {FavoriteContext} from "/src/context/Context";
 
 const Actions = () => {
     const {dispatch} = useContext(FavoriteContext);
@@ -33,6 +33,7 @@ const Actions = () => {
             toast.success(`Added ${item.title || item.name} to your favorite ${type}`);
         }
     }
+
     return {
         favAction
     }

@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState({});
     useEffect(() => {
         localStorage.setItem("currentUser", JSON.stringify(state.currentUser));
-    }, [state.currentUser]); // Auth.currentUser yerine state.currentUser'ı kullanın
+    }, [state.currentUser]);
 
     useEffect(() => {
         if (state.currentUser) {
