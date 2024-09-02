@@ -1,5 +1,5 @@
 import {Suspense, lazy, useState, useEffect, useContext} from "react";
-import {useLocation} from "react-router-dom";
+import {ScrollRestoration, useLocation} from "react-router-dom";
 import {AuthContext, MoviesContext, ShowsContext} from "/src/context/Context";
 import LoadingAnimation from "/src/components/LoadingAnimation";
 import Navbar from "/src/components/Navbar";
@@ -25,6 +25,7 @@ const AuthLayout = () => {
                 <AuthIndex/>
             </Suspense>
             <Footer/>
+            <ScrollRestoration />
         </>
     );
 };
