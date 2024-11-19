@@ -1,14 +1,22 @@
-import { useContext } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import {useContext, useEffect, useState} from "react";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Navigation, Pagination} from "swiper/modules";
 
 import SectionTitle from "/src/components/SectionTitle";
-import { MustWatchCard } from "/src/components/cards/MovieCards";
-import { MoviesContext } from "/src/context/Context";
+import {MustWatchCard} from "/src/components/cards/MovieCards";
+import {DataContext} from "/src/context/DataContext";
 
 // import
 const MustWatch = () => {
-    const { topRated } = useContext(MoviesContext);
+    const {fetchData} = useContext(DataContext);
+    const [movies, setMovies] = useState([]);
+    useEffect(() => {
+        const getData = async () => {
+            const result = await fetchData('movie', 'top_rated')
+            setMovies(result)
+        }
+        getData()
+    }, []);
     return (
         <>
             <section className="pt-5">
@@ -51,10 +59,10 @@ const MustWatch = () => {
                             }
                             className="w-full h-full categorySwiper"
                         >
-                            {topRated.map((movie, index) => {
+                            {movies?.map((movie, index) => {
                                 return (
                                     <SwiperSlide key={index}>
-                                        <MustWatchCard id={movie.id} item={movie} type={`movies`} />
+                                        <MustWatchCard id={movie.id} item={movie} type={`movies`}/>
                                     </SwiperSlide>
                                 )
                             })}

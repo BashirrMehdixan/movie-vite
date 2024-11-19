@@ -32,7 +32,7 @@ export const MovieComponent = ({id, item, type}) => {
     const imgSize = 'original'
     return (
         <>
-            <Link to={`/${type}/${id.toString()}`}
+            <Link to={`/${item.media_type || type === "movie" ? "movies" : "shows"}/${id.toString()}`}
                   className={`block w-full transition-all duration-300 hover:scale-[.95]`}>
                 <div className={`bg-[#1A1A1A] w-full p-2 border border-[#333333] rounded-xl`}>
                     <div className="p-1 h-[350px] overflow-hidden">
@@ -65,7 +65,7 @@ export const NewReleasesCard = ({id, item, type}) => {
     const imgSize = 'original'
     return (
         <>
-            <Link to={`/${type}/${id.toString()}`}
+            <Link to={`${id.toString()}`}
                   className={`block w-full transition-all duration-300 hover:scale-[.95]`}>
                 <div className={`bg-[#1A1A1A] w-full p-2 border border-[#333333] rounded-xl`}>
                     <div className="p-1 h-[350px] overflow-hidden">
@@ -115,14 +115,13 @@ export const MustWatchCard = ({id, item, type}) => {
 }
 
 export const HistoryCard = ({id, item, type}) => {
-    console.log(item)
     const imgSize = 'original'
     return (
         <>
             <div className={`w-full mb-7`}>
                 <div
                     className={`block w-full lg:h-[150px] overflow-hidden group`}>
-                    <Link to={`/${type}/${item.id.toString()}`}>
+                    <Link to={`/${type === 'movies' ? 'movies' : 'shows'}/${item.id.toString()}`}>
                         <img
                             src={`https://image.tmdb.org/t/p/${imgSize}${item.backdrop_path || item.poster_path}`}
                             className={`w-full h-full object-fill rounded-md transition ease-linear duration-300 group-hover:scale-110`}
@@ -132,7 +131,7 @@ export const HistoryCard = ({id, item, type}) => {
                 </div>
                 <Link
                     className={`block h-[35px] text-white opacity-65 transition ease-linear duration-300 hover:opacity-100 pt-2`}
-                    to={`/${type}/${item.id.toString()}`}>
+                    to={`/${type === 'movies' ? 'movies' : 'shows'}/${item.id.toString()}`}>
                     {item.name || item.title}
                 </Link>
                 <div

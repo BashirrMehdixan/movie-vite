@@ -1,18 +1,27 @@
-import { useContext } from "react";
+import { useState, useEffect,useContext } from "react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 
 // Custom Components
-import { MoviesContext } from "/src/context/movies/MoviesContext";
+import { DataContext } from "/src/context/DataContext";
 import { NewReleasesCard } from "/src/components/cards/MovieCards";
 import SectionTitle from "/src/components/SectionTitle";
 
 const NewReleases = () => {
-    const { upComing } = useContext(MoviesContext);
+    const { fetchData } = useContext(DataContext);
+    const [movies, setMovies] = useState([]);
+    useEffect(() => {
+        const getMovies = async () => {
+            const result = await fetchData('movie', 'upcoming');
+            setMovies(result);
+        }
+        getMovies();
+
+    })
     return (
-        upComing &&
+        movies &&
         <>
             <section className="py-5">
                 <div className="container relative">
@@ -54,7 +63,7 @@ const NewReleases = () => {
                             }
 
                             className="w-full h-full categorySwiper">
-                            {upComing.map((movie, index) => {
+                            {movies.map((movie, index) => {
                                 return (
                                     <SwiperSlide
                                         className={`flex items-center justify-center`} key={index}

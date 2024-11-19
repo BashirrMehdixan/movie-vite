@@ -14,3 +14,7 @@
         transform: scaleY(1);
     }
 }
+
+.search_btn {
+    @apply py-3 px-8 bg-[#E50000] text-white rounded
+}

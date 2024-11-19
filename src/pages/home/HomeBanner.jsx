@@ -1,13 +1,21 @@
-import { useContext, useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 // Swiper
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation } from 'swiper/modules';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {Autoplay, Navigation} from 'swiper/modules';
 
-import { MoviesContext } from "/src/context/movies/MoviesContext";
-import { BannerComponent } from "/src/components/cards/BannerComponent";
+import {DataContext} from "/src/context/DataContext";
+import {BannerComponent} from "/src/components/cards/BannerComponent";
 
 const HomeBanner = () => {
-    const { movies } = useContext(MoviesContext);
+    const {fetchData} = useContext(DataContext);
+    const [trend, setTrend] = useState([]);
+    useEffect(() => {
+        const getData = async () => {
+            const data = await fetchData('trending', 'all', 'day');
+            setTrend(data);
+        }
+        getData();
+    }, [])
     return (
         <>
             <section className={`home-banner`}>
@@ -24,11 +32,11 @@ const HomeBanner = () => {
                         }}
                         loop={true}
                         className="w-full h-full homeBannerSwiper">
-                        {movies?.map((movie, index) => {
+                        {trend?.map((movie, index) => {
                             return (
                                 index < 8 &&
                                 <SwiperSlide className={`flex items-center justify-center`} key={index}>
-                                    <BannerComponent id={movie.id} item={movie} type={`movies`} />
+                                    <BannerComponent id={movie.id} item={movie} type={`movies`}/>
                                 </SwiperSlide>
                             )
                         })}

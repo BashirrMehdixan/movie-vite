@@ -5,8 +5,7 @@ import { Apps, Calendar, Star, GlobeEarth } from "react-huge-icons/outline";
 import StarRating from "/src/components/StarRating";
 
 
-const DetailComponent = ({ item, itemGenres }) => {
-    const genres = item && item.genre_ids.map(genreId => itemGenres.find(genre => genre.id === genreId));
+const DetailComponent = ({ item, genres }) => {
     return (
         <>
             <div className="bg-[#1A1A1A] text-white px-5 py-10 rounded-lg">

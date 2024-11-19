@@ -1,15 +1,24 @@
+import {useContext, useEffect, useState} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
-import {Autoplay, Navigation, Pagination} from "swiper/modules";
+import {Autoplay, Navigation} from "swiper/modules";
+import {DataContext} from "/src/context/DataContext";
 
 import {MoviesContext} from "/src/context/movies/MoviesContext";
-import {useContext} from "react";
 
 import {BannerComponent} from "/src/components/cards/BannerComponent";
 
 const MovieBanner = () => {
-    const {movies} = useContext(MoviesContext);
+    const [data, setData] = useState([]);
+    const {fetchData} = useContext(DataContext);
+    useEffect(() => {
+        const getData = async () => {
+            const results = await fetchData('trending', 'movie', 'day');
+            setData(results);
+        }
+        getData();
+    },[])
     return (
-        movies &&
+        data &&
         <>
             <section className="h-screen">
                 <Swiper
@@ -24,7 +33,7 @@ const MovieBanner = () => {
                     }}
                     loop={true}
                     className="w-full h-full homeBannerSwiper">
-                    {movies.map((movie, index) => {
+                    {data.map((movie, index) => {
                         return (
                             index < 5 &&
                             <SwiperSlide className={`flex items-center justify-center`} key={index}>

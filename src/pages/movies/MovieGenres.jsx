@@ -1,14 +1,22 @@
-import { useContext } from "react";
+import {useContext, useEffect, useState} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import SectionTitle from "/src/components/SectionTitle";
-import { MoviesContext } from "/src/context/Context";
+import { DataContext } from "/src/context/DataContext";
 import { CategoryComponent } from "/src/components/cards/MovieCards";
 
 const MovieGenres = () => {
-    const { movieGenres } = useContext(MoviesContext);
+    const { getGenres } = useContext(DataContext);
+    const [genres, setGenres] = useState([]);
+    useEffect(() => {
+        const genresFetch = async () => {
+            const result = await getGenres('movie');
+            setGenres(result);
+        }
+        genresFetch()
+    }, []);
     return (
-        movieGenres &&
+        genres.length &&
         <>
             <section className="mt-20 mb-10">
                 <div className="container">
@@ -53,7 +61,7 @@ const MovieGenres = () => {
                                 }
 
                                 className="w-full h-full categorySwiper">
-                                {movieGenres.map((genre, index) => {
+                                {genres?.map((genre, index) => {
                                     return (
                                         <SwiperSlide
                                             className={`flex items-center justify-center`} key={index}

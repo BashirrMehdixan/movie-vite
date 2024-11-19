@@ -1,18 +1,26 @@
-import { useContext } from "react";
+import {useContext, useEffect, useState} from "react";
 
 // Swiper
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Navigation, Pagination} from "swiper/modules";
 
 // Components
-import { MoviesContext } from "/src/context/Context";
-import { CategoryComponent } from "/src/components/cards/MovieCards";
+import {DataContext} from "/src/context/DataContext";
+import {CategoryComponent} from "/src/components/cards/MovieCards";
 import SectionTitle from "/src/components/SectionTitle";
 
 const PopularGenres = () => {
-    const { popularGenres } = useContext(MoviesContext);
+    const {getGenres} = useContext(DataContext);
+    const [genres, setGenres] = useState([]);
+    useEffect(() => {
+        const genresFetch = async () => {
+            const result = await getGenres('movie');
+            setGenres(result);
+        }
+        genresFetch()
+    }, []);
     return (
-        popularGenres &&
+        genres &&
         <>
             <section className="py-5">
                 <div className="container relative">
@@ -54,14 +62,14 @@ const PopularGenres = () => {
                             }
 
                             className="w-full h-full categorySwiper">
-                            {popularGenres.map((genre, index) => {
+                            {genres.map((genre, index) => {
                                 return (
                                     <SwiperSlide
                                         className={`flex items-center justify-center`} key={index}
                                         data-aos={`fade-up`}
                                         data-aos-duration={`3000`}
                                     >
-                                        <CategoryComponent item={genre} />
+                                        <CategoryComponent item={genre}/>
                                     </SwiperSlide>
                                 )
                             })}
