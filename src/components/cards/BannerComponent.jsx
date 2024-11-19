@@ -36,7 +36,7 @@ export const BannerComponent = ({ id, item, type }) => {
                                 {item.overview}
                             </p>
                             <div className="flex flex-wrap items-center justify-center gap-4">
-                                <Link to={`/${item.media_type || type === "movie" ? "movies" : `shows`}/${item.id.toString()}`}
+                                <Link to={`/${(item.media_type || type) === "movie" ? "movies" : `shows`}/${item.id.toString()}`}
                                     className={`inline-flex items-center justify-center bg-[#E50000] px-7 py-4 space-x-2 rounded-lg capitalize transition-all duration-500 hover:bg-opacity-60`}
                                     data-aos={`fade-up`} data-aos-duration={`3000`}>
                                     <span>

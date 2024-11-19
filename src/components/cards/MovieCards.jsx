@@ -29,7 +29,7 @@ export const CategoryComponent = ({item}) => {
 }
 
 export const MovieComponent = ({id, item, type}) => {
-    const imgSize = 'original'
+    const imgSize = 'original';
     return (
         <>
             <Link to={`/${(item.media_type || type) === 'movie' ? 'movies' : 'shows'}/${id.toString()}`}
