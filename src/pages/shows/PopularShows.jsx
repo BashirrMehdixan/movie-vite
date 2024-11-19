@@ -15,7 +15,7 @@ const PopularShows = () => {
     const [shows, setShows] = useState([]);
     useEffect(() => {
         fetchData('tv', 'popular').then((data) => setShows(data));
-    })
+    }, [])
     return (
         shows.length > 0 &&
         <>

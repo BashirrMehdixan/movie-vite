@@ -10,7 +10,7 @@ const ShowsBanner = () => {
     const [shows, setShows] = useState([]);
     useEffect(() => {
         fetchData('tv', 'airing_today').then(data => setShows(data));
-    })
+    }, [])
     return (
         <>
             <div className={`h-screen`}>

@@ -9,7 +9,7 @@ const History = () => {
     const [data, setData] = useState([]);
     useEffect(() => {
         fetchData('trending', 'all', 'weekly').then(data => setData(data));
-    })
+    }, []);
     return (
         <>
             <Head title={`History`}/>

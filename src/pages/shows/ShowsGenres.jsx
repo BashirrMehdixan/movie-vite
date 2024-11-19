@@ -15,7 +15,7 @@ const ShowsGenres = () => {
     const [genres, setGenres] = useState([]);
     useEffect(() => {
         getGenres('tv').then(data => setGenres(data));
-    },[getGenres])
+    },[])
     return (
         genres &&
         <>

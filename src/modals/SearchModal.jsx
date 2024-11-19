@@ -33,7 +33,7 @@ const SearchModal = ({activeModal, closeAction}) => {
         return () => {
             window.removeEventListener("keydown", handleEscape);
         };
-    }, [activeModal, closeAction]);
+    }, []);
 
     return (
         <div

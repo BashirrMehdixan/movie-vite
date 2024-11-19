@@ -15,7 +15,7 @@ const HomeCategory = () => {
     const [genres, setGenres] = useState([]);
     useEffect(() => {
         getGenres('movie').then(data => setGenres(data));
-    })
+    }, [])
     return (
         genres.length &&
         <>
