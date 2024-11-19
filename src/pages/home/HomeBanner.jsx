@@ -8,13 +8,9 @@ import {BannerComponent} from "/src/components/cards/BannerComponent";
 
 const HomeBanner = () => {
     const {fetchData} = useContext(DataContext);
-    const [trend, setTrend] = useState([]);
+    const [data, setData] = useState([]);
     useEffect(() => {
-        const getData = async () => {
-            const data = await fetchData('trending', 'all', 'day');
-            setTrend(data);
-        }
-        getData();
+        fetchData('trending', 'all', 'day').then(data => setData(data));
     }, [])
     return (
         <>
@@ -32,7 +28,7 @@ const HomeBanner = () => {
                         }}
                         loop={true}
                         className="w-full h-full homeBannerSwiper">
-                        {trend?.map((movie, index) => {
+                        {data?.map((movie, index) => {
                             return (
                                 index < 8 &&
                                 <SwiperSlide className={`flex items-center justify-center`} key={index}>

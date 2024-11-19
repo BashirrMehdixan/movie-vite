@@ -1,18 +1,23 @@
-import { useContext } from "react";
+import {useState, useEffect, useContext} from "react";
 
 // Swiper
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Navigation, Pagination} from "swiper/modules";
 
 // Context
-import { ShowsContext } from "/src/context/Context";
+import {DataContext} from "/src/context/DataContext";
 // Components
 import SectionTitle from "/src/components/SectionTitle";
-import { MovieComponent } from "/src/components/cards/MovieCards";
+import {MovieComponent} from "/src/components/cards/MovieCards";
 
 const PopularShows = () => {
-    const { popularShows } = useContext(ShowsContext);
+    const {fetchData} = useContext(DataContext);
+    const [shows, setShows] = useState([]);
+    useEffect(() => {
+        fetchData('tv', 'popular').then((data) => setShows(data));
+    })
     return (
+        shows.length > 0 &&
         <>
             <section className="py-5">
                 <div className="container relative">
@@ -54,14 +59,14 @@ const PopularShows = () => {
                             }
 
                             className="w-full h-full categorySwiper">
-                            {popularShows.map((show, index) => {
+                            {shows.map((show, index) => {
                                 return (
                                     <SwiperSlide
                                         className={`flex items-center justify-center`} key={index}
                                         data-aos={`fade-up`}
                                         data-aos-duration={`3000`}
                                     >
-                                        <MovieComponent id={show.id} item={show} type={`shows`} />
+                                        <MovieComponent id={show.id} item={show} type={`shows`}/>
                                     </SwiperSlide>
                                 )
                             })}

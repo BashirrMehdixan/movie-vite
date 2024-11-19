@@ -3,20 +3,14 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Navigation} from "swiper/modules";
 import {DataContext} from "/src/context/DataContext";
 
-import {MoviesContext} from "/src/context/movies/MoviesContext";
-
 import {BannerComponent} from "/src/components/cards/BannerComponent";
 
 const MovieBanner = () => {
     const [data, setData] = useState([]);
     const {fetchData} = useContext(DataContext);
     useEffect(() => {
-        const getData = async () => {
-            const results = await fetchData('trending', 'movie', 'day');
-            setData(results);
-        }
-        getData();
-    },[])
+        fetchData('movie', 'now_playing').then(data => setData(data));
+    }, [])
     return (
         data &&
         <>

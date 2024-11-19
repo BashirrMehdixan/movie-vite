@@ -1,19 +1,15 @@
 import {useContext, useEffect, useState} from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Navigation, Pagination} from "swiper/modules";
 import SectionTitle from "/src/components/SectionTitle";
-import { DataContext } from "/src/context/DataContext";
-import { CategoryComponent } from "/src/components/cards/MovieCards";
+import {DataContext} from "/src/context/DataContext";
+import {CategoryComponent} from "/src/components/cards/MovieCards";
 
 const MovieGenres = () => {
-    const { getGenres } = useContext(DataContext);
+    const {getGenres} = useContext(DataContext);
     const [genres, setGenres] = useState([]);
     useEffect(() => {
-        const genresFetch = async () => {
-            const result = await getGenres('movie');
-            setGenres(result);
-        }
-        genresFetch()
+        getGenres('movie').then(data => setGenres(data));
     }, []);
     return (
         genres.length &&
@@ -26,7 +22,7 @@ const MovieGenres = () => {
                             Movies
                         </h4>
                         <div className="flex flex-wrap items-center px-2 py-5">
-                            <SectionTitle heading={`Our Genres`} inner={``} />
+                            <SectionTitle heading={`Our Genres`} inner={``}/>
                         </div>
                         <div className="cat-swiper">
                             <Swiper
@@ -68,7 +64,7 @@ const MovieGenres = () => {
                                             data-aos={`fade-up`}
                                             data-aos-duration={`3000`}
                                         >
-                                            <CategoryComponent item={genre} />
+                                            <CategoryComponent item={genre}/>
                                         </SwiperSlide>
                                     )
                                 })}

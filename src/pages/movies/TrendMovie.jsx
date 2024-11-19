@@ -9,11 +9,7 @@ const TrendMovie = () => {
     const {fetchData} = useContext(DataContext);
     const [movies, setMovies] = useState([]);
     useEffect(() => {
-        const getData = async () => {
-            const result = await fetchData('movie', 'popular');
-            setMovies(result);
-        }
-        getData();
+        fetchData('movie', 'popular').then(data => setMovies(data));
     }, []);
     return (
         <>

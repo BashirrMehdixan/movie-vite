@@ -1,11 +1,15 @@
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import Head from "/src/components/Head";
 import SectionTitle from "/src/components/SectionTitle";
 import {HistoryCard} from "/src/components/cards/MovieCards"
-import {ShowsContext} from "/src/context/shows/ShowsContext";
+import {DataContext} from "/src/context/DataContext";
 
 const History = () => {
-    const {shows} = useContext(ShowsContext);
+    const {fetchData} = useContext(DataContext);
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        fetchData('trending', 'all', 'weekly').then(data => setData(data));
+    })
     return (
         <>
             <Head title={`History`}/>
@@ -13,7 +17,7 @@ const History = () => {
                 <div className={`container`}>
                     <SectionTitle heading={`My History`}/>
                     <div className={`flex flex-wrap items-center gap-3 my-5`}>
-                        {shows.map((show, index) => {
+                        {data.map((show, index) => {
                             return (
                                 <div
                                     key={index}

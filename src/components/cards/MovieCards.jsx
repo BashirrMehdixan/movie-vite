@@ -32,7 +32,7 @@ export const MovieComponent = ({id, item, type}) => {
     const imgSize = 'original'
     return (
         <>
-            <Link to={`/${item.media_type || type === "movie" ? "movies" : "shows"}/${id.toString()}`}
+            <Link to={`/${(item.media_type || type) === 'movie' ? 'movies' : 'shows'}/${id.toString()}`}
                   className={`block w-full transition-all duration-300 hover:scale-[.95]`}>
                 <div className={`bg-[#1A1A1A] w-full p-2 border border-[#333333] rounded-xl`}>
                     <div className="p-1 h-[350px] overflow-hidden">
@@ -40,7 +40,7 @@ export const MovieComponent = ({id, item, type}) => {
                             src={`https://image.tmdb.org/t/p/${imgSize}${item.poster_path}`}
                             className={`w-full h-full rounded-xl`} alt={item.title || item.name}/>
                     </div>
-                    <div className="flex items-center justify-between px-3 py-2 text-[#999999]">
+                    <div className={`flex items-center justify-between px-3 py-2 text-[#999999]`}>
                         <h3 className={`flex items-center bg-[#141414] border-2 border-[#262626] px-3 py-2 rounded-lg`}>
                             <span className={`mr-2 text-xl`}>
                                 <ClockCircle/>

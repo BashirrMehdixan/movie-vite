@@ -13,11 +13,7 @@ const PopularGenres = () => {
     const {getGenres} = useContext(DataContext);
     const [genres, setGenres] = useState([]);
     useEffect(() => {
-        const genresFetch = async () => {
-            const result = await getGenres('movie');
-            setGenres(result);
-        }
-        genresFetch()
+        getGenres('movie').then(data => setGenres(data))
     }, []);
     return (
         genres &&

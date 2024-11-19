@@ -15,15 +15,10 @@ import DetailComponent from "/src/components/DetailComponent";
 
 const MovieDetail = () => {
     const {id} = useParams();
-    console.log(id)
     const {getDetail} = useContext(DataContext);
     const [movie, setMovie] = useState([]);
     useEffect(() => {
-        const getMovie = async () => {
-            const result = await getDetail('movie', id);
-            setMovie(result);
-        }
-        getMovie();
+        getDetail('movie', id).then(data => setMovie(data));
     }, []);
     return (
         Object.keys(movie).length &&

@@ -45,8 +45,18 @@ const DataContextProvider = ({children}) => {
             console.error("Error fetching movie data: ", e);
         }
     }
+
+    // Episodes
+    const getEpisodes = async (id, season_count, season) => {
+        let allEpisodes = [];
+        for (let i = 1; i <= season_count; i++) {
+            const response = await axios.get(`${baseURL}tv/${id}/season/${i}?api_key=${api_key}`);
+            allEpisodes = [...allEpisodes, ...response.data.episodes];
+        }
+        return allEpisodes.filter(episode => episode.season_number === season.season_number);
+    }
     return (
-        <DataContext.Provider value={{fetchData, fetchSearch, getDetail, getGenres}}>
+        <DataContext.Provider value={{fetchData, fetchSearch, getDetail, getGenres, getEpisodes}}>
             {children}
         </DataContext.Provider>
     )

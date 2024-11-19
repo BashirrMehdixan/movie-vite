@@ -5,21 +5,20 @@ import Footer from "/src/components/Footer";
 import SubscriptionComponent from "/src/components/SubscriptionComponent";
 import LoadingAnimation from "/src/components/LoadingAnimation";
 import ScrollToTop from "/src/components/ScrollToTop";
-import {MoviesContext, ShowsContext} from "/src/context/Context";
+import {DataContext} from "/src/context/DataContext";
 
 const RootLayout = () => {
     const location = useLocation();
-    const {movies, fetchMovies} = useContext(MoviesContext);
-    const {shows, fetchShows} = useContext(ShowsContext);
+    const [all, setAll] = useState([]);
+    const {fetchData} = useContext(DataContext);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetchMovies();
-        fetchShows();
+        fetchData('trending', 'all', 'day').then(data => setAll(data));
     }, []);
 
     useEffect(() => {
-        if (movies.length > 0 && shows.length > 0) {
+        if (all.length) {
             setLoading(false);
         } else {
             setLoading(false);
@@ -37,7 +36,7 @@ const RootLayout = () => {
             </main>
             <SubscriptionComponent/>
             <ScrollToTop/>
-            <ScrollRestoration />
+            <ScrollRestoration/>
             <Footer/>
         </>
     )

@@ -1,25 +1,20 @@
-import { useState, useEffect,useContext } from "react";
+import {useState, useEffect, useContext} from "react";
 
 // Swiper
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Navigation, Pagination} from "swiper/modules";
 
 // Custom Components
-import { DataContext } from "/src/context/DataContext";
-import { NewReleasesCard } from "/src/components/cards/MovieCards";
+import {DataContext} from "/src/context/DataContext";
+import {NewReleasesCard} from "/src/components/cards/MovieCards";
 import SectionTitle from "/src/components/SectionTitle";
 
 const NewReleases = () => {
-    const { fetchData } = useContext(DataContext);
+    const {fetchData} = useContext(DataContext);
     const [movies, setMovies] = useState([]);
     useEffect(() => {
-        const getMovies = async () => {
-            const result = await fetchData('movie', 'upcoming');
-            setMovies(result);
-        }
-        getMovies();
-
-    })
+        fetchData('movie', 'upcoming').then(data => setMovies(data));
+    }, [])
     return (
         movies &&
         <>
@@ -70,7 +65,7 @@ const NewReleases = () => {
                                         data-aos={`fade-up`}
                                         data-aos-duration={`3000`}
                                     >
-                                        <NewReleasesCard id={movie.id} item={movie} type={`movies`} />
+                                        <NewReleasesCard id={movie.id} item={movie} type={`movies`}/>
                                     </SwiperSlide>
                                 )
                             })}
