@@ -1,11 +1,14 @@
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import Head from "/src/components/Head";
 import SectionTitle from "/src/components/SectionTitle";
 import {HistoryCard} from "/src/components/cards/MovieCards";
 import {WatchlistContext} from "/src/context/Context";
+import {DataContext} from "/src/context/DataContext";
 
 const Watchlist = () => {
     const {watchlist} = useContext(WatchlistContext);
+    const {fetchData} = useContext(DataContext);
+
     return (
         <>
             <Head title={`Watchlist`}/>

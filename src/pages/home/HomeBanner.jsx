@@ -7,11 +7,14 @@ import {DataContext} from "/src/context/DataContext";
 import {BannerComponent} from "/src/components/cards/BannerComponent";
 
 const HomeBanner = () => {
-    const {fetchData} = useContext(DataContext);
+    const {fetchData, getWatchlist} = useContext(DataContext);
     const [data, setData] = useState([]);
     useEffect(() => {
         fetchData('trending', 'all', 'day').then(data => setData(data.results));
     }, [])
+    useEffect(() => {
+        getWatchlist('account', '668e2aee2e94b909d0d5ae8b', 'movie','favorites').then(data => console.log(data));
+    }, []);
     return (
         <>
             <section className={`home-banner`}>
