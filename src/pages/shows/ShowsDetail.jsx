@@ -42,7 +42,7 @@ const ShowsDetail = () => {
                                     Cast
                                 </h4>
                                 <div className="cat-swiper pt-8">
-                                    <CastComponent id={show.id} type={`shows`}/>
+                                    <CastComponent id={show.id} type={`tv`}/>
                                 </div>
                             </div>
                             <div className="bg-[#1A1A1A] border-2 border-[#262626] text-white rounded-lg mb-5 p-3">
@@ -58,7 +58,7 @@ const ShowsDetail = () => {
                                         <span>Add your review</span>
                                     </button>
                                 </div>
-                                <ReviewComponent id={show.id} type={`shows`}/>
+                                <ReviewComponent id={show.id} type={`tv`}/>
                             </div>
                         </div>
                         <div className={`w-full lg:w-[calc(30%-.5rem)]`}>

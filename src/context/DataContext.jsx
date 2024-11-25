@@ -1,6 +1,5 @@
 import {createContext, useState} from "react";
 import axios from "axios";
-import instance from "/src/api/api";
 
 export const DataContext = createContext([]);
 
@@ -17,7 +16,8 @@ const DataContextProvider = ({children}) => {
             } else {
                 response = await axios.get(`${baseURL}${endpoint}/${type}?api_key=${api_key}`);
             }
-            return response.data.results;
+            console.log(response.data);
+            return response.data;
 
         } catch (e) {
             console.error("Error fetching movie data: ", e);
@@ -29,6 +29,7 @@ const DataContextProvider = ({children}) => {
         const response = await axios.get(`${baseURL}${endpoint}/${id}?api_key=${api_key}`);
         return response.data
     }
+
 
     // Genres
     const getGenres = async (endpoint) => {

@@ -1,19 +1,16 @@
-import { useContext, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-import { ReviewContext } from "/src/context/reviews/ReviewContext";
+import {useContext, useEffect, useState} from "react";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Navigation, Pagination} from "swiper/modules";
+import {DataContext} from "/src/context/DataContext";
 import ReviewCard from "/src/components/cards/ReviewCard";
 
-const ReviewComponent = ({ id, type }) => {
-    const { reviews, getReviews } = useContext(ReviewContext);
+const ReviewComponent = ({id, type}) => {
+    const {fetchData} = useContext(DataContext);
+    const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
         if (id) {
-            if (type === "movie") {
-                getReviews(id, "movie");
-            } else {
-                getReviews(id, "show");
-            }
+            fetchData(type, id, 'reviews').then(data => setReviews(data.results));
         }
     }, []);
 

@@ -1,14 +1,15 @@
-import {useContext, useEffect} from "react";
+import {useContext, useEffect, useState} from "react";
 import {Navigation, Pagination} from "swiper/modules";
 import {Swiper, SwiperSlide} from "swiper/react";
 import CastCards from "/src/components/cards/CastCards";
-import {CastContext} from "/src/context/cast/CastContext";
+import {DataContext} from "/src/context/DataContext";
 
 const CastComponent = ({id, type}) => {
-    const {casts, getCasts} = useContext(CastContext);
+   const {fetchData} = useContext(DataContext);
+   const [casts, setCasts]= useState([]);
     useEffect(() => {
         if (id) {
-            getCasts(id, type);
+            fetchData(type, id, 'credits').then(res => setCasts(res.cast));
         }
     }, []);
     return (

@@ -10,7 +10,7 @@ const HomeBanner = () => {
     const {fetchData} = useContext(DataContext);
     const [data, setData] = useState([]);
     useEffect(() => {
-        fetchData('trending', 'all', 'day').then(data => setData(data));
+        fetchData('trending', 'all', 'day').then(data => setData(data.results));
     }, [])
     return (
         <>

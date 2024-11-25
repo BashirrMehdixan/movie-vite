@@ -1,4 +1,4 @@
-import {useEffect, useContext, useState} from "react";
+import {useEffect, useContext, useState, useMemo, useCallback} from "react";
 import {MovieComponent} from "/src/components/cards/MovieCards";
 import {DataContext} from "/src/context/DataContext";
 
@@ -7,14 +7,13 @@ const SearchModal = ({activeModal, closeAction}) => {
     const {fetchSearch} = useContext(DataContext);
     const [search, setSearch] = useState("");
 
-    const handleSearch = async () => {
+    const handleSearch = useCallback(() => {
         if (search.trim() === "") {
             setData([]);
-            return;
+        } else if (search.trim()) {
+            fetchSearch(search).then(data => setData(data));
         }
-        const results = await fetchSearch(search);
-        setData(results);
-    };
+    }, [search]);
 
     useEffect(() => {
         if (activeModal) {

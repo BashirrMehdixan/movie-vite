@@ -13,7 +13,7 @@ const NewReleases = () => {
     const {fetchData} = useContext(DataContext);
     const [movies, setMovies] = useState([]);
     useEffect(() => {
-        fetchData('movie', 'upcoming').then(data => setMovies(data));
+        fetchData('movie', 'upcoming').then(data => setMovies(data.results));
     }, [])
     return (
         movies &&

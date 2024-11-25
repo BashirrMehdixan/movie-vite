@@ -14,7 +14,7 @@ const PopularShows = () => {
     const {fetchData} = useContext(DataContext);
     const [shows, setShows] = useState([]);
     useEffect(() => {
-        fetchData('tv', 'popular').then((data) => setShows(data));
+        fetchData('tv', 'popular').then((data) => setShows(data.results));
     }, [])
     return (
         shows.length > 0 &&

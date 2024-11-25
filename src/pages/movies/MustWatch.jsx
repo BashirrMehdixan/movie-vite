@@ -11,7 +11,7 @@ const MustWatch = () => {
     const {fetchData} = useContext(DataContext);
     const [movies, setMovies] = useState([]);
     useEffect(() => {
-        fetchData('movie', 'top_rated').then(data => setMovies(data));
+        fetchData('movie', 'top_rated').then(data => setMovies(data.results));
     }, []);
     return (
         <>

@@ -9,7 +9,7 @@ const ShowsBanner = () => {
     const {fetchData} = useContext(DataContext);
     const [shows, setShows] = useState([]);
     useEffect(() => {
-        fetchData('tv', 'airing_today').then(data => setShows(data));
+        fetchData('tv', 'airing_today').then(data => setShows(data.results));
     }, [])
     return (
         <>

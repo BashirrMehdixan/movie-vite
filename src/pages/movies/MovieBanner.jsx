@@ -9,7 +9,7 @@ const MovieBanner = () => {
     const [data, setData] = useState([]);
     const {fetchData} = useContext(DataContext);
     useEffect(() => {
-        fetchData('movie', 'now_playing').then(data => setData(data));
+        fetchData('movie', 'now_playing').then(data => setData(data.results));
     }, [])
     return (
         data &&
