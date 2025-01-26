@@ -1,14 +1,13 @@
-import { useState, useContext, useRef, useEffect } from "react";
-import { Modal } from 'react-responsive-modal';
+import {useState, useContext, useRef, useEffect} from "react";
+import {Modal} from 'react-responsive-modal';
 // Icons
-import { Edit } from "react-huge-icons/outline";
+import {Edit} from "react-huge-icons/outline";
 // Context
-import { AuthContext } from "/src/context/auth/AuthContext";
-import { AuthHooks } from "/src/hooks/Hooks";
+import {AuthHooks} from "/src/hooks/Hooks";
+import {currentUser} from "../app/supabase.js";
 
 const EditProfileModal = () => {
-    const { user } = useContext(AuthContext);
-    const { dataHandler, updateData, data, setGender, handleImageChange } = AuthHooks();
+    const {currentUser: user, dataHandler, updateData, data, gender, setGender, handleImageChange} = AuthHooks();
     const [open, setOpen] = useState(false);
     const [openSelect, setOpenSelect] = useState(false);
     const [imagePreview, setImagePreview] = useState(null);
@@ -54,19 +53,19 @@ const EditProfileModal = () => {
                                     <img
                                         src={getImageSrc()}
                                         alt={user.username}
-                                        className={`w-full h-full rounded-full object-fill`} />
+                                        className={`w-full h-full rounded-full object-fill`}/>
                                     <input
                                         type="file"
                                         ref={fileInputRef}
                                         onChange={handleImageChangePreview}
                                         accept={`image/png image/jpeg image/jpg`}
-                                        className={`absolute w-full h-full opacity-0`} />
+                                        className={`absolute w-full h-full opacity-0`}/>
                                 </label>
                                 <button
                                     type={`button`}
                                     onClick={() => fileInputRef.current.click()}
                                     className={`absolute bg-[#262626] bottom-0 right-0 rounded-full p-2`}>
-                                    <Edit className={`text-xl`} />
+                                    <Edit className={`text-xl`}/>
                                 </button>
                             </div>
                         </div>
@@ -115,84 +114,84 @@ const EditProfileModal = () => {
                             <div
                                 onClick={() => setOpenSelect(!openSelect)}
                                 className={`relative w-full bg-[#262626] cursor-pointer border-2 border-white p-3 transition duration-500 focus:border-[#E50000] rounded-md mt-1 mb-3`}>
-                                <span className={`cursor-pointer`}>{user.gender}</span>
+                                <span className={`cursor-pointer`}>{gender}</span>
                                 <ul
                                     className={`absolute w-full left-0 top-[50px] bg-[#262626] transition duration-300 origin-top rounded-lg ${!openSelect ? `scale-y-0` : `scale-y-100`}`}>
-                                        < li className={`cursor-default p-3 opacity-45`}>
-                                    Gender
-                                </li>
-                                <li className={`cursor-pointer p-3`}
-                                    onClick={(e) => setGender(e.target.innerText)}>
-                                    Male
-                                </li>
-                                <li className={`cursor-pointer p-3`}
-                                    onClick={(e) => setGender(e.target.innerText)}>
-                                    Female
-                                </li>
-                            </ul>
+                                    <li className={`cursor-default p-3 opacity-45`}>
+                                        Gender
+                                    </li>
+                                    <li className={`cursor-pointer p-3`}
+                                        onClick={(e) => setGender(e.target.innerText)}>
+                                        Male
+                                    </li>
+                                    <li className={`cursor-pointer p-3`}
+                                        onClick={(e) => setGender(e.target.innerText)}>
+                                        Female
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className={`w-full md:w-1/2 mb-2 pr-0 md:pr-3`}>
+                            <label
+                                className={`text-lg font-medium`}
+                                htmlFor={`email`}>Email</label>
+                            <input
+                                type="text"
+                                id={`email`}
+                                onChange={(e) => dataHandler(e)}
+                                defaultValue={user.email}
+                                className={`w-full px-4 py-3 bg-transparent text-white border border-white rounded-lg focus:outline-none`}
+                            />
+                        </div>
+                        <div className={`w-full md:w-1/2 mb-2 pr-0 md:pr-3`}>
+                            <label
+                                className={`text-lg font-medium`}
+                                htmlFor={`date`}>Date of Birth</label>
+                            <input
+                                type="date"
+                                id={`date`}
+                                onChange={(e) => dataHandler(e)}
+                                defaultValue={user.birthday}
+                                className={`w-full px-4 py-3 bg-transparent text-white border border-white rounded-lg focus:outline-none`}
+                            />
+                        </div>
+                        <div className={`w-full mb-2 pr-0 md:pr-3`}>
+                            <label
+                                className={`text-lg font-medium`}
+                                htmlFor={`password`}>Password</label>
+                            <input
+                                type="password"
+                                onChange={(e) => dataHandler(e, data)}
+                                id={`password`}
+                                className={`w-full px-4 py-3 bg-transparent text-white border border-white rounded-lg disabled:opacity-45 focus:outline-none`}
+                            />
+                        </div>
+                        {/*<div className={`w-full md:w-1/2 mb-2 pr-0 md:pr-3`}>*/}
+                        {/*    <label*/}
+                        {/*        className={`text-lg font-medium`}*/}
+                        {/*        htmlFor={`password`}>Confirm Password</label>*/}
+                        {/*    <input*/}
+                        {/*        type="password"*/}
+                        {/*        id={`confirmPassword`}*/}
+                        {/*        disabled={true}*/}
+                        {/*        className={`w-full px-4 py-3 bg-transparent text-white border border-white rounded-lg disabled:opacity-45 focus:outline-none`}*/}
+                        {/*    />*/}
+                        {/*</div>*/}
+                        <div className={`w-full flex justify-end`}>
+                            <button
+                                className={`text-white bg-[#E50000] px-6 py-3 rounded-lg transition duration-500 hover:opacity-60`}>
+                                Save
+                            </button>
                         </div>
                     </div>
-                    <div className={`w-full md:w-1/2 mb-2 pr-0 md:pr-3`}>
-                        <label
-                            className={`text-lg font-medium`}
-                            htmlFor={`email`}>Email</label>
-                        <input
-                            type="text"
-                            id={`email`}
-                            onChange={(e) => dataHandler(e)}
-                            defaultValue={user.email}
-                            className={`w-full px-4 py-3 bg-transparent text-white border border-white rounded-lg focus:outline-none`}
-                        />
-                    </div>
-                    <div className={`w-full md:w-1/2 mb-2 pr-0 md:pr-3`}>
-                        <label
-                            className={`text-lg font-medium`}
-                            htmlFor={`date`}>Date of Birth</label>
-                        <input
-                            type="text"
-                            id={`date`}
-                            onChange={(e) => dataHandler(e)}
-                            defaultValue={user.birthday}
-                            className={`w-full px-4 py-3 bg-transparent text-white border border-white rounded-lg focus:outline-none`}
-                        />
-                    </div>
-                    <div className={`w-full mb-2 pr-0 md:pr-3`}>
-                        <label
-                            className={`text-lg font-medium`}
-                            htmlFor={`password`}>Password</label>
-                        <input
-                            type="password"
-                            onChange={(e) => dataHandler(e, data)}
-                            id={`password`}
-                            className={`w-full px-4 py-3 bg-transparent text-white border border-white rounded-lg disabled:opacity-45 focus:outline-none`}
-                        />
-                    </div>
-                    {/*<div className={`w-full md:w-1/2 mb-2 pr-0 md:pr-3`}>*/}
-                    {/*    <label*/}
-                    {/*        className={`text-lg font-medium`}*/}
-                    {/*        htmlFor={`password`}>Confirm Password</label>*/}
-                    {/*    <input*/}
-                    {/*        type="password"*/}
-                    {/*        id={`confirmPassword`}*/}
-                    {/*        disabled={true}*/}
-                    {/*        className={`w-full px-4 py-3 bg-transparent text-white border border-white rounded-lg disabled:opacity-45 focus:outline-none`}*/}
-                    {/*    />*/}
-                    {/*</div>*/}
-                    <div className={`w-full flex justify-end`}>
-                        <button
-                            className={`text-white bg-[#E50000] px-6 py-3 rounded-lg transition duration-500 hover:opacity-60`}>
-                            Save
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </Modal >
+                </form>
+            </Modal>
         </>
     )
 }
 
 const PasswordModal = () => {
-    const { dataHandler, changePassword, data } = AuthHooks();
+    const {dataHandler, changePassword, data} = AuthHooks();
     const [open, setOpen] = useState(false);
     return (
         <>
@@ -247,4 +246,4 @@ const PasswordModal = () => {
     )
 }
 
-export { EditProfileModal, PasswordModal };
+export {EditProfileModal, PasswordModal};

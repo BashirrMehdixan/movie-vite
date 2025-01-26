@@ -1,14 +1,13 @@
-import { useContext } from "react";
-import { AuthContext } from "/src/context/auth/AuthContext";
 import SectionTitle from "/src/components/SectionTitle";
 import { EditProfileModal, PasswordModal } from "/src/modals/EditModals";
-import Head from "../../components/Head.jsx";
+import Head from "/src/components/Head";
+import {AuthHooks} from "/src/hooks/Hooks";
 
 const Profile = () => {
-    const { user } = useContext(AuthContext);
+    const { currentUser } = AuthHooks();
     return (
         <>
-            <Head title={Object.keys(user).length ? (user?.firstname ? (user?.firstname + ` ` + user?.lastname) : user.username) : ``}/>
+            <Head title={Object.keys(currentUser).length ? (currentUser?.firstname ? (currentUser?.firstname + ` ` + currentUser?.lastname) : currentUser.username) : ``}/>
                 < div className="container">
                 <div className="flex items-center justify-between pt-9 pb-5">
                     <SectionTitle heading={`Account and security`} />
@@ -22,7 +21,7 @@ const Profile = () => {
                                 <div className={`flex items-center gap-2`}>
                                     <p className={`text-xl font-semibold`}>Firstname: </p>
                                     <p className={`capitalize`}>
-                                        {user.firstname}
+                                        {currentUser.firstname}
                                     </p>
                                 </div>
                             </div>
@@ -33,7 +32,7 @@ const Profile = () => {
                                 <div className={`flex items-center gap-2`}>
                                     <p className={`text-xl font-semibold`}>Lastname: </p>
                                     <p className={`capitalize`}>
-                                        {user.lastname}
+                                        {currentUser.lastname}
                                     </p>
                                 </div>
                             </div>
@@ -44,7 +43,7 @@ const Profile = () => {
                                 <div className={`flex items-center gap-2`}>
                                     <p className={`text-xl font-semibold`}>Gender: </p>
                                     <p className={`capitalize`}>
-                                        {user.gender}
+                                        {currentUser.gender}
                                     </p>
                                 </div>
                             </div>
@@ -55,7 +54,7 @@ const Profile = () => {
                                 <div className={`flex items-center gap-2`}>
                                     <p className={`text-xl font-semibold`}>Date of birth: </p>
                                     <p className={`capitalize`}>
-                                        {user.birthday}
+                                        {currentUser.birthday}
                                     </p>
                                 </div>
                             </div>
@@ -66,7 +65,7 @@ const Profile = () => {
                                 <div className={`flex items-center gap-2`}>
                                     <p className={`text-xl font-semibold`}>Username: </p>
                                     <p>
-                                        {user.username}
+                                        {currentUser.username}
                                     </p>
                                 </div>
                             </div>
@@ -77,7 +76,7 @@ const Profile = () => {
                                 <div className={`flex items-center gap-2`}>
                                     <p className={`text-xl font-semibold`}>Email: </p>
                                     <p>
-                                        {user.email}
+                                        {currentUser.email}
                                     </p>
                                 </div>
                             </div>

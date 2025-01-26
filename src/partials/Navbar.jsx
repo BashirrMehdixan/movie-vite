@@ -1,24 +1,17 @@
-import {useContext, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {NavLink, useLocation} from "react-router-dom";
 import {
     Notification,
     Search,
-    MenuLineHorizontalHalf,
-    User,
-    Home,
-    FilmstripCircle,
-    SmartTv, BellNotification, Queue, HeadphonesMicrophone
+    MenuLineHorizontalHalf
 } from "react-huge-icons/outline";
-import {AuthContext} from "/src/context/Context";
 import {AuthHooks} from "/src/hooks/Hooks";
 
 import SearchModal from "/src/modals/SearchModal";
-import {EffectCube} from "swiper/modules";
 
 const Navbar = () => {
-    const {currentUser, user} = useContext(AuthContext);
     const location = useLocation();
-    const {logOutAction} = AuthHooks();
+    const {logOutAction, currentUser} = AuthHooks();
     const [openNav, setOpenNav] = useState(false);
     const [activeSearch, setActiveSearch] = useState(false);
     useEffect(() => {
@@ -55,16 +48,16 @@ const Navbar = () => {
                                 <ul
                                     className={`w-full lg:w-[max-content] flex flex-col lg:flex-row gap-3 lg:items-center justify-between text-white bg-[#0F0F0F] border-[2px] border-[#1F1F1F] mx-auto rounded-2xl p-3`}>
                                     <li className={`relative lg:hidden opacity-50 transition-all duration-500 has-[.active]:opacity-100 has-[.active]:bg-[#1A1A1A] hover:bg-[#1A1A1A] hover:opacity-100 rounded-xl`}>
-                                        {Object.keys(user).length ? (
+                                        {currentUser && Object.keys(currentUser).length ? (
                                                 <>
                                                     <button
                                                         className={`block p-3 rounded-xl`}
                                                     >
-                                                        {(user.firstname.length && user.lastname.length) ? user?.firstname + " " + user?.lastname : user.username}
+                                                        {(currentUser.firstname?.length && currentUser.lastname?.length) ? currentUser?.firstname + " " + currentUser?.lastname : currentUser.username}
                                                     </button>
                                                     <ul className={`w-full transition duration-300 origin-top scale-y-100`}>
                                                         <li className={`pl-3`}>
-                                                            <NavLink to={`/users/${user.username}`}
+                                                            <NavLink to={`/users/${currentUser.username}`}
                                                                      className={`block p-3 rounded-xl`}>
                                                                 Dashboard
                                                             </NavLink>
@@ -142,20 +135,16 @@ const Navbar = () => {
                                     <button
                                         className={`w-[55px] h-[55px] rounded-full ${currentUser ? `flex` : `hidden`} items-center justify-center border-[3px] border-[#262626] transition ease-linear duration-500 hover:text-[#E50000]`}
                                         onClick={() => setOpenNav(!openNav)}>
-                                        {user.profile_picture ?
+                                        {currentUser &&
                                             <img
-                                                src={user.profile_picture}
-                                                alt={user.username}
-                                                className={`w-full h-full rounded-full object-fill`}
-                                            /> :
-                                            <img
-                                                src={`/images/hugh.jpg`}
-                                                alt={user.username}
+                                                src={currentUser?.profile_picture ? currentUser.profile_picture : `/images/hugh.jpg`}
+                                                alt={currentUser?.username}
                                                 className={`w-full h-full rounded-full object-fill`}
                                             />
                                         }
                                     </button>
                                     <NavLink to={`/login`}
+                                             state={{ from: location.pathname }}
                                              className={`text-xl transition ease-linear duration-500 hover:text-[#E50000] ${currentUser ? `hidden` : ``}`}
                                              onClick={() => setOpenNav(!openNav)}>
                                         Login
@@ -166,31 +155,31 @@ const Navbar = () => {
                                                 className={`absolute w-[240px] -left-[150px] transition duration-500 origin-top rounded-lg text-white bg-[#262626] -translate-x-[25px] translate-y-[8px] pb-4 z-10 scale-y-0 group-hover:scale-y-100`}>
                                                 <li>
                                                     <NavLink
-                                                        to={`/users/${user.username}`}
+                                                        to={`/users/${currentUser.username}`}
                                                         className={`flex items-center gap-3 font-bold bg-[#0F0F0F] p-3`}
                                                     >
                                                         {
-                                                            user.profile_picture ?
-                                                                <img src={user.profile_picture}
+                                                            currentUser.profile_picture ?
+                                                                <img src={currentUser.profile_picture}
                                                                      className={`w-[50px] h-[50px] rounded-full`}
-                                                                     alt={user.username}/> :
+                                                                     alt={currentUser.username}/> :
                                                                 <img src={`/images/hugh.jpg`}
                                                                      className={`w-[50px] h-[50px] rounded-full`}
-                                                                     alt={user.username}/>
+                                                                     alt={currentUser.username}/>
                                                         }
-                                                        {(user?.firstname && user?.lastname) ?
+                                                        {(currentUser?.firstname && currentUser?.lastname) ?
                                                             <span
-                                                                className={`text-white`}>{user?.firstname} {user?.lastname}
+                                                                className={`text-white`}>{currentUser?.firstname} {currentUser?.lastname}
                                                         </span> :
                                                             <span
-                                                                className={`text-white`}>{user.username}
+                                                                className={`text-white`}>{currentUser.username}
                                                         </span>
                                                         }
                                                     </NavLink>
                                                 </li>
                                                 <li className={`text-lg transition ease-linear duration-500 hover:text-[#E50000]`}>
                                                     <NavLink
-                                                        to={`/users/${user.username}/favorites`}
+                                                        to={`/users/${currentUser.username}/favorites`}
                                                         className={`block p-3`}
                                                     >
                                                         Favorites
@@ -198,7 +187,7 @@ const Navbar = () => {
                                                 </li>
                                                 <li className={`text-lg transition ease-linear duration-500 hover:text-[#E50000]`}>
                                                     <NavLink
-                                                        to={`/users/${user.username}/history`}
+                                                        to={`/users/${currentUser.username}/history`}
                                                         className={`block p-3`}
                                                     >
                                                         History
@@ -206,7 +195,7 @@ const Navbar = () => {
                                                 </li>
                                                 <li className={`text-lg transition ease-linear duration-500 hover:text-[#E50000]`}>
                                                     <NavLink
-                                                        to={`/users/${user.username}/watchlist`}
+                                                        to={`/users/${currentUser.username}/watchlist`}
                                                         className={`block p-3`}
                                                     >
                                                         Watchlist

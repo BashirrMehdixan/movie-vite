@@ -1,4 +1,4 @@
-import {lazy, Suspense} from "react";
+import {lazy, Suspense, useEffect, useState} from "react";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
 import {AuthContext} from "/src/context/Context";
@@ -10,6 +10,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import "swiper/css/pagination";
 import 'react-toastify/dist/ReactToastify.css';
+
+
+import supabase from "/src/app/supabase";
 
 // Layouts
 import {RootLayout, RegisterLayout, AuthLayout} from "/src/layouts/Layouts";
@@ -35,6 +38,18 @@ const ShowsDetail = lazy(() => import("/src/pages/shows/ShowsDetail"));
 const LoadingAnimation = lazy(() => import("./components/LoadingAnimation"));
 
 function App() {
+    const [session, setSession] = useState(null);
+    useEffect(() => {
+        const {data: sessionData} = supabase.auth.getSession();
+        setSession(sessionData?.session);
+
+        const {data: authListener} = supabase.auth.onAuthStateChange((event, session) => {
+            setSession(session);
+        });
+        return () => {
+            authListener?.unsubscribe();
+        };
+    }, []);
     const router = createBrowserRouter([
         {
             path: "/",

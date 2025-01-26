@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import {Outlet, useLocation, ScrollRestoration} from "react-router-dom";
-import Navbar from "/src/components/Navbar";
-import Footer from "/src/components/Footer";
+import Navbar from "/src/partials/Navbar";
+import Footer from "/src/partials/Footer";
 import SubscriptionComponent from "/src/components/SubscriptionComponent";
 import LoadingAnimation from "/src/components/LoadingAnimation";
 import ScrollToTop from "/src/components/ScrollToTop";

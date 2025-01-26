@@ -4,7 +4,7 @@ import axios from "axios";
 export const DataContext = createContext([]);
 
 const DataContextProvider = ({children}) => {
-    const baseURL = import.meta.env.VITE_APP_BASE_API_URL;
+    const baseURL = import.meta.env.VITE_APP_API_URL;
     const api_key = import.meta.env.VITE_APP_API_KEY;
 
     // Movies and Tv fetching
