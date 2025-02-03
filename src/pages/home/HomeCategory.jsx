@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import SectionTitle from "/src/components/SectionTitle";
+import SectionTitle from "/src/components/head/SectionTitle";
 import {CategoryComponent} from "/src/components/cards/MovieCards";
 import {DataContext} from "/src/context/DataContext";
 

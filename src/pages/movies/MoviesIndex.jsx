@@ -4,7 +4,7 @@ import PopularGenres from "/src/pages/movies/PopularGenres";
 import TrendMovie from "/src/pages/movies/TrendMovie";
 import NewReleases from "/src/pages/movies/NewReleases";
 import MustWatch from "/src/pages/movies/MustWatch";
-import Head from "/src/components/Head";
+import Head from "/src/components/head/Head";
 
 const MoviesIndex = () => {
     return (

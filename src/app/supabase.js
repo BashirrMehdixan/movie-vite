@@ -3,8 +3,6 @@ import {toast} from "react-toastify";
 
 const supabase = createClient(import.meta.env.VITE_APP_SUPABASE_URL, import.meta.env.VITE_APP_SUPABASE_KEY);
 
-export const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
 export const signUp = async (formData) => {
     const {data, error} = await supabase.auth.signUp({
         email: formData.email,
@@ -38,7 +36,7 @@ export const signOut = async () => {
         return true;
     }
 
-    return localStorage.setItem('currentUser', null);
+    return true
 
 }
 export default supabase;

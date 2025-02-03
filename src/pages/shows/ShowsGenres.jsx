@@ -7,7 +7,7 @@ import {Navigation, Pagination} from "swiper/modules";
 // Context
 import {DataContext} from "/src/context/DataContext";
 // Components
-import SectionTitle from "/src/components/SectionTitle";
+import SectionTitle from "/src/components/head/SectionTitle";
 import {CategoryComponent} from "/src/components/cards/MovieCards";
 
 const ShowsGenres = () => {

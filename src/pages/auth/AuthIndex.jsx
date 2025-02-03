@@ -1,9 +1,9 @@
 import {useContext} from "react";
 import {Link, Outlet} from "react-router-dom";
 import {AuthContext} from "/src/context/auth/AuthContext";
-import UserNavbar from "/src/components/UserNavbar";
+import UserNavbar from "/src/partials/UserNavbar";
 import {AuthHooks} from "/src/hooks/Hooks";
-import Head from "../../components/Head.jsx";
+import Head from "../../components/head/Head.jsx";
 
 const AuthIndex = () => {
     const {currentUser} = AuthHooks();
@@ -19,7 +19,7 @@ const AuthIndex = () => {
                                 <div
                                     className={`w-[100px] h-[100px] rounded-full border-4 border-[#0F0F0F] mr-4`}>
                                     <img
-                                        src={currentUser?.profile_picture ? currentUser?.profile_picture : `/images/hugh.jpg`}
+                                        src={currentUser?.thumbnail ? currentUser?.thumbnail : `/images/hugh.jpg`}
                                         alt={currentUser?.username}
                                         title={currentUser?.username}
                                         className={`object-fill w-full h-full rounded-full`}

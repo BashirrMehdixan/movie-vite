@@ -2,7 +2,7 @@ import {useState, useEffect, useContext} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
 import {DataContext} from "/src/context/DataContext";
-import SectionTitle from "/src/components/SectionTitle";
+import SectionTitle from "/src/components/head/SectionTitle";
 import {MovieComponent} from "/src/components/cards/MovieCards";
 
 const TrendMovie = () => {

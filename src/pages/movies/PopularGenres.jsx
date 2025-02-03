@@ -7,7 +7,7 @@ import {Navigation, Pagination} from "swiper/modules";
 // Components
 import {DataContext} from "/src/context/DataContext";
 import {CategoryComponent} from "/src/components/cards/MovieCards";
-import SectionTitle from "/src/components/SectionTitle";
+import SectionTitle from "/src/components/head/SectionTitle";
 
 const PopularGenres = () => {
     const {getGenres} = useContext(DataContext);

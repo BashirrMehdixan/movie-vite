@@ -4,7 +4,6 @@ import {Modal} from 'react-responsive-modal';
 import {Edit} from "react-huge-icons/outline";
 // Context
 import {AuthHooks} from "/src/hooks/Hooks";
-import {currentUser} from "../app/supabase.js";
 
 const EditProfileModal = () => {
     const {currentUser: user, dataHandler, updateData, data, gender, setGender, handleImageChange} = AuthHooks();
@@ -26,7 +25,7 @@ const EditProfileModal = () => {
     };
 
     const getImageSrc = () => {
-        return imagePreview || user.profile_picture || "/images/hugh.jpg";
+        return imagePreview || user.thumbnail || "/images/hugh.jpg";
     };
 
     return (
@@ -155,7 +154,7 @@ const EditProfileModal = () => {
                                 className={`w-full px-4 py-3 bg-transparent text-white border border-white rounded-lg focus:outline-none`}
                             />
                         </div>
-                        <div className={`w-full mb-2 pr-0 md:pr-3`}>
+                        <div className={`w-full mb-2 pr-0 md:pr-3 hidden`}>
                             <label
                                 className={`text-lg font-medium`}
                                 htmlFor={`password`}>Password</label>

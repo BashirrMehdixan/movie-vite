@@ -1,4 +1,4 @@
-import SectionTitle from "/src/components/SectionTitle.jsx";
+import SectionTitle from "/src/components/head/SectionTitle.jsx";
 
 const HomeDevices = () => {
     return (

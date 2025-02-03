@@ -7,7 +7,7 @@ import {PlusThin} from "react-huge-icons/outline";
 // Context
 import {DataContext} from "/src/context/DataContext";
 // Components
-import Head from "/src/components/Head";
+import Head from "/src/components/head/Head";
 import {BannerComponent} from "/src/components/cards/BannerComponent";
 import CastComponent from "/src/components/cards/CastComponent";
 import ReviewComponent from "/src/components/cards/ReviewComponent";

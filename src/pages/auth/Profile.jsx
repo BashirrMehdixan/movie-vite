@@ -1,6 +1,6 @@
-import SectionTitle from "/src/components/SectionTitle";
-import { EditProfileModal, PasswordModal } from "/src/modals/EditModals";
-import Head from "/src/components/Head";
+import SectionTitle from "/src/components/head/SectionTitle";
+import { EditProfileModal, PasswordModal } from "/src/components/modals/EditModals";
+import Head from "/src/components/head/Head";
 import {AuthHooks} from "/src/hooks/Hooks";
 
 const Profile = () => {

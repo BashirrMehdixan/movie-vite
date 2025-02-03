@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Head from "/src/components/Head";
+import Head from "/src/components/head/Head";
 import { FavoriteContext } from "/src/context/Context";
 import FavoriteComponent from "/src/components/cards/FavoriteComponent";
 

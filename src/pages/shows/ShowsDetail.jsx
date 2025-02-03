@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom";
 import {DataContext} from "/src/context/DataContext";
 
 // Components
-import Head from "/src/components/Head";
+import Head from "/src/components/head/Head";
 import {BannerComponent} from "/src/components/cards/BannerComponent";
 import EpisodeComponent from "/src/components/cards/EpisodeComponent";
 import DetailComponent from "/src/components/DetailComponent";

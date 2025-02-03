@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SectionTitle from "/src/components/SectionTitle";
+import SectionTitle from "/src/components/head/SectionTitle";
 import TabComponent from "/src/components/TabComponent";
 import PriceComponents from "/src/components/cards/PriceComponents";
 

@@ -1,4 +1,4 @@
-import Head from "/src/components/Head";
+import Head from "/src/components/head/Head";
 import HomeBanner from "/src/pages/home/HomeBanner";
 import HomeCategory from "/src/pages/home/HomeCategory";
 import HomeDevices from "/src/pages/home/HomeDevices";

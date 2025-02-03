@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import SectionTitle from "/src/components/SectionTitle";
+import SectionTitle from "/src/components/head/SectionTitle";
 import AccordionItem from "/src/components/AccordionItem";
 
 const FAQ = () => {

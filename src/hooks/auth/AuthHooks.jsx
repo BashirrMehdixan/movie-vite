@@ -1,12 +1,7 @@
-import {useState, useContext} from "react";
+import {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
-import {doc, updateDoc} from "firebase/firestore";
-import {
-    updateProfile,
-} from "firebase/auth";
-import {getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {toast} from "react-toastify";
-import {db}from "/src/app/firebase";
+import {v4 as uuidv4} from 'uuid';
 import supabase, {signUp, signIn, signOut} from "/src/app/supabase";
 
 const AuthHooks = () => {
@@ -18,7 +13,7 @@ const AuthHooks = () => {
         return savedUser ? JSON.parse(savedUser) : null;
     });
     const [gender, setGender] = useState(currentUser?.gender ? currentUser?.gender : "Gender");
-    const [profilePicture, setProfilePicture] = useState(currentUser?.profile_picture || null);
+    const [profilePicture, setProfilePicture] = useState(currentUser?.thumbnail || null);
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         setProfilePicture(file);
@@ -34,7 +29,6 @@ const AuthHooks = () => {
     // Signup Action
     const signUpAction = async (e, formData, gender) => {
         e.preventDefault();
-
         if (formData.password === formData.confirmPassword && gender.toLowerCase() !== "gender") {
             try {
                 const {user} = await signUp(formData);
@@ -60,6 +54,7 @@ const AuthHooks = () => {
                     }
                     navigate(location.state?.from || "/");
                     if (data && data.length > 0) {
+                        await supabase.storage.createBucket(uid, {public: true});
                         localStorage.setItem('currentUser', JSON.stringify(data[0]));
                         navigate({
                             pathname: "/"
@@ -113,14 +108,21 @@ const AuthHooks = () => {
             return;
         }
 
-        const storage = getStorage();
-        const storageRef = ref(storage, `profile_pictures/${currentUser.username}/${profilePicture.name}`);
-
         try {
-            const snapshot = await uploadBytes(storageRef, profilePicture);
-            const downloadURL = await getDownloadURL(snapshot.ref);
-            await updateDoc(doc(db, 'users', currentUser.id), {profile_picture: downloadURL});
-            setProfilePicture(downloadURL);
+            const {data: user} = await supabase.auth.getUser();
+            if (!user) {
+                toast.error("User is not logged in.");
+                return;
+            }
+
+            const storage = supabase.storage.from('users');
+            const uniqueFileName = `${uuidv4()}.${profilePicture.name.split('.').pop()}`;
+            const filePath = `${user.user.id}/${uniqueFileName}`;
+            const {data, error} = await storage.upload(filePath, profilePicture);
+            if (error) {
+                throw error;
+            }
+            setProfilePicture(data.fullPath);
             toast.success("Profile picture updated!");
         } catch (error) {
             toast.error("Error uploading image: " + error.message);
@@ -131,7 +133,32 @@ const AuthHooks = () => {
     const updateData = async (e, data) => {
         e.preventDefault();
         try {
-            const {data: user} = await supabase
+            if (data.email) {
+                await supabase.auth.updateUser({ email: data.email });
+                toast.success(`Verification email was sent to ${data.email} address`);
+            }
+
+            let updatedProfilePicture = profilePicture; // varsayılan eski değer
+
+            if (profilePicture) {
+                await handleSaveProfile();
+                const { data: files, error } = await supabase.storage.from('users').list(currentUser.uid);
+                if (error) return;
+
+                const latestFile = files
+                    ?.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+                    ?.[0];
+
+                if (latestFile) {
+                    const { data: publicURL } = supabase.storage
+                        .from('users')
+                        .getPublicUrl(`${currentUser.uid}/${latestFile.name}`);
+                    updatedProfilePicture = publicURL.publicUrl;
+                    setProfilePicture(updatedProfilePicture);
+                }
+            }
+
+            const { data: user } = await supabase
                 .from('users')
                 .update({
                     firstname: data.firstname,
@@ -140,23 +167,18 @@ const AuthHooks = () => {
                     birthday: data.date,
                     username: data.username,
                     email: data.email,
+                    thumbnail: updatedProfilePicture
                 })
                 .eq('uid', currentUser.uid)
                 .select('*')
                 .single();
+
             localStorage.setItem('currentUser', JSON.stringify(user));
-            if (data.email) {
-                toast.success(`Verification email was sent to ${data.email} address`);
-            }
-
-            if (profilePicture) {
-                await handleSaveProfile();
-            }
-
         } catch (error) {
             toast.error(error.message);
         }
     };
+
     return {
         dataHandler,
         logOutAction,

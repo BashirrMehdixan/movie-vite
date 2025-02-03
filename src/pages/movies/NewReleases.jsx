@@ -7,7 +7,7 @@ import {Navigation, Pagination} from "swiper/modules";
 // Custom Components
 import {DataContext} from "/src/context/DataContext";
 import {NewReleasesCard} from "/src/components/cards/MovieCards";
-import SectionTitle from "/src/components/SectionTitle";
+import SectionTitle from "/src/components/head/SectionTitle";
 
 const NewReleases = () => {
     const {fetchData} = useContext(DataContext);

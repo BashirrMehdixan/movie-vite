@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination} from "swiper/modules";
-import SectionTitle from "/src/components/SectionTitle";
+import SectionTitle from "/src/components/head/SectionTitle";
 import {DataContext} from "/src/context/DataContext";
 import {CategoryComponent} from "/src/components/cards/MovieCards";
 

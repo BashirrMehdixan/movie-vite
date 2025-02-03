@@ -1,4 +1,4 @@
-import SectionTitle from "/src/components/SectionTitle";
+import SectionTitle from "/src/components/head/SectionTitle";
 import SubscriptionPlan from "/src/components/cards/SubscriptionPlan";
 import SubscriptionTab from "/src/components/SubscriptionTab";
 

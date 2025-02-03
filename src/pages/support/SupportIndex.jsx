@@ -1,5 +1,5 @@
-import Head from "/src/components/Head";
-import SectionTitle from "/src/components/SectionTitle";
+import Head from "/src/components/head/Head";
+import SectionTitle from "/src/components/head/SectionTitle";
 import FAQ from "/src/pages/support/FAQ";
 
 const SupportIndex = () => {

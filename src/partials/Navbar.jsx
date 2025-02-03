@@ -7,7 +7,7 @@ import {
 } from "react-huge-icons/outline";
 import {AuthHooks} from "/src/hooks/Hooks";
 
-import SearchModal from "/src/modals/SearchModal";
+import SearchModal from "/src/components/modals/SearchModal";
 
 const Navbar = () => {
     const location = useLocation();
@@ -137,7 +137,7 @@ const Navbar = () => {
                                         onClick={() => setOpenNav(!openNav)}>
                                         {currentUser &&
                                             <img
-                                                src={currentUser?.profile_picture ? currentUser.profile_picture : `/images/hugh.jpg`}
+                                                src={currentUser?.thumbnail ? currentUser.thumbnail : `/images/hugh.jpg`}
                                                 alt={currentUser?.username}
                                                 className={`w-full h-full rounded-full object-fill`}
                                             />
@@ -159,8 +159,8 @@ const Navbar = () => {
                                                         className={`flex items-center gap-3 font-bold bg-[#0F0F0F] p-3`}
                                                     >
                                                         {
-                                                            currentUser.profile_picture ?
-                                                                <img src={currentUser.profile_picture}
+                                                            currentUser.thumbnail ?
+                                                                <img src={currentUser.thumbnail}
                                                                      className={`w-[50px] h-[50px] rounded-full`}
                                                                      alt={currentUser.username}/> :
                                                                 <img src={`/images/hugh.jpg`}

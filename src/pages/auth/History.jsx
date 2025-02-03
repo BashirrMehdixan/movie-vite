@@ -1,6 +1,6 @@
 import {useContext, useEffect, useState} from "react";
-import Head from "/src/components/Head";
-import SectionTitle from "/src/components/SectionTitle";
+import Head from "/src/components/head/Head";
+import SectionTitle from "/src/components/head/SectionTitle";
 import {HistoryCard} from "/src/components/cards/MovieCards"
 import {DataContext} from "/src/context/DataContext";
 

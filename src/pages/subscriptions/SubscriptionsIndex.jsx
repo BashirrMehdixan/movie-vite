@@ -1,4 +1,4 @@
-import Head from "/src/components/Head";
+import Head from "/src/components/head/Head";
 import PlanTable from "/src/pages/subscriptions/PlanTable";
 import SubscriptionDetail from "/src/pages/subscriptions/SubscriptionDetail";
 

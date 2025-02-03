@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Head from "/src/components/Head";
+import Head from "/src/components/head/Head";
 import { AuthHooks } from "/src/hooks/Hooks";
 
 const Register = () => {
